@@ -3,7 +3,7 @@ GO
 
 --///////////////////DROP TABLES////////////////////
 --Remove comments if you want to start with fresh tables
---DROP TABLE P2.Acct_Transact_Log;
+--DROP TABLE P2.Transaction;
 --DROP TABLE P2.Account;
 --DROP TABLE P2.User;
 
@@ -26,7 +26,7 @@ CREATE TABLE P2.Account (
 	PRIMARY KEY (AcctID)
 );
 
-CREATE TABLE P2.Acct_Transact_Log (
+CREATE TABLE P2.Transaction (
 	RefNum INT NOT NULL IDENTITY(1,1),
 	SrcAcct INT NOT NULL,
 	DstAcct INT NOT NULL,
@@ -40,11 +40,11 @@ ALTER TABLE P2.Account
 	ADD CONSTRAINT FK__Account__UserID FOREIGN KEY (UserID)
 	REFERENCES P2.User (ID);
 
-ALTER TABLE P2.Acct_Transact_Log 
-	ADD CONSTRAINT FK__Acct_Transact_Log__SrcAcct FOREIGN KEY (SrcAcct)
+ALTER TABLE P2.Transaction 
+	ADD CONSTRAINT FK__Transaction__SrcAcct FOREIGN KEY (SrcAcct)
 	REFERENCES P2.Account (AcctID);
-ALTER TABLE P2.Acct_Transact_Log 
-	ADD CONSTRAINT FK__Acct_Transact_Log__DstAcct FOREIGN KEY (DstAcct)
+ALTER TABLE P2.Transaction 
+	ADD CONSTRAINT FK__Transaction__DstAcct FOREIGN KEY (DstAcct)
 	REFERENCES P2.Account (AcctID);
 
 
