@@ -31,7 +31,6 @@ CREATE TABLE [P2].[Account] (
 
 CREATE TABLE [P2].[Transaction] (
     [ref_ID]   INT             IDENTITY (1, 1) NOT NULL,
-    [type]     VARCHAR (20)    NOT NULL,
     [src_acct] INT             NOT NULL,
     [dst_acct] INT             NOT NULL,
     [status]   VARCHAR (8)     NOT NULL,

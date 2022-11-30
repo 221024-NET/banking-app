@@ -2,6 +2,6 @@
 -- CREATE VIEW [View.Deposits]
 -- AS SELECT *
 -- FROM [Transaction]
--- WHERE [type] = 'deposit'
+-- WHERE [src_acct] = 'cash'
 -- GO
 
