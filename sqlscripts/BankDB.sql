@@ -57,3 +57,7 @@ CREATE TABLE [P2].[Transaction] (
 INSERT INTO P2.[User] (email, password) VALUES (
 	'atm@server.net',
 	CONVERT(BINARY(20), '0x5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 1));
+INSERT INTO [P2].[Account] ([user_ID], [type]) VALUES (
+	(SELECT [user_ID] from [P2].[User] WHERE email='atm@server.net'),
+	'Checking'
+);
