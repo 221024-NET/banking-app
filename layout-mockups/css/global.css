@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&family=Sora:wght@100;200;300&display=swap");
+
+/* CSS HEX COLORS */
+:root {
+    --primary: #386de9ff;
+    --primary-btn: #6788f4ff;
+    --secondary: #23bf15;
+    --secondary-btn: #0fdb36;
+    --dark-bkg: #020507;
+}
+
+body {
+    /* page font stack (fallbacks) */
+    font-family: "Inter", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Header styles */
+:is(h1, h2, h3, h4, h5, h6) {
+    font-family: "Sora", -apple-system, system-ui, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+footer {
+    font-size: 14px;
+    padding: 10px;
+    /* ! flex and push down */
+}
+
+header {
+    padding: 15px;
+    /* ! flex and space around */
+}
+
+main {
+    padding: 0 10px;
+}

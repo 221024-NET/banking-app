@@ -1,0 +1,21 @@
+.layout {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid:
+        "header" 0.3fr "main" 2fr "footer" 0.3fr / 1fr;
+    gap: 2px;
+}
+
+.header {
+    grid-area: header;
+}
+
+.main {
+    grid-area: main;
+    padding: 5px;
+}
+
+.footer {
+    grid-area: footer;
+}
