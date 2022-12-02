@@ -1,0 +1,24 @@
+@import url('global.css');
+
+/* Grid layouts */
+.grid {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid:
+        "sidebar main" 2fr "sidebar footer" 0.5fr / 0.2fr auto;
+    gap: 2px;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.main {
+    grid-area: main;
+    padding: 5px;
+}
+
+.footer {
+    grid-area: footer;
+}
