@@ -8,20 +8,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 :root {
-    /* Primary */
+    --bkg-color: #fff;
+    --text-color: #000;
     --dark-blue: #386de9ff;
-    /* Secondary */
     --dark-green: #23bf15;
-    /* Primary Btns Hover*/
     --light-blue: #6788f4ff;
-    /* Secondary Btns Hover */
     --light-green: #0fdb36;
-    /* Dark mode background */
     --dark-bkg: #020507;
 }
 
+/* Element reset */
 body {
-    /* page font stack (fallbacks) */
+    background-color: var(--bkg-color);
+    color: var(--text-color);
     font-family: 'Anonymous Pro', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
         Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
