@@ -1,4 +1,5 @@
-.layout {
+/* Grid layouts */
+.grid {
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -9,13 +10,36 @@
 
 .header {
     grid-area: header;
+    padding: 15px;
 }
 
 .main {
     grid-area: main;
-    padding: 5px;
+    padding: 0 10px;
 }
 
 .footer {
     grid-area: footer;
+}
+
+/* Flex layouts */
+.flex-header {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-footer {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.header-right {}
+
+.header-right li {
+    display: inline;
+
 }
