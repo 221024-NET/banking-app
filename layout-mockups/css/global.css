@@ -1,36 +1,73 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&family=Sora:wght@100;200;300&display=swap");
+/* Main Font */
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* Header Font */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;400;500;700&display=swap');
+/* Button font */
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+/* Logo Font */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-/* CSS HEX COLORS */
 :root {
-    --primary: #386de9ff;
-    --primary-btn: #6788f4ff;
-    --secondary: #23bf15;
-    --secondary-btn: #0fdb36;
+    /* Primary */
+    --dark-blue: #386de9ff;
+    /* Secondary */
+    --dark-green: #23bf15;
+    /* Primary Btns Hover*/
+    --light-blue: #6788f4ff;
+    /* Secondary Btns Hover */
+    --light-green: #0fdb36;
+    /* Dark mode background */
     --dark-bkg: #020507;
 }
 
 body {
     /* page font stack (fallbacks) */
-    font-family: "Inter", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
-        Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Anonymous Pro', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+
 }
 
 /* Header styles */
 :is(h1, h2, h3, h4, h5, h6) {
-    font-family: "Sora", -apple-system, system-ui, BlinkMacSystemFont,
-        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Sora', -apple-system, system-ui, BlinkMacSystemFont,
+        'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    margin: 10px;
 }
+
+#logo {
+    font-family: 'Share Tech Mono';
+    font-weight: 400;
+    font-size: 1.7rem;
+}
+
 
 h1 {
     font-size: 3.5rem;
+    margin-top: 10px;
 }
 
 h2 {
     font-size: 2rem;
+    margin-top: 10px;
 }
 
 h3 {
     font-size: 1.5rem;
+}
+
+p {
+    font-weight: 200;
+    margin-top: 10px;
+}
+
+button {
+    font-size: 18px;
+    font-weight: 200;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
 }
 
 footer {
@@ -38,13 +75,19 @@ footer {
     padding: 10px;
 
 }
+
+hr {
+    width: 70%;
+}
+
 /* Resets */
 a {
     text-decoration: none;
+    color: initial;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 ul {
