@@ -1,5 +1,6 @@
 :root {
-    --dark-green: rgba(32, 95, 26, 0.61);
+    --dark-green: rgba(24, 119, 16, 0.61);
+    --dark-blue: rgb(35, 95, 236);
     --green: #23bf15;
     --light-blue: #6788f4ff;
     --light-green: #0ec12f;
@@ -19,7 +20,7 @@
 }
 
 .header {
-    background-color: var(--dark-green);
+    background-color: var(--dark-blue);
     border-bottom: 1px solid var(--grey);
     grid-area: header;
     display: inline-block;
@@ -84,7 +85,7 @@
     border: 1px solid #f4f4f4;
     cursor: pointer;
     background: var(--green);
-    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1), -4px -4px 8px var(--light-green);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1), -4px -4px 8px #63c775;
 }
 
 .hero-btn:hover {
@@ -114,7 +115,7 @@ form {
 
 form input {
     display: block;
-    width: 70%;
+    width: 310px;
     font-size: 15px;
     margin: 15px 100px 15px 50px;
     height: 40px;
