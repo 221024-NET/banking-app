@@ -15,7 +15,6 @@
     --light-blue: #6788f4ff;
     --light-green: #0fdb36;
     --dark-bkg: #020507;
-    --grey: rgba(108, 110, 111, 0.5);
 }
 
 /* Element reset */
@@ -26,6 +25,7 @@ body {
         Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
     letter-spacing: 0.5px;
+
 }
 
 /* Header styles */
@@ -33,13 +33,14 @@ body {
     font-family: 'Sora', -apple-system, system-ui, BlinkMacSystemFont,
         'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 500;
+    margin: 10px;
 }
 
-/* #logo {
+#logo {
     font-family: 'Share Tech Mono';
     font-weight: 400;
     font-size: 1.7rem;
-} */
+}
 
 
 h1 {
@@ -49,7 +50,7 @@ h1 {
 
 h2 {
     font-size: 2rem;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 h3 {
@@ -68,10 +69,14 @@ button {
     text-transform: uppercase;
 }
 
-
 footer {
     font-size: 14px;
-    margin: 0;
+    padding: 10px;
+
+}
+
+hr {
+    width: 70%;
 }
 
 /* Resets */
