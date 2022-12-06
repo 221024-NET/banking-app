@@ -4,8 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-/*:root {
-     --dark-green: #1a7725;
+:root {
+    /* --dark-green: #1a7725;
     --light-green: #13b10d;
     --light-blue: #6788f4ff;
     --bkg-color: #020507;
@@ -14,8 +14,9 @@
     --header-bkg: linear-gradient(90deg, #1a7725 10%, #148721 20%, #13b10d 50%, #1a7725 85%);
     --heading-shadow: 5px 0px 2px #1b1b1b, 1px 1px 1px #b9b5b5;
     --input-bkg: rgb(39, 36, 36);
-    --btn-bkg: #020507;
+    --btn-bkg: #020507; */
 }
+
 */
 
 /* Element reset */
