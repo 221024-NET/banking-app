@@ -4,8 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-/*:root {
-     --dark-green: #1a7725;
+:root {
+    --dark-green: #1a7725;
     --light-green: #13b10d;
     --light-blue: #6788f4ff;
     --bkg-color: #020507;
@@ -16,7 +16,6 @@
     --input-bkg: rgb(39, 36, 36);
     --btn-bkg: #020507;
 }
-*/
 
 /* Element reset */
 body {
