@@ -49,6 +49,11 @@
     align-items: center;
 }
 
+.hero {
+    background-image: var(--svg-bkg);
+    background: var(--hero-bkg);
+}
+
 .hero-info {
     margin: 20px 0;
 }

@@ -11,12 +11,16 @@
     --secondary: #13b10d;
     --bkg-color: #b9bbb9;
     --text-color: #000;
+    --heading-shadow: none;
     --border-grey: rgba(47, 50, 50, 0.64);
     --input-bkg: rgb(230, 227, 227);
     --header-bkg: linear-gradient(90deg, #7dea4b 0%, #008552 100%);
-    --heading-shadow: none;
-    /* Not used */
     --green-bkg: linear-gradient(196deg, #6ebb6eaa 0%, #78c16488 50%, #7eb57e9d 100%);
+
+    /* TODO: SAVE IMAGES */
+    --svg-bkg: url('../images/transparent-blob.svg');
+    /*image position size repeat attachment origin clip color*/
+    --hero-bkg: var(--svg-bkg) cover no-repeat fixed var(--green-bkg);
 }
 
 [data-theme="dark"] {
@@ -24,12 +28,12 @@
     --secondary: #13b10d;
     --bkg-color: #020507;
     --text-color: #fff;
+    --heading-shadow: 5px 0px 2px #1b1b1b, 1px 1px 1px #b9b5b5;
     --border-grey: rgba(47, 50, 50, 0.64);
     --input-bkg: rgb(39, 36, 36);
     --header-bkg: linear-gradient(90deg, #1a7725 10%, #148721 20%, #13b10d 50%, #1a7725 85%);
-    --heading-shadow: 5px 0px 2px #1b1b1b, 1px 1px 1px #b9b5b5;
-    /* Not used */
     --green-bkg: linear-gradient(196deg, #6ebb6eaa 0%, #78c16488 50%, #7eb57e9d 100%);
+    --hero-bkg: url(../images/transparent-blob.svg) cover no-repeat fixed var(--green-bkg);
 }
 
 /* Element reset */
@@ -39,14 +43,6 @@ body {
     font-weight: 400;
     letter-spacing: 0.5px;
 }
-
-.hero-bkg {
-    background-image: url(../images/transparent-blob.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
 
 /* Header styles */
 :is(h1, h2, h3, h4, h5, h6) {
