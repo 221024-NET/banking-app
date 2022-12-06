@@ -1,15 +1,13 @@
-// ! Not working yet, just typed some stuff in
-const colorTheme = document.querySelector('#theme');
+// Get the theme toggle input
 const themeToggle = document.querySelector('#theme-toggle');
 
-const toggleColorTheme = (colorTheme) => {
-    if (colorTheme.getAttribute('href') == 'css/dark-global.css') {
-        // switch to light
-        themeToggle.textContent = 'Dark Mode';
-    } else if (colorTheme.getAttribute('href') == 'css/global.css') {
-        // switch to dark
-        themeToggle.textContent = 'Light Mode';
+// Function that will switch the theme based on the if the theme toggle is checked or not
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+        document.documentElement.setAttribute("data-theme", "light");
     }
-};
-
-themeToggle.addEventListener('click', toggleColorTheme);
+}
+// Add an event listener to the theme toggle, which will switch the theme
+themeToggle.addEventListener("change", switchTheme, false);

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing | Droid Finance</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link id="theme" rel="stylesheet" href="css/dark-global.css">
+    <link id="theme" rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/landing.css">
 </head>
 
@@ -15,13 +15,16 @@
 
     <main class="grid">
         <header class="header">
-            <nav class="flex-header">
+            <nav class="flex-nav">
+                <!-- Left side -->
                 <div class="header-left">
                     <a href="index.html"><img src="images/droidlogo.png" class="logo" alt="DROID FINANCE"> </a>
                 </div>
+                <!-- Right side -->
                 <div class="header-right">
-                    <button id="theme-toggle" class="hero-btn" type="button">
-                        Light Mode</button>
+                    <!-- theme switcher -->
+                    <button id="theme-toggle" class="theme-btn" type="button"><img class="icon-moon" src="images/theme-moon.svg" alt="color theme">
+                        Dark Mode <img src="images/theme-sun.svg" alt="color theme"></button>
                     <a class="hero-btn" href="login.html">Log In</a>
                     <a class="hero-btn" href="signup.html">Sign Up</a>
                 </div>

@@ -12,8 +12,6 @@
     background: var(--header-bkg);
     border-bottom: 1px solid var(--border-grey);
     grid-area: header;
-    display: inline-block;
-    align-items: flex-end;
     padding: 0px 5px;
 }
 
@@ -38,7 +36,7 @@
 }
 
 /* Flex layouts */
-.flex-header {
+.flex-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -72,8 +70,8 @@
     border-radius: 0.5em;
     border: 1px solid #f4f4f4;
     cursor: pointer;
-    background: var(--light-green);
-    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1), -2px -2px 8px var(--dark-green);
+    background-color: var(--secondary);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1), -2px -2px 8px var(--primary);
 }
 
 .hero-btn:hover {
