@@ -5,24 +5,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 :root {
-    /* --dark-green: #1a7725;
+    --dark-green: #1a7725;
     --light-green: #13b10d;
-    --light-blue: #6788f4ff;
-    --bkg-color: #020507;
-    --text-color: #fff;
     --border-grey: rgba(47, 50, 50, 0.64);
-    --header-bkg: linear-gradient(90deg, #1a7725 10%, #148721 20%, #13b10d 50%, #1a7725 85%);
-    --heading-shadow: 5px 0px 2px #1b1b1b, 1px 1px 1px #b9b5b5;
-    --input-bkg: rgb(39, 36, 36);
-    --btn-bkg: #020507; */
+    --input-bkg: rgb(230, 227, 227);
+    --header-bkg: linear-gradient(90deg, #7dea4b 0%, #008552 100%);
+    /* --btn-bkg: #020507; */
 }
-
-*/
 
 /* Element reset */
 body {
-    background-color: var(--bkg-color);
-    color: var(--text-color);
+    background-color: #d8dcd8;
+    /* background-image: linear-gradient(196deg, #6ebb6eaa 0%, #78c16488 50%, #7eb57e9d 100%); */
     font-family: 'Anonymous Pro', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
         Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
@@ -34,6 +28,13 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+/* ! testing */
+#theme-toggle {
+    font-size: 14px;
+    background-color: black;
+    color: white;
 }
 
 /* Header styles */
@@ -122,7 +123,7 @@ label {
 
 input {
     background-color: var(--input-bkg);
-    border: 1px solid var(--border-white);
+    border: 1px solid var(--border-grey);
     border-radius: 2px;
     color: var(--text-color);
     display: block;

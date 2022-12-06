@@ -34,6 +34,7 @@
 
 .footer {
     grid-area: footer;
+    background: var(--header-bkg);
 }
 
 /* Flex layouts */
@@ -54,7 +55,6 @@
     margin: 20px 0;
 }
 
-
 .hero-btns {
     padding: 10px;
     justify-content: flex-end;
@@ -62,27 +62,25 @@
 }
 
 .hero-btn {
-    background-color: var(--bkg-color);
+    font-size: 17px;
+    font-family: 'Segoe UI';
+    text-transform: uppercase;
+    text-decoration: none;
     color: white;
-    margin: 0 5px;
-    padding: 10px 20px;
+    margin: 0 10px;
+    padding: 10px 25px;
     border-radius: 0.5em;
     border: 1px solid #f4f4f4;
     cursor: pointer;
-    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.1), -4px -4px 5px var(--light-green);
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: 1.3px;
-    text-transform: uppercase;
-    text-decoration: none;
+    background: var(--light-green);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1), -2px -2px 8px var(--dark-green);
 }
 
 .hero-btn:hover {
-    border: none;
-    font-size: 18px;
-    background-color: var(--light-green);
-    box-shadow: 8px 8px 12px rgba(93, 92, 92, 0.573);
-
+    /* font-size: 18px; */
+    background-color: transparent;
+    border: 1px solid #f4f4f4;
+    box-shadow: none;
 }
 
 .hero-btn:active {
@@ -101,6 +99,6 @@
 
 .forgot-link {
     text-decoration: underline;
-    font-size: 16px;
+    font-size: 18px;
     color: var(--text-color);
 }

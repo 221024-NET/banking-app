@@ -34,6 +34,13 @@ body {
     background-attachment: fixed;
 }
 
+/* ! testing */
+#theme-toggle {
+    font-size: 14px;
+    background-color: white;
+    color: black;
+}
+
 /* Header styles */
 :is(h1, h2, h3, h4, h5, h6) {
     font-family: 'Sora', -apple-system, system-ui, BlinkMacSystemFont,

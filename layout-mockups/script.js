@@ -1,20 +1,15 @@
-// Wait for document to load
-document.addEventListener("DOMContentLoaded", function (event) {
-    document.documentElement.setAttribute("data-theme", "light");
+// ! Not working yet, just typed some stuff in
+const colorTheme = document.querySelector('#theme');
+const themeToggle = document.querySelector('#theme-toggle');
 
-    // Get our button switcher
-    var themeSwitcher = document.getElementById("theme-switcher");
-
-    // When our button gets clicked
-    themeSwitcher.onclick = function () {
-        // Get the current selected theme, on the first run
-        // it should be `light`
-        var currentTheme = document.documentElement.getAttribute("data-theme");
-
-        // Switch between `dark` and `light`
-        var switchToTheme = currentTheme === "dark" ? "light" : "dark"
-
-        // Set our currenet theme to the new one
-        document.documentElement.setAttribute("data-theme", switchToTheme);
+const toggleColorTheme = (colorTheme) => {
+    if (colorTheme.getAttribute('href') == 'css/dark-global.css') {
+        // switch to light
+        themeToggle.textContent = 'Dark Mode';
+    } else if (colorTheme.getAttribute('href') == 'css/global.css') {
+        // switch to dark
+        themeToggle.textContent = 'Light Mode';
     }
-});
+};
+
+themeToggle.addEventListener('click', toggleColorTheme);
