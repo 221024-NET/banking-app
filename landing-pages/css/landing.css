@@ -84,8 +84,7 @@
 }
 
 .hero-btn:hover {
-    /* font-size: 18px; */
-    background-color: transparent;
+    background-color: var(--btn-hover);
     border: 1px solid #f4f4f4;
     box-shadow: none;
 }
