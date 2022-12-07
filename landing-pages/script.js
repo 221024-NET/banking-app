@@ -1,3 +1,7 @@
+// TODO: finish dark mode
+// ? loop theme toggle
+// ? persist theme
+
 // Theme switcher
 const themeBtn = document.querySelector('#theme-btn');
 let theme = document.documentElement.dataset.theme;
@@ -24,6 +28,4 @@ themeBtn.addEventListener('click', () => {
 });
 
 
-// TODO: finish dark mode
-// ? <img src="images/theme-sun.svg" alt="color theme">
 // TODO: Add page redirect to buttons
