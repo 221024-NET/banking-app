@@ -15,19 +15,20 @@
     padding: 0px 5px;
 }
 
-.logo {
-    max-width: 175px;
-    max-height: 100px;
-
-}
+/* !UPDATE other html to match */
+.hero {}
 
 .main {
     grid-area: main;
     display: flex;
     flex-direction: column;
-    padding: 5px 15px;
+    padding: 10px 10px;
     height: 100%;
     margin: 0 auto;
+    background-image: var(--svg-bkg);
+    background-color: var(--green-bkg);
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .footer {
@@ -49,16 +50,19 @@
     align-items: center;
 }
 
-.hero {
-    background-image: var(--svg-bkg);
-    background: var(--hero-bkg);
+/* Component Styles */
+
+
+.logo {
+    max-width: 175px;
+    max-height: 100px;
 }
 
 .hero-info {
     margin: 20px 0;
 }
 
-.hero-btns {
+.info-btn-wrap {
     padding: 10px;
     justify-content: flex-end;
     align-self: center;

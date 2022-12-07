@@ -1,4 +1,4 @@
-@import 'toggle-btn.css';
+@import 'resets.css';
 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -6,26 +6,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
+/* TODO: Change button hover background */
+
+/* TODO: Check other variables from dark-global */
+/* ? hero-bkg (mask?) */
+/* TODO: Update other html with index */
+
 :root {
     --primary: #1a7725;
+    --btn-hover: ;
     --secondary: #13b10d;
-    --bkg-color: #b9bbb9;
+    --bkg-color: #ffffff57;
     --text-color: #000;
     --heading-shadow: none;
     --border-grey: rgba(47, 50, 50, 0.64);
     --input-bkg: rgb(230, 227, 227);
     --header-bkg: linear-gradient(90deg, #7dea4b 0%, #008552 100%);
     --green-bkg: linear-gradient(196deg, #6ebb6eaa 0%, #78c16488 50%, #7eb57e9d 100%);
-
-    /* TODO: SAVE IMAGES */
-    --svg-bkg: url('../images/transparent-blob.svg');
-    /*image position size repeat attachment origin clip color*/
-    --hero-bkg: var(--svg-bkg) cover no-repeat fixed var(--green-bkg);
+    --svg-bkg: url("../images/transparent-blob.svg");
+    --theme-icon: url(../images/theme-moon.svg);
+    --theme-icon-color: #72dd40;
 }
+
 
 [data-theme="dark"] {
     --primary: #1a7725;
     --secondary: #13b10d;
+    --btn-hover: ;
     --bkg-color: #020507;
     --text-color: #fff;
     --heading-shadow: 5px 0px 2px #1b1b1b, 1px 1px 1px #b9b5b5;
@@ -34,10 +41,14 @@
     --header-bkg: linear-gradient(90deg, #1a7725 10%, #148721 20%, #13b10d 50%, #1a7725 85%);
     --green-bkg: linear-gradient(196deg, #6ebb6eaa 0%, #78c16488 50%, #7eb57e9d 100%);
     --hero-bkg: url(../images/transparent-blob.svg) cover no-repeat fixed var(--green-bkg);
+    --svg-bkg: url("../images/transparent-blob.svg");
+    --theme-icon: url(../images/theme-sun.svg);
+    --theme-icon-color: #148721;
+
 }
 
-/* Element reset */
 body {
+    background-color: var(--bkg-color);
     font-family: 'Anonymous Pro', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
         Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
@@ -54,63 +65,42 @@ body {
     margin: 10px 0 15px 0;
 }
 
-h1 {
-    font-size: 3.5rem;
+/* Theme switch button */
+#theme-btn {
+    width: 40px;
+    height: 30px;
+    position: relative;
+    top: -5px;
+    right: -5px;
+    padding: 5px;
+    margin: 0 3px;
+    overflow: visible;
+    mask-image: var(--theme-icon);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    background-color: var(--theme-icon-color);
 
 }
 
-h2 {
-    font-size: 2rem;
-
+#theme-btn:hover {
+    cursor: pointer;
+    transform: scale(1.75);
+    background-color: white;
 }
 
-h3 {
-    font-size: 1.5rem;
-}
-
-p {
-    font-weight: 200;
-    margin: 10px;
-}
-
-
-/* Remove when refactoring */
+/* ! Remove when refactoring */
 button {
     align-self: center;
-}
-
-/*
-button {
+    /*
     margin: 0;
     font-size: 18px;
     font-weight: 200;
     letter-spacing: 1.3px;
     text-transform: uppercase;
-}
-*/
-
-footer {
-    font-size: 14px;
-    margin: 0;
-    border-top: 1px solid var(--border-grey);
+    */
 }
 
-/* Resets */
-a {
-    text-decoration: none;
-    color: initial;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
+/* Forms */
 form {
     display: flex;
     flex-direction: column;
@@ -142,8 +132,22 @@ input {
     outline-width: none;
 }
 
+/* TODO: Add caret-color */
 input:focus {
     border: none;
     outline: 2px solid var(--secondary);
     border-radius: 3px;
+}
+
+/* Accessibility class */
+.screen-reader {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }

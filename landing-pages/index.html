@@ -10,10 +10,10 @@
     <link id="theme" rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/landing.css">
 </head>
+<!-- TODO: Change all a to button (IDs and hero-btn class) -->
 
 <body>
-
-    <main class="grid">
+    <div class="grid">
         <header class="header">
             <nav class="flex-nav">
                 <!-- Left side -->
@@ -22,17 +22,18 @@
                 </div>
                 <!-- Right side -->
                 <div class="header-right">
-                    <!-- theme switcher -->
-                    <button id="theme-toggle" class="theme-btn" type="button"><img class="icon-moon" src="images/theme-moon.svg" alt="color theme">
-                        Dark Mode <img src="images/theme-sun.svg" alt="color theme"></button>
                     <a class="hero-btn" href="login.html">Log In</a>
                     <a class="hero-btn" href="signup.html">Sign Up</a>
+                    <!-- theme switcher -->
+                    <button id="theme-btn" type="button" aria-label="Change theme"></button>
+
+
                 </div>
             </nav>
         </header>
 
-        <section class="hero">
-            <div class="main">
+        <main>
+            <div class="main hero">
                 <div>
                     <h1>Welcome to Droid</h1>
                     <h2>Banking made simple and stress-free.</h2>
@@ -68,11 +69,11 @@
                     </div>
                 </div>
 
-                <div class="hero-btns hero-info">
+                <div class="hero-info info-btn-wrap">
                     <a class="hero-btn" href="#">Learn More</a>
                 </div>
             </div>
-        </section>
+        </main>
 
         <footer class="footer">
             <div class="flex-footer">
@@ -84,7 +85,7 @@
                 </div>
             </div>
         </footer>
-    </main>
+    </div>
     <script src="script.js" type="module"></script>
 </body>
 

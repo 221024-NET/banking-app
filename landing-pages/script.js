@@ -11,3 +11,7 @@ function switchTheme(e) {
 }
 // Add an event listener to the theme toggle, which will switch the theme
 themeToggle.addEventListener("change", switchTheme, false);
+
+// TODO: finish dark mode
+// ? <img src="images/theme-sun.svg" alt="color theme">
+// TODO: Add page redirect to buttons
