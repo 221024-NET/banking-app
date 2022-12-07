@@ -6,20 +6,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-/* TODO: Add screen-reader class to labels */
-/* TODO: Check other variables from dark-global */
-/* ? hero-bkg (mask?) */
-/* TODO: Update other html with index */
-
-:root {
+html {
     --primary: #1a7725;
     --secondary: #13b10d;
     --bkg-color: #c5c1c14e;
     --text-color: #000;
-    --heading-shadow: none;
+    /* --heading-shadow: none; */
     --border-grey: rgba(47, 50, 50, 0.64);
     --btn-hover: #39a145;
-    --input-bkg: rgb(230, 227, 227);
+    --input-bkg: rgb(210, 207, 207);
+    --caret: var(--primary);
     --header-bkg: linear-gradient(90deg, #7dea4b 0%, #008552 100%);
     --green-bkg: linear-gradient(196deg, #6ebb6eaa 0%, #78c16488 50%, #7eb57e9d 100%);
     --svg-bkg: url("../images/transparent-blob.svg");
@@ -27,8 +23,7 @@
     --theme-icon-color: #72dd40;
 }
 
-
-[data-theme="dark"] {
+html[data-theme="dark"] {
     --primary: #1a7725;
     --secondary: #13b10d;
     --bkg-color: #020507;
@@ -38,17 +33,19 @@
     --btn-hover: var(--secondary);
     /* --btn-hover: #39a145; */
     --input-bkg: rgb(39, 36, 36);
+    --caret: var(--secondary);
     --header-bkg: linear-gradient(90deg, #1a7725 10%, #148721 20%, #13b10d 50%, #1a7725 85%);
     --green-bkg: linear-gradient(196deg, #6ebb6eaa 0%, #78c16488 50%, #7eb57e9d 100%);
     --hero-bkg: url(../images/transparent-blob.svg) cover no-repeat fixed var(--green-bkg);
     --svg-bkg: url("../images/transparent-blob.svg");
     --theme-icon: url(../images/theme-sun.svg);
-    --theme-icon-color: #148721;
-
+    --theme-icon-color: #72dd40;
+    /* ! Test: --theme-icon-color: #148721; */
 }
 
 body {
     background-color: var(--bkg-color);
+    color: var(--text-color);
     font-family: 'Anonymous Pro', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
         Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
@@ -60,7 +57,6 @@ body {
     font-family: 'Sora', -apple-system, system-ui, BlinkMacSystemFont,
         'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 500;
-    color: inherit;
     text-shadow: var(--heading-shadow);
     margin: 10px 0 15px 0;
 }
@@ -122,7 +118,7 @@ label {
 input {
     background-color: var(--input-bkg);
     border: 1px solid var(--border-grey);
-    border-radius: 2px;
+    border-radius: 3px;
     color: var(--text-color);
     display: block;
     margin: 0 auto;
@@ -130,14 +126,13 @@ input {
     font-size: 15px;
     height: 40px;
     padding-left: 10px;
-    outline-width: none;
 }
 
-/* TODO: Add caret-color */
 input:focus {
     border: none;
-    outline: 2px solid var(--secondary);
+    outline: 3px solid var(--secondary);
     border-radius: 3px;
+    caret-color: var(--caret);
 }
 
 /* Accessibility class */

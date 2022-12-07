@@ -1,16 +1,28 @@
-// Get the theme toggle input
-const themeToggle = document.querySelector('#theme-toggle');
+// Theme switcher
+const themeBtn = document.querySelector('#theme-btn');
+let theme = document.documentElement.dataset.theme;
 
-// Function that will switch the theme based on the if the theme toggle is checked or not
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-        document.documentElement.setAttribute("data-theme", "light");
-    }
+const setDarkTheme = () => {
+    theme = 'dark';
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('data-theme', 'dark') // update local storage
 }
-// Add an event listener to the theme toggle, which will switch the theme
-themeToggle.addEventListener("change", switchTheme, false);
+const setLightTheme = () => {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('data-theme', 'light')
+}
+
+themeBtn.addEventListener('click', () => {
+    switch (theme) {
+        case 'light':
+            setDarkTheme();
+            break;
+        case 'dark':
+            setLightTheme();
+            break;
+    }
+});
+
 
 // TODO: finish dark mode
 // ? <img src="images/theme-sun.svg" alt="color theme">

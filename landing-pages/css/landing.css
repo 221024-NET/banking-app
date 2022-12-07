@@ -16,7 +16,11 @@
 }
 
 /* !UPDATE other html to match */
-.hero {}
+.hero-wrapper {
+    background-image: var(--svg-bkg);
+    background-size: cover;
+    background-attachment: fixed;
+}
 
 .main {
     grid-area: main;
@@ -25,10 +29,6 @@
     padding: 10px 10px;
     height: 100%;
     margin: 0 auto;
-    background-image: var(--svg-bkg);
-    background-color: var(--green-bkg);
-    background-size: cover;
-    background-attachment: fixed;
 }
 
 .footer {
