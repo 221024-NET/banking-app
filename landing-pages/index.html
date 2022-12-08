@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing | Droid Finance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link id="theme" rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+
+<!-- TODO: Change all a to button (IDs and hero-btn class) -->
+
+<body>
+    <div class="grid">
+        <header class="header">
+            <nav class="flex-nav">
+                <!-- Left side -->
+                <div class="header-left">
+                    <a href="index.html"><img src="images/droidlogo.png" class="logo" alt="DROID FINANCE"> </a>
+                </div>
+                <!-- Right side -->
+                <div class="header-right">
+                    <a class="hero-btn" href="login.html">Log In</a>
+                    <a class="hero-btn" href="signup.html">Sign Up</a>
+                    <!-- theme switcher -->
+                    <button id="theme-btn" type="button" aria-label="Change theme"></button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="main hero-wrapper">
+                <div>
+                    <h1>Welcome to Droid</h1>
+                    <h2>Banking made simple and stress-free.</h2>
+                </div>
+                <div class="hero-info">
+                    <span class="icon">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 4.5l15 15m0 0V8.25m0 11.25H8.25" />
+                        </svg>
+                        Checking and savings accounts with no monthly fees.
+                    </span>
+
+                    <div class="hero-info">
+                        <span class="icon">
+                            <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 4.5l15 15m0 0V8.25m0 11.25H8.25" />
+                            </svg>
+                            Large network of no-fee ATMs.
+                        </span>
+                    </div>
+
+                    <div class="hero-info">
+                        <span class="icon">
+                            <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 4.5l15 15m0 0V8.25m0 11.25H8.25" />
+                            </svg>
+                            No fees for lost or stolen cards.
+                        </span>
+                    </div>
+                </div>
+
+                <div class="hero-info info-btn-wrap">
+                    <a class="hero-btn" href="#">Learn More</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="flex-footer">
+                <div class="footer-left">
+                    <p>Always on the go? Download the mobile app:</p>
+                </div>
+                <div class="footer-right">
+                    <img src="images/app-store-logo.svg" class="app-icon" width="100" height="100px" alt="Download on App Store">
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
