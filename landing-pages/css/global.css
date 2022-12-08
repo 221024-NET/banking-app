@@ -21,9 +21,10 @@ html {
     --svg-bkg: url("../images/transparent-blob.svg");
     --theme-icon: url(../images/theme-moon.svg);
     --theme-icon-color: #72dd40;
+    color: #ceb725cf;
 }
 
-html[data-theme="dark"] {
+body[data-dark-theme] {
     --primary: #1a7725;
     --secondary: #13b10d;
     --bkg-color: #020507;
@@ -40,6 +41,7 @@ html[data-theme="dark"] {
     --svg-bkg: url("../images/transparent-blob.svg");
     --theme-icon: url(../images/theme-sun.svg);
     --theme-icon-color: #72dd40;
+
     /* ! Test: --theme-icon-color: #148721; */
 }
 
