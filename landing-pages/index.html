@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -7,28 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing | Droid Finance</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="css/global.css">
+    <link id="theme" rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/landing.css">
 </head>
 
+<!-- TODO: Change all a to button (IDs and hero-btn class) -->
+
 <body>
-
-    <main class="grid">
+    <div class="grid">
         <header class="header">
-            <nav class="flex-header">
-                <div class="header-left" id="logo"><a href="index.html">DROID FINANCE</a></div>
-                <div class="header-right">
-
-                    <a class="hero-btn" href="login.html">Login</a>
-                    <a class="hero-btn" href="signup.html">Sign Up</a>
-
+            <nav class="flex-nav">
+                <!-- Left side -->
+                <div class="header-left">
+                    <a href="index.html"><img src="images/droidlogo.png" class="logo" alt="DROID FINANCE"> </a>
                 </div>
-
+                <!-- Right side -->
+                <div class="header-right">
+                    <a class="hero-btn" href="login.html">Log In</a>
+                    <a class="hero-btn" href="signup.html">Sign Up</a>
+                    <!-- theme switcher -->
+                    <button id="theme-btn" type="button" aria-label="Change theme"></button>
+                </div>
             </nav>
         </header>
 
-        <section class="hero-bkg">
-            <div class="main">
+        <main>
+            <div class="main hero-wrapper">
                 <div>
                     <h1>Welcome to Droid</h1>
                     <h2>Banking made simple and stress-free.</h2>
@@ -43,7 +47,6 @@
                     </span>
 
                     <div class="hero-info">
-
                         <span class="icon">
                             <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-6 h-6">
@@ -64,14 +67,13 @@
                     </div>
                 </div>
 
-                <div class="hero-btns">
+                <div class="hero-info info-btn-wrap">
                     <a class="hero-btn" href="#">Learn More</a>
                 </div>
             </div>
-        </section>
+        </main>
 
         <footer class="footer">
-            <hr>
             <div class="flex-footer">
                 <div class="footer-left">
                     <p>Always on the go? Download the mobile app:</p>
@@ -81,7 +83,9 @@
                 </div>
             </div>
         </footer>
-    </main>
+    </div>
+    <script src="script.js"></script>
+
 </body>
 
 </html>
