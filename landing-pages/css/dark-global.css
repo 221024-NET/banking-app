@@ -1,0 +1,145 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    --primary: #1a7725;
+    --secondary: #13b10d;
+    --bkg-color: #020507;
+    --text-color: #fff;
+    --border-grey: rgba(47, 50, 50, 0.64);
+    --header-bkg: linear-gradient(90deg, #1a7725 10%, #148721 20%, #13b10d 50%, #1a7725 85%);
+    --heading-shadow: 5px 0px 2px #1b1b1b, 1px 1px 1px #b9b5b5;
+    --input-bkg: rgb(39, 36, 36);
+    --btn-bkg: #020507;
+}
+
+/* Element reset */
+body {
+    background-color: var(--bkg-color);
+    color: var(--text-color);
+    font-family: 'Anonymous Pro', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.hero-bkg {
+    background-image: url(../images/transparent-blob.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ! testing */
+#theme-toggle {
+    font-size: 14px;
+    background-color: white;
+    color: black;
+}
+
+/* Header styles */
+:is(h1, h2, h3, h4, h5, h6) {
+    font-family: 'Sora', -apple-system, system-ui, BlinkMacSystemFont,
+        'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    color: inherit;
+    text-shadow: var(--heading-shadow);
+    margin: 10px 0 15px 0;
+}
+
+h1 {
+    font-size: 3.5rem;
+
+}
+
+h2 {
+    font-size: 2rem;
+
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-weight: 200;
+    margin: 10px;
+}
+
+
+/* Remove when refactoring */
+button {
+    align-self: center;
+}
+
+/*
+button {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 200;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+*/
+
+footer {
+    font-size: 14px;
+    margin: 0;
+    border-top: 1px solid var(--border-grey);
+}
+
+/* Resets */
+a {
+    text-decoration: none;
+    color: initial;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    width: 40%;
+    min-height: fit-content;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: -10px;
+    visibility: hidden;
+}
+
+input {
+    background-color: var(--input-bkg);
+    border: 1px solid var(--border-white);
+    border-radius: 2px;
+    color: var(--text-color);
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    font-size: 15px;
+    height: 40px;
+    padding-left: 10px;
+    outline-width: none;
+}
+
+input:focus {
+    border: none;
+    outline: 2px solid var(--secondary);
+    border-radius: 3px;
+}
