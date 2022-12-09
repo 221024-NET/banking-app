@@ -15,8 +15,6 @@
     padding: 0px 5px;
 }
 
-/* !UPDATE other html to match */
-.hero {}
 
 .main {
     grid-area: main;
@@ -62,6 +60,15 @@
     margin: 20px 0;
 }
 
+#faqBtn {
+    font-family: 'Sora';
+    font-size: 1.5rem;
+}
+
+#faqBtn:hover {
+    transform: scale(1.2);
+}
+
 .info-btn-wrap {
     padding: 10px;
     justify-content: flex-end;
@@ -86,11 +93,11 @@
 .hero-btn:hover {
     background-color: var(--btn-hover);
     border: 1px solid #f4f4f4;
-    box-shadow: none;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1), 0 -0 12px #fff;
 }
 
 .hero-btn:active {
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1), 0 -0 12px #fff;
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.1), 0 -0 20px #fff;
 }
 
 /* Input Fields */

@@ -24,7 +24,6 @@ html {
     --svg-bkg: url("../images/transparent-blob.svg");
     --theme-icon: url(../images/theme-moon.svg);
     --theme-icon-color: #72dd40;
-    color: #ceb725cf;
 }
 
 html[data-theme="dark"] {
@@ -34,8 +33,7 @@ html[data-theme="dark"] {
     --text-color: #fff;
     --heading-shadow: 5px 0px 2px #1b1b1b, 1px 1px 1px #b9b5b5;
     --border-grey: rgba(47, 50, 50, 0.64);
-    --btn-hover: var(--secondary);
-    /* --btn-hover: #39a145; */
+    --btn-hover: #56d465d4;
     --input-bkg: rgb(39, 36, 36);
     --caret: var(--secondary);
     --header-bkg: linear-gradient(90deg,

@@ -18,20 +18,21 @@
     <div class="grid">
       <header class="header">
         <nav class="flex-nav">
-          <!-- Left side -->
           <div class="header-left">
             <a href="index.html">
               <img
                 src="images/droidlogo.png"
                 class="logo"
                 alt="DROID FINANCE"
+                title="Back To Home"
               />
             </a>
           </div>
-          <!-- Right side -->
           <div class="header-right">
-            <a class="hero-btn" href="login.html">Log In</a>
-            <a class="hero-btn" href="signup.html">Sign Up</a>
+            <button class="hero-btn" id="loginBtn" title="Login">Log In</button>
+            <button class="hero-btn" id="signupBtn" title="Sign Up">
+              Sign Up
+            </button>
             <!-- theme switcher -->
             <button
               id="theme-btn"
@@ -71,7 +72,9 @@
           </div>
 
           <div class="hero-info info-btn-wrap">
-            <a class="hero-btn" href="#">Learn More</a>
+            <button class="hero-btn" id="faqBtn" title="FAQ Page">
+              Learn More
+            </button>
           </div>
         </div>
       </main>
