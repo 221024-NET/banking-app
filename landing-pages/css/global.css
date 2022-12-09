@@ -1,10 +1,10 @@
-@import 'resets.css';
+@import "resets.css";
 
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@200;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 
 html {
     --primary: #1a7725;
@@ -17,14 +17,17 @@ html {
     --input-bkg: rgb(210, 207, 207);
     --caret: var(--primary);
     --header-bkg: linear-gradient(90deg, #7dea4b 0%, #008552 100%);
-    --green-bkg: linear-gradient(196deg, #6ebb6eaa 0%, #78c16488 50%, #7eb57e9d 100%);
+    --green-bkg: linear-gradient(196deg,
+            #6ebb6eaa 0%,
+            #78c16488 50%,
+            #7eb57e9d 100%);
     --svg-bkg: url("../images/transparent-blob.svg");
     --theme-icon: url(../images/theme-moon.svg);
     --theme-icon-color: #72dd40;
     color: #ceb725cf;
 }
 
-body[data-dark-theme] {
+html[data-theme="dark"] {
     --primary: #1a7725;
     --secondary: #13b10d;
     --bkg-color: #020507;
@@ -35,8 +38,15 @@ body[data-dark-theme] {
     /* --btn-hover: #39a145; */
     --input-bkg: rgb(39, 36, 36);
     --caret: var(--secondary);
-    --header-bkg: linear-gradient(90deg, #1a7725 10%, #148721 20%, #13b10d 50%, #1a7725 85%);
-    --green-bkg: linear-gradient(196deg, #6ebb6eaa 0%, #78c16488 50%, #7eb57e9d 100%);
+    --header-bkg: linear-gradient(90deg,
+            #1a7725 10%,
+            #148721 20%,
+            #13b10d 50%,
+            #1a7725 85%);
+    --green-bkg: linear-gradient(196deg,
+            #6ebb6eaa 0%,
+            #78c16488 50%,
+            #7eb57e9d 100%);
     --hero-bkg: url(../images/transparent-blob.svg) cover no-repeat fixed var(--green-bkg);
     --svg-bkg: url("../images/transparent-blob.svg");
     --theme-icon: url(../images/theme-sun.svg);
@@ -48,16 +58,16 @@ body[data-dark-theme] {
 body {
     background-color: var(--bkg-color);
     color: var(--text-color);
-    font-family: 'Anonymous Pro', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
-        Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: "Anonymous Pro", -apple-system, system-ui, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-weight: 400;
     letter-spacing: 0.5px;
 }
 
 /* Header styles */
 :is(h1, h2, h3, h4, h5, h6) {
-    font-family: 'Sora', -apple-system, system-ui, BlinkMacSystemFont,
-        'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: "Sora", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial, sans-serif;
     font-weight: 500;
     text-shadow: var(--heading-shadow);
     margin: 10px 0 15px 0;
@@ -78,7 +88,6 @@ body {
     mask-repeat: no-repeat;
     mask-size: contain;
     background-color: var(--theme-icon-color);
-
 }
 
 #theme-btn:hover {

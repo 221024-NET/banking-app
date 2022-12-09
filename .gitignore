@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,windows,macos
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,visualstudiocode,windows,macos,angular,dotnet
+# Project gitignore
+landing-pages/images/nonrender/
 
 ### DotnetCore ###
 # .NET Core build folders

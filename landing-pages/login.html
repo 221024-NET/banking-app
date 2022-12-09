@@ -1,71 +1,96 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title> Login | Droid Finance</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+		<link rel="stylesheet" href="css/global.css" />
+		<link rel="stylesheet" href="css/landing.css" />
+		<script src="theme.js" defer></script>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Login | Droid Finance</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/landing.css">
-</head>
+	<body id="theme">
+		<div class="grid">
+			<header class="header">
+				<nav class="flex-nav">
+					<!-- Left side -->
+					<div class="header-left">
+						<a href="index.html"
+							><img
+								src="images/droidlogo.png"
+								class="logo"
+								alt="DROID FINANCE" />
+						</a>
+					</div>
+					<!-- Right side -->
+					<div class="header-right">
+						<a class="hero-btn" href="login.html">Log In</a>
+						<a class="hero-btn" href="signup.html">Sign Up</a>
+						<!-- theme switcher -->
+						<button
+							id="theme-btn"
+							type="button"
+							title="Toggle Dark Mode"
+							aria-pressed="false">
+						</button>
+					</div>
+				</nav>
+			</header>
 
-<body id="theme">
+			<main>
+				<div class="main hero-wrapper">
+					<div class="form-container">
+						<h2>Welcome Back</h2>
+						<p>Log into your user account:</p>
+						<!--FORM BOX-->
+						<form>
+							<label class="screen-reader" for="login-email">Enter Email</label>
+							<div class="input">
+								<input
+									type="text"
+									class="input-text"
+									placeholder="Email"
+									required />
+							</div>
+							<label class="screen-reader" for="login-password"
+								>Enter Password</label
+							>
+							<div class="input">
+								<input
+									type="password"
+									class="input-text"
+									placeholder="Password"
+									required />
+							</div>
+							<label class="screen-reader" for="login-btn"></label>
+							<button class="hero-btn" type="submit">Login</button>
+						</form>
+						<a href="forgotpassword.html" class="forgot-link"
+							>Forgot password?</a
+						>
+					</div>
+				</div>
+			</main>
 
-    <div class="grid">
-        <header class="header">
-            <nav class="flex-nav">
-                <!-- Left side -->
-                <div class="header-left">
-                    <a href="index.html"><img src="images/droidlogo.png" class="logo" alt="DROID FINANCE"> </a>
-                </div>
-                <!-- Right side -->
-                <div class="header-right">
-                    <a class="hero-btn" href="login.html">Log In</a>
-                    <a class="hero-btn" href="signup.html">Sign Up</a>
-                    <!-- theme switcher -->
-                    <button id="theme-btn" type="button" aria-label="Change theme"></button>
-                </div>
-            </nav>
-        </header>
-
-        <main>
-            <div class="main hero-wrapper">
-                <div class="form-container">
-                    <h2>Welcome Back</h2>
-                    <p>Log into your user account:</p>
-                    <!--FORM BOX-->
-                    <form>
-                        <label class="screen-reader" for="login-email">Enter Email</label>
-                        <div class="input">
-                            <input type="text" class="input-text" placeholder="Email" required>
-                        </div>
-                        <label class="screen-reader" for="login-password">Enter Password</label>
-                        <div class="input">
-                            <input type="password" class="input-text" placeholder="Password" required>
-                        </div>
-                        <label class="screen-reader" for="login-btn"></label>
-                        <button class="hero-btn" type="submit">Login</button>
-                    </form>
-                    <a href="forgotpassword.html" class="forgot-link">Forgot password?</a>
-                </div>
-            </div>
-        </main>
-
-        <footer class="footer">
-            <div class="flex-footer">
-                <div class="footer-left">
-                    <p>Always on the go? Download the mobile app:</p>
-                </div>
-                <div class="footer-right">
-                    <img src="images/app-store-logo.svg" class="app-icon" width="100" height="100px" alt="Download on App Store">
-                </div>
-            </div>
-        </footer>
-    </div>
-    <script src="script.js"></script>
-
-</body>
-
+			<footer class="footer">
+				<div class="flex-footer">
+					<div class="footer-left">
+						<p>Always on the go? Download the mobile app:</p>
+					</div>
+					<div class="footer-right">
+						<img
+							src="images/app-store-logo.svg"
+							class="app-icon"
+							width="100"
+							height="100px"
+							alt="Download on App Store" />
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
 </html>
