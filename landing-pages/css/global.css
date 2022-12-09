@@ -24,6 +24,7 @@ html {
     --svg-bkg: url("../images/transparent-blob.svg");
     --theme-icon: url(../images/theme-moon.svg);
     --theme-icon-color: #72dd40;
+    color: #ceb725cf;
 }
 
 html[data-theme="dark"] {
@@ -50,6 +51,7 @@ html[data-theme="dark"] {
     --svg-bkg: url("../images/transparent-blob.svg");
     --theme-icon: url(../images/theme-sun.svg);
     --theme-icon-color: #72dd40;
+
 }
 
 body {
