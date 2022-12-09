@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/landing.css" />
     <script src="theme.js" defer></script>
+    <script src="utility.js" defer></script>
   </head>
 
   <body id="theme">
@@ -29,8 +30,10 @@
             </a>
           </div>
           <div class="header-right">
-            <button class="hero-btn" id="loginBtn" title="Login">Log In</button>
-            <button class="hero-btn" id="signupBtn" title="Sign Up">
+            <button class="hero-btn" id="login-btn" title="Login">
+              Log In
+            </button>
+            <button class="hero-btn" id="signup-btn" title="Sign Up">
               Sign Up
             </button>
             <!-- theme switcher -->
@@ -58,7 +61,7 @@
                 <input
                   type="email"
                   class="input-text"
-                  placeholder="Email (required)"
+                  placeholder="Email"
                   required
                 />
               </div>
@@ -69,7 +72,8 @@
                 <input
                   type="password"
                   class="input-text"
-                  placeholder="Password (required)"
+                  placeholder="Password"
+                  minlength="5"
                   required
                 />
               </div>
