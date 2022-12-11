@@ -24,6 +24,7 @@ html {
     --svg-bkg: url("../images/transparent-blob.svg");
     --theme-icon: url(../images/theme-moon.svg);
     --theme-icon-color: #72dd40;
+    --font-stack: "Anonymous-Pro", sans-serif;
 }
 
 html[data-theme="dark"] {
@@ -53,18 +54,17 @@ html[data-theme="dark"] {
 }
 
 body {
+    font-family: var(--font-stack);
     background-color: var(--bkg-color);
     color: var(--text-color);
-    font-family: "Anonymous Pro", -apple-system, system-ui, BlinkMacSystemFont,
-        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-weight: 400;
     letter-spacing: 0.5px;
 }
 
 /* Header styles */
 :is(h1, h2, h3, h4, h5, h6) {
-    font-family: "Sora", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
-        Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Sora", -apple-system, system-ui, BlinkMacSystemFon,
+        Roboto, "Helvetica-Neue", Arial, sans-serif;
     font-weight: 500;
     text-shadow: var(--heading-shadow);
     margin: 10px 0 15px 0;
@@ -73,36 +73,25 @@ body {
 /* Theme switch button */
 /* the bkg color is only used to change the icon outline */
 #theme-btn {
+    font-weight: 400;
     width: 40px;
-    height: 30px;
+    height: 40px;
     position: relative;
     top: -5px;
     right: -5px;
     padding: 5px;
     margin: 0 3px;
     overflow: visible;
-    mask-image: var(--theme-icon);
-    mask-repeat: no-repeat;
-    mask-size: contain;
-    background-color: var(--theme-icon-color);
+    background: var(--theme-icon);
+    background-color: transparent;
+    border: none;
 }
 
 #theme-btn:hover {
     cursor: pointer;
-    transform: scale(1.75);
-    background-color: white;
-}
-
-/* ! Remove when refactoring */
-button {
-    align-self: center;
-    /*
-    margin: 0;
-    font-size: 18px;
-    font-weight: 200;
-    letter-spacing: 1.3px;
-    text-transform: uppercase;
-    */
+    transform: scale(1.50);
+    background-color: var(--theme-icon);
+    background-repeat: no-repeat;
 }
 
 /* Forms */

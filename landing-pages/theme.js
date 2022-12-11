@@ -1,5 +1,6 @@
 // * Uses <body data-theme> to toggle [data-theme] CSS styles
 const themeBtn = document.querySelector('#theme-btn');
+const themeIcon = document.querySelector('#theme-icon');
 let currentTheme;
 
 const loadPref = () => {
@@ -17,6 +18,7 @@ const setTheme = (theme) => {
   let pressed = theme === 'dark' ? 'true' : 'false';
   themeBtn.setAttribute('aria-pressed', pressed);
   document.documentElement.setAttribute('data-theme', theme);
+  themeBtn.src = 'images/theme-sun.svg';
   localStorage.setItem('themePref', theme);
 };
 
