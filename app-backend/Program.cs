@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetValue<string>("ConnectionStrings:bankingDB");
 
 // Add services to the container.
 
@@ -14,6 +18,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    builder.Configuration.AddUserSecrets<Program>();
 }
 
 app.UseHttpsRedirection();
