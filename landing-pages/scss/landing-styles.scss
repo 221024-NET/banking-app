@@ -1,0 +1,120 @@
+// Layouts (Grid)
+.grid {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid: "header" 0.3fr "main" 2fr "footer" 0.2fr / 1fr;
+}
+
+.header {
+  background: $header-bkg;
+  border-bottom: 1px solid $border-grey;
+  grid-area: header;
+  padding: 0px 5px;
+}
+
+.main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  height: 100%;
+  margin: 0 auto;
+  background-image: $svg-bkg;
+  background-color: $green-bkg;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.footer {
+  grid-area: footer;
+  background: $header-bkg;
+}
+
+// Layouts (Flex)
+.flex-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.flex-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Landing Page Component Styles
+.logo {
+  max-width: 175px;
+  max-height: 100px;
+}
+
+.hero-info {
+  margin: 20px 0;
+}
+
+#faq-btnBtn {
+  font: {
+    family: "Sora";
+    weight: 400;
+    size: 1.5rem;
+  }
+  &:hover {
+    background-color: #28cd23;
+    transform: scale(1.1);
+  }
+}
+
+.info-btn-wrap {
+  padding: 10px;
+  justify-content: flex-end;
+  align-self: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  text-align: center;
+  padding: 15px 20px 15px 20px;
+}
+
+.forgot-link {
+  text-decoration: underline;
+  font-size: 18px;
+  color: $text-color;
+}
+
+.hero-btn {
+  font: {
+    size: 17px;
+    weight: 700;
+    family: "Oxygen";
+  }
+  text: {
+    transform: uppercase;
+    decoration: none;
+  }
+
+  color: white;
+  margin: 0 10px;
+  padding: 10px 25px;
+  border-radius: 0.5em;
+  border: 1px solid #f4f4f4;
+  cursor: pointer;
+  background-color: $secondary;
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1), -2px -2px 8px var(--primary);
+  &:hover {
+    background-color: $btn-hover;
+    border: 1px solid #f4f4f4;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1), 0 -0 12px #fff;
+  }
+
+  &:active {
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.1), 0 -0 20px #fff;
+  }
+}
