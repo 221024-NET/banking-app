@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetValue<string>("ConnectionStrings:bankingDB");
 
 // Add services to the container.
 
