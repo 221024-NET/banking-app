@@ -1,9 +1,13 @@
+using app_backend.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
-var connectionString = builder.Configuration.GetValue<string>("ConnectionStrings:bankingDB");
+var connValue = builder.Configuration.GetValue<string>("ConnectionStrings:bankingDB");
+builder.Services.AddDbContext<BankingContext>(opts =>
+    opts.UseSqlServer(connValue)
+);
 
 // Add services to the container.
 
@@ -12,6 +16,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Add Cors to the container
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
