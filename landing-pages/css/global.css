@@ -46,8 +46,6 @@ html[data-theme="dark"] {
             #6ebb6eaa 0%,
             #78c16488 50%,
             #7eb57e9d 100%);
-    --hero-bkg: url(../images/transparent-blob.svg) cover no-repeat fixed var(--green-bkg);
-    --svg-bkg: url("../images/transparent-blob.svg");
     --theme-icon: url(../images/theme-sun.svg);
     --theme-icon-color: #72dd40;
 
@@ -71,7 +69,6 @@ body {
 }
 
 /* Theme switch button */
-/* the bkg color is only used to change the icon outline */
 #theme-btn {
     font-weight: 400;
     width: 40px;
@@ -113,9 +110,7 @@ label {
 }
 
 input {
-    /* background-color: var(--input-bkg); */
-    /* border: 1px solid var(--border-grey);
-    border-radius: 3px; */
+
     background-color: transparent;
     border: none;
     border-bottom: 2px solid var(--secondary);
@@ -136,8 +131,7 @@ input:focus {
     border-bottom: 3px solid var(--secondary);
     border-radius: 3px;
     outline: none;
-    /* border: none;
-    outline: 2px solid var(--secondary); */
+
 }
 
 input::placeholder {
