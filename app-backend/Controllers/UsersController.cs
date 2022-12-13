@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using app_backend.Models;
+using System.Security.Principal;
 
 namespace app_backend.Controllers
 {
@@ -173,10 +174,38 @@ namespace app_backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Account>> PostAccount(Account account)
         {
+            account.Acct_Id = 0;
+
             _context.Account.Add(account);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAccount", new { id = account.Acct_Id }, account);
+        }
+
+        //POST: api/Accounts/my-accounts
+        [HttpPost("my-accounts")]
+        public ActionResult<IEnumerable<Account>> PostMyAccounts(User currentUser)
+        {
+            var myAccounts = _context.Account.Where(a => a.User_Id == currentUser.user_ID).ToArray();
+            for (int a = 0; a < myAccounts.Length; a++)
+            {
+                var incomeTransactions = _context.Transaction.Where(i => i.dst_acct == myAccounts[a].Acct_Id).ToArray();
+                var totalIncome = 0.0;
+                foreach (var transaction in incomeTransactions)
+                {
+                    totalIncome += (double)transaction.amount;
+                }
+
+                var expenseTransactions = _context.Transaction.Where(e => e.src_acct == myAccounts[a].Acct_Id).ToArray();
+                var totalExpense = 0.0;
+                foreach (var transaction in expenseTransactions)
+                {
+                    totalExpense += (double)transaction.amount;
+                }
+
+                myAccounts[a].Balance = (decimal) (totalIncome - totalExpense);
+            }
+            return myAccounts;
         }
 
         // DELETE: api/Accounts/5
@@ -198,6 +227,24 @@ namespace app_backend.Controllers
         private bool AccountExists(int id)
         {
             return _context.Account.Any(e => e.Acct_Id == id);
+        }
+    }
+
+    [Route("api/[controller]")]
+    [ApiController]
+    public class TransactionsController
+    {
+        private readonly BankingContext _context;
+
+        public TransactionsController(BankingContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Transactions>>> GetTransactions()
+        {
+            return await _context.Transaction.ToListAsync();
         }
     }
 }
