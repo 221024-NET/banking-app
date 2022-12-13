@@ -58,13 +58,13 @@
     margin: 20px 0;
 }
 
-#faq-btnBtn {
+#faq-btn {
     font-family: 'Sora';
     font-weight: 400;
     font-size: 1.5rem;
 }
 
-#faq-btnBtn:hover {
+#faq-btn:hover {
     background-color: #28cd23;
     transform: scale(1.1);
 }
