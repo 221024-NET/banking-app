@@ -5,17 +5,14 @@ import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { ThemeBtnComponent } from './theme-btn/theme-btn.component';
 
-
-
 @NgModule({
   declarations: [
     HeaderComponent,
     MainComponent,
     FooterComponent,
-    ThemeBtnComponent
+    ThemeBtnComponent,
   ],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
+  exports: [HeaderComponent, MainComponent, FooterComponent, ThemeBtnComponent],
 })
-export class AppLayoutModule { }
+export class SharedModule {}

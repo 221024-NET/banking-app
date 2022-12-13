@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as landing
+import * as forgot from '../components/l-index';
 
 @Component({
   selector: 'app-forgot-pw',
