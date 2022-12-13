@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as forgot from '../components/l-index';
 
 @Component({
   selector: 'app-forgot-pw',

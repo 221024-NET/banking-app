@@ -1,0 +1,80 @@
+body {
+  font: {
+    family: $font-stack;
+    weight: 400;
+  }
+
+  background-color: $bkg-color;
+  color: $text-color;
+  letter-spacing: 0.5px;
+}
+
+/* Header styles */
+:is(h1, h2, h3, h4, h5, h6) {
+  font-family: "Sora", -apple-system, system-ui, BlinkMacSystemFon, Roboto,
+    "Helvetica-Neue", Arial, sans-serif;
+  font-weight: 500;
+  text-shadow: $heading-shadow;
+  margin: 10px 0 15px 0;
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+  width: 40%;
+  min-height: fit-content;
+  margin: 0 auto;
+  padding: 15px;
+
+  label {
+    font-size: 18px;
+    margin-bottom: -10px;
+    visibility: hidden;
+  }
+
+  input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $secondary;
+    border-radius: 3px;
+    outline: none;
+    color: $text-color;
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    font-size: 15px;
+    height: 40px;
+    padding-left: 10px;
+    caret-color: $caret;
+
+    &:focus {
+      border: none;
+      border-bottom: 3px solid $secondary;
+      border-radius: 3px;
+      outline: none;
+    }
+
+    &:placeholder {
+      font-family: "Oxygen";
+      font-weight: bold;
+      opacity: 0.7;
+      letter-spacing: 5px;
+    }
+  }
+}
+
+/* Accessibility class */
+.screen-reader {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
