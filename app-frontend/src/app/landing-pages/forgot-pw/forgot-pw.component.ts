@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as forgot from '../components/l-index';
 
 @Component({
@@ -6,4 +6,8 @@ import * as forgot from '../components/l-index';
   templateUrl: './forgot-pw.component.html',
   styleUrls: ['./forgot-pw.component.scss'],
 })
-export class ForgotPwComponent {}
+export class ForgotPwComponent implements OnInit {
+  constructor() {}
+
+  ngOnInit() {}
+}
