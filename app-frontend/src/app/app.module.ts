@@ -2,8 +2,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared-mods/header/header.component';
-import { ThemeBtnComponent } from './shared-mods/theme-btn/theme-btn.component';
+import { AppLayoutModule } from './shared/app-layout.module';
+
 import { LoginBtnComponent } from './landing-pages/components/login-btn/login-btn.component';
 import { SignupBtnComponent } from './landing-pages/components/signup-btn/signup-btn.component';
 import { LoginFormComponent } from './landing-pages/components/login-form/login-form.component';
@@ -18,15 +18,12 @@ import { SignupComponent } from './landing-pages/signup/signup.component';
 import { ForgotPwComponent } from './landing-pages/forgot-pw/forgot-pw.component';
 import { UserNavComponent } from './user-pages/components/user-nav/user-nav.component';
 import { LandingNavComponent } from './landing-pages/components/landing-nav/landing-nav.component';
-import { FooterComponent } from './shared-mods/footer/footer.component';
-import { MainComponent } from './shared-mods/main/main.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    ThemeBtnComponent,
     LoginBtnComponent,
     SignupBtnComponent,
     LoginFormComponent,
@@ -41,12 +38,10 @@ import { MainComponent } from './shared-mods/main/main.component';
     ForgotPwComponent,
     UserNavComponent,
     LandingNavComponent,
-    FooterComponent,
-    MainComponent,
     ForgotFormComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule
+    BrowserModule, HttpClientModule, AppLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
