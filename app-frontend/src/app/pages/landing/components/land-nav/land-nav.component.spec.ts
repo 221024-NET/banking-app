@@ -8,9 +8,8 @@ describe('LandNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LandNavComponent ]
-    })
-    .compileComponents();
+      declarations: [LandNavComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LandNavComponent);
     component = fixture.componentInstance;

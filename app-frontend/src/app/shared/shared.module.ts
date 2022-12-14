@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedComponent } from './shared/shared.component';
+import { LogoBtnComponent } from './logo-btn/logo-btn.component';
+import { ThemeBtnComponent } from './theme-btn/theme-btn.component';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [SharedComponent],
+  declarations: [LogoBtnComponent, ThemeBtnComponent],
+  exports: [LogoBtnComponent, ThemeBtnComponent],
 })
 export class SharedModule {}

@@ -25,11 +25,13 @@ form {
   margin: 0 auto;
   padding: 15px;
 }
+
 form label {
   font-size: 18px;
   margin-bottom: -10px;
   visibility: hidden;
 }
+
 form input {
   background-color: transparent;
   border: none;
@@ -45,12 +47,14 @@ form input {
   padding-left: 10px;
   caret-color: var(--caret);
 }
+
 form input:focus {
   border: none;
   border-bottom: 3px solid var(--secondary);
   border-radius: 3px;
   outline: none;
 }
+
 form input:placeholder {
   font-family: "Oxygen";
   font-weight: bold;
@@ -69,4 +73,31 @@ form input:placeholder {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+/* Buttons */
+.hero-btn {
+  font-size: 17px;
+  font-weight: 700;
+  font-family: "Oxygen";
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+  margin: 0 10px;
+  padding: 10px 25px;
+  border-radius: 0.5em;
+  border: 1px solid #f4f4f4;
+  cursor: pointer;
+  background-color: var(--secondary);
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1), -2px -2px 8px var(--primary);
+}
+
+.hero-btn:hover {
+  background-color: var(--btn-hover);
+  border: 1px solid #f4f4f4;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1), 0 0 12px #fff;
+}
+
+.hero-btn:active {
+  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.1), 0 0 20px #fff;
 }
