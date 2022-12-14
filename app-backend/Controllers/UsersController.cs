@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using app_backend.Models;
 using System.Security.Principal;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace app_backend.Controllers
 {
@@ -100,93 +101,11 @@ namespace app_backend.Controllers
             return NoContent();
         }
 
-        private bool UserExists(int id)
+        //GET: api/Accounts/my-accounts/{id} where id is a user id, gets all their accounts and balances
+        [HttpGet("my-accounts/{id}")]
+        public ActionResult<IEnumerable<Account>> GetMyAccounts(int id)
         {
-            return _context.Users.Any(e => e.user_ID == id);
-        }
-    }
-
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AccountsController : ControllerBase
-    {
-        private readonly BankingContext _context;
-
-        public AccountsController(BankingContext context)
-        {
-            _context = context;
-        }
-
-        // GET: api/Accounts
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Account>>> GetAccount()
-        {
-            return await _context.Account.ToListAsync();
-        }
-
-        // GET: api/Accounts/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Account>> GetAccount(int id)
-        {
-            var account = await _context.Account.FindAsync(id);
-
-            if (account == null)
-            {
-                return NotFound();
-            }
-
-            return account;
-        }
-
-        // PUT: api/Accounts/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAccount(int id, Account account)
-        {
-            if (id != account.Acct_Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(account).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AccountExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Accounts
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Account>> PostAccount(Account account)
-        {
-            account.Acct_Id = 0;
-
-            _context.Account.Add(account);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetAccount", new { id = account.Acct_Id }, account);
-        }
-
-        //POST: api/Accounts/my-accounts
-        [HttpPost("my-accounts")]
-        public ActionResult<IEnumerable<Account>> PostMyAccounts(User currentUser)
-        {
-            var myAccounts = _context.Account.Where(a => a.User_Id == currentUser.user_ID).ToArray();
+            var myAccounts = _context.Account.Where(a => a.User_Id == id).ToArray();
             for (int a = 0; a < myAccounts.Length; a++)
             {
                 var incomeTransactions = _context.Transaction.Where(i => i.dst_acct == myAccounts[a].Acct_Id).ToArray();
@@ -195,6 +114,7 @@ namespace app_backend.Controllers
                 {
                     totalIncome += (double)transaction.amount;
                 }
+                //Console.WriteLine("Total income for ID:{0} = {1}", myAccounts[a].Acct_Id, totalIncome);
 
                 var expenseTransactions = _context.Transaction.Where(e => e.src_acct == myAccounts[a].Acct_Id).ToArray();
                 var totalExpense = 0.0;
@@ -202,49 +122,17 @@ namespace app_backend.Controllers
                 {
                     totalExpense += (double)transaction.amount;
                 }
+                //Console.WriteLine("Total expense for ID:{0} = {1}", myAccounts[a].Acct_Id, totalExpense);
 
-                myAccounts[a].Balance = (decimal) (totalIncome - totalExpense);
+                myAccounts[a].Balance = (decimal)(totalIncome - totalExpense);
+                //Console.WriteLine("Total expense for ID:{0} = {1}", myAccounts[a].Acct_Id, myAccounts[a].Balance);
             }
             return myAccounts;
         }
 
-        // DELETE: api/Accounts/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAccount(int id)
+        private bool UserExists(int id)
         {
-            var account = await _context.Account.FindAsync(id);
-            if (account == null)
-            {
-                return NotFound();
-            }
-
-            _context.Account.Remove(account);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool AccountExists(int id)
-        {
-            return _context.Account.Any(e => e.Acct_Id == id);
-        }
-    }
-
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TransactionsController
-    {
-        private readonly BankingContext _context;
-
-        public TransactionsController(BankingContext context)
-        {
-            _context = context;
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Transactions>>> GetTransactions()
-        {
-            return await _context.Transaction.ToListAsync();
+            return _context.Users.Any(e => e.user_ID == id);
         }
     }
 }
