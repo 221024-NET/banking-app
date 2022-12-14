@@ -1,6 +1,6 @@
-@import "/app-frontend/src/styles/elements.css";
-@import "/app-frontend/src/styles/layout.css";
-@import "/app-frontend/src/styles/resets.css";
+@import url('/src/styles/element.css');
+@import "/src/styles/layout.css";
+@import "/src/styles/resets.css";
 @import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@200;400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
@@ -21,8 +21,8 @@
             #6ebb6eaa 0%,
             #78c16488 50%,
             #7eb57e9d 100%);
-    --svg-bkg: url('/Users/briannarene/_code/net-c-projs/p2-banking/app-frontend/src/assets/app-images/transparent-blob.svg');
-    --theme-icon: url('../app-images/theme-moon.svg');
+    --svg-bkg: url('/src/assets/app-images/transparent-blob.svg');
+    --theme-icon: url('/src/assets/app-images/theme-moon.svg');
     --theme-icon-color: #72dd40;
     --font-stack: 'Anonymous-Pro', sans-serif;
 }
@@ -47,8 +47,8 @@
             #6ebb6eaa 0%,
             #78c16488 50%,
             #7eb57e9d 100%);
-    --svg-bkg: url('../app-images/transparent-blob.svg');
-    --theme-icon: url('../app-images/theme-sun.svg');
+    --svg-bkg: url('/src/assets/app-images/transparent-blob.svg');
+    --theme-icon: url('/src/assets/app-images/theme-sun.svg');
     --theme-icon-color: #72dd40;
 }
 
