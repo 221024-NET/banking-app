@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LandingModule } from '../landing.module';
+import { Router } from '@angular/router';
+// import { LandingModule } from '../landing.module';
 
 @Component({
   selector: 'app-land-nav',
@@ -7,7 +8,15 @@ import { LandingModule } from '../landing.module';
   styleUrls: ['./land-nav.component.css'],
 })
 export class LandNavComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
+
+  goLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  goSignup() {
+    this.router.navigate(['/signup']);
+  }
 
   ngOnInit() {}
 }
