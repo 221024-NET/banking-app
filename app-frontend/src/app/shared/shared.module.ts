@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LogoBtnComponent } from './logo-btn/logo-btn.component';
+import { LogoBtnComponent } from './logo-btn.component';
 import { ThemeBtnComponent } from './theme-btn/theme-btn.component';
 
 @NgModule({

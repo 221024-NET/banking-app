@@ -1,27 +1,20 @@
 #theme-btn {
     font-weight: 400;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     position: relative;
     top: -5px;
     right: -5px;
-    padding: 5px;
     margin: 0 3px;
     overflow: visible;
     border: none;
+    background-image: var(--theme-icon);
+    background-color: transparent;
+}
 
-    background: {
-        image: $theme-icon;
-        color: transparent;
-    }
-
-    &:hover {
-        cursor: pointer;
-        transform: scale(1.5);
-
-        background: {
-            color: $theme-icon;
-            repeat: no-repeat;
-        }
-    }
+#theme-btn:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    background-color: var(--theme-icon);
+    background-repeat: no-repeat;
 }

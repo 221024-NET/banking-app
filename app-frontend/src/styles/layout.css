@@ -10,13 +10,14 @@
     "header"
     "main"
     "footer";
-  /* grid: "header" 0.3fr "main" 2fr "footer" 0.2fr/1fr; */
+
 }
 
 app-header {
   grid-area: header;
   background: var(--header-bkg);
   border-bottom: 1px solid var(--border-grey);
+  padding: 5px;
 }
 
 app-main {
@@ -35,7 +36,9 @@ app-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5px;
+  padding: 0 10px;
+  margin: 0 auto;
+  height: 100%;
 }
 
 .flex-home {
@@ -51,4 +54,5 @@ app-footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: .7em;
 }
