@@ -1,0 +1,14 @@
+.l-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    text-align: center;
+    padding: 15px 20px 15px 20px;
+}
+
+.forgot-link {
+    text-decoration: underline;
+    font-size: 18px;
+    color: var(--text-color);
+}
