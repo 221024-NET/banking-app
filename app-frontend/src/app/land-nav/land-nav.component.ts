@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedModule } from '/src/app/shared/shared.module';
+import { LandingModule } from '../landing.module';
 
 @Component({
   selector: 'app-land-nav',

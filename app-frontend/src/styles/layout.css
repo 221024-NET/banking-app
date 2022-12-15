@@ -13,14 +13,14 @@
 
 }
 
-app-header {
+.header {
   grid-area: header;
   background: var(--header-bkg);
   border-bottom: 1px solid var(--border-grey);
   padding: 5px;
 }
 
-app-main {
+.main {
   grid-area: main;
   width: 100%;
   height: 100%;
@@ -28,7 +28,7 @@ app-main {
 
 }
 
-app-footer {
+.footer {
   grid-area: footer;
   background: var(--header-bkg);
 }
