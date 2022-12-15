@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ForgotPwComponent } from './pages/landing/components/forgot-pw/forgot-pw.component';
-import { HomeComponent } from './pages/landing/components/home/home.component';
-import { LoginComponent } from './pages/landing/components/login/login.component';
-import { SignupComponent } from './pages/landing/components/signup/signup.component';
+import { ForgotPwComponent } from './pages/l-components/forgot-pw/forgot-pw.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './pages/l-components/login/login.component';
+import { SignupComponent } from './pages/l-components/signup/signup.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
