@@ -143,7 +143,10 @@ namespace app_backend.Controllers
             var totalInc = 0.0;
             foreach (var t in incomeTrans)
             {
-                totalInc += (double)t.amount;
+                if (t.status != "pending")
+                {
+                    totalInc += (double)t.amount;
+                }
             }
             return totalInc;
         }
@@ -154,7 +157,10 @@ namespace app_backend.Controllers
             var totalExp = 0.0;
             foreach (var t in expensTrans)
             {
-                totalExp += (double)t.amount;
+                if (t.status != "pending")
+                {
+                    totalExp += (double)t.amount;
+                }
             }
             return totalExp;
         }
