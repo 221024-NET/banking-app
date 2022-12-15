@@ -7,10 +7,9 @@ import { LandFooterComponent } from './components/land-footer/land-footer.compon
 import { LandNavComponent } from './components/land-nav/land-nav.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { LandingRoutesModule } from './landing-routes.module';
 
 @NgModule({
-  imports: [CommonModule, SharedModule, LandingRoutesModule],
+  imports: [CommonModule, SharedModule],
   declarations: [
     ForgotPwComponent,
     HomeComponent,

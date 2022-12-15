@@ -5,10 +5,9 @@ import { ForgotPwComponent } from './pages/landing/components/forgot-pw/forgot-p
 import { HomeComponent } from './pages/landing/components/home/home.component';
 import { LoginComponent } from './pages/landing/components/login/login.component';
 import { SignupComponent } from './pages/landing/components/signup/signup.component';
-import { LandingRoutesModule } from './pages/landing/landing-routes.module';
 
 export const routes: Routes = [
-  { path: '/', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '/home', component: HomeComponent },
   { path: '/forgotpw', component: ForgotPwComponent },
   { path: 'login', component: LoginComponent },
@@ -16,7 +15,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), LandingRoutesModule],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutesModule {}
