@@ -89,5 +89,40 @@ namespace app_backend.Controllers
             var transactions = _context.Transaction.Where(t => t.src_acct == id).ToArray();
             return transactions;
         }
+
+        // PUT: api/Transactions/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutTransaction(int id, Transactions transaction)
+        {
+            if (id != transaction.ref_id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(transaction).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TransactionExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool TransactionExists(int id)
+        {
+            return _context.Transaction.Any(e => e.ref_id == id);
+        }
     }
 }
