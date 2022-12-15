@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-land-nav',
@@ -8,7 +9,5 @@ import { Component, OnInit } from '@angular/core';
 export class LandNavComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {
-    // this.router.navigateByUrl('/');
-  }
+  ngOnInit() {}
 }

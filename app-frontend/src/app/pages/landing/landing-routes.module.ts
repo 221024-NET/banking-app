@@ -5,7 +5,6 @@ import { ForgotPwComponent } from './components/forgot-pw/forgot-pw.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
-
 const routes: Routes = [
   { path: '/home', component: HomeComponent },
   { path: '/forgotpw', component: ForgotPwComponent },
