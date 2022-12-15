@@ -5,6 +5,8 @@ import { ForgotPwComponent } from './components/forgot-pw/forgot-pw.component';
 import { HomeComponent } from './components/home/home.component';
 import { LandFooterComponent } from './components/land-footer/land-footer.component';
 import { LandNavComponent } from './components/land-nav/land-nav.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -12,12 +14,16 @@ import { LandNavComponent } from './components/land-nav/land-nav.component';
     HomeComponent,
     LandFooterComponent,
     LandNavComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   exports: [
     ForgotPwComponent,
     HomeComponent,
     LandFooterComponent,
     LandNavComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [CommonModule, SharedModule],
 })
