@@ -11,19 +11,129 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
         _bankcontext = fixture.Context;
     }
 
-    //* Tests here oh boy, long list of TODO's before tomorrow, here goes
+    //* Test GetTransactions() endpoint for a nonempty List
+    [Fact]
+    public void GetTransactionsReturnsList(){
+        //* ARRANGE
+        var controller = new TransactionsController(_bankcontext);
 
-    //TODO: Test GetTransactions() endpoint
+        //* ACT
+        var getresult = controller.GetTransactions().Result.Value;
+        foreach(Transactions t in getresult){
+            _output.WriteLine($"Ref: {t.ref_id} Src: {t.src_acct} Dst: {t.dst_acct} Status: {t.status} Amount: ${t.amount}");
+        }
 
-    //TODO: Test GetTransactions(id) endpoint with good param
+        //* ASSERT
+        Assert.IsType<List<Transactions>>(getresult);
+        Assert.NotNull(getresult);
+        Assert.NotEmpty(getresult);
+    }
 
-    //TODO: Test GetTransactions(id) endpoint with bad param
+    //* Test GetTransactions(id) endpoint with good param
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    [InlineData(3)]
+    [InlineData(4)]
+    [InlineData(5)]
+    public void GetTransactionsReturnsTransaction(int refid){
+        //* ARRANGE
+        var controller = new TransactionsController(_bankcontext);
 
-    //TODO: Test PostTransaction(transaction) endpoint
+        //* ACT
+        var getresult = controller.GetTransactions(refid).Result.Value;
+        _output.WriteLine($"Ref: {getresult.ref_id} Src: {getresult.src_acct} Dst: {getresult.dst_acct} Status: {getresult.status} Amount: ${getresult.amount}");
 
-    //TODO: Test GetTransactionsAll(id) endpoint
+        //* ASSERT
+        Assert.IsType<Transactions>(getresult);
+        Assert.NotNull(getresult);
+    }
+
+    //* Test GetTransactions(id) endpoint with bad param
+    [Fact]
+    public void GetTransactionsReturnsNothing(){
+        //* ARRANGE
+        var controller = new TransactionsController(_bankcontext);
+        int refid = 6;
+
+        //* ACT
+        var getresult = controller.GetTransactions(refid);
+        _output.WriteLine($"Getting Transaction #{refid} gave result: {getresult}");
+
+        //* ASSERT
+        /*
+        ! GetTransactions should be returning NoContentResult if none found, but instead returns an object 
+        ! Asserting null should give the same intended result
+        */
+        Assert.Null(getresult.Result.Value);
+    }
+
+    //* Test PostTransaction(transaction) endpoint
+    [Fact]
+    public void PostTransactionCreatesTransaction() {
+        //* ARRANGE
+        var controller = new TransactionsController(_bankcontext);
+        var tempT = new Transactions{ref_id = 0, src_acct = 4, dst_acct = 5, status = "approved", amount = 100};
+
+        //* ACT
+        var postresult = controller.PostTransaction(tempT);
+        _output.WriteLine($"Transaction posted, endpoint returned: {postresult.Result}");
+        var getallresult = controller.GetTransactions().Result.Value;
+        //just check in the console that the transaction was added
+        //added Transaction should have a Ref_ID of 6
+        foreach (Transactions t in getallresult){
+            _output.WriteLine($"Ref: {t.ref_id} Src: {t.src_acct} Dst: {t.dst_acct} Status: {t.status} Amount: ${t.amount}");
+        }
+
+        //* ASSERT
+        /*
+        ! Accounts POST returned a CreatedAtActionResult, but Transactions returns a NoContentResult
+        */
+        Assert.IsType<Microsoft.AspNetCore.Mvc.NoContentResult>(postresult.Result);
+    }
+
+    //* Test GetTransactionsAll(id) endpoint with a valid account id
+    [Theory]
+    [InlineData(2)]
+    [InlineData(3)]
+    [InlineData(4)]
+    [InlineData(5)]
+    public void GetTransactionsAllWithValidID(int acctid){
+        //* ARRANGE
+        var controller = new TransactionsController(_bankcontext);
+
+        //* ACT
+        var getresult = controller.GetTransactionsAll(acctid).Result;
+        //getresult is a Task<IEnumerable>, so the returned array is behind Task.Result
+        _output.WriteLine($"Returned with a {getresult.GetType()} involving Acct #{acctid}");
+        //! just check in the test console that this all matches up
+        foreach (Transactions t in getresult) {
+            _output.WriteLine($"Ref: {t.ref_id} Src: {t.src_acct} Dst: {t.dst_acct} Status: {t.status} Amount: ${t.amount}");
+        }
+
+        //* ASSERT
+        Assert.IsType<Transactions[]>(getresult);
+        Assert.NotEmpty(getresult);
+    }
+
+    //* Test GetTransactionsAll(id) endpoint with a valid account id with no transactions, and invalid id's
+    [Theory]
+    [InlineData(1)] //invalid account
+    [InlineData(6)] //account with no transactions
+    public void GetTransactionsAllWithNoTransactions(int acctid){
+        //* ARRANGE
+        var controller = new TransactionsController(_bankcontext);
+
+        //* ACT
+        var getresult = controller.GetTransactionsAll(acctid).Result;
+        _output.WriteLine($"Controller returned an array for Acct #{acctid}");
+
+        //* ASSERT
+        Assert.Empty(getresult);
+    }
 
     //TODO: Test GetTransactionsTo(id) endpoint
+
 
     //TODO: Test GetTransactionsFrom(id) endpoint
 }
