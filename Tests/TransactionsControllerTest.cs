@@ -73,7 +73,7 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
     public void PostTransactionCreatesTransaction() {
         //* ARRANGE
         var controller = new TransactionsController(_bankcontext);
-        var tempT = new Transactions{ref_id = 0, src_acct = 4, dst_acct = 5, status = "approved", amount = 100};
+        var tempT = new Transactions{ref_id = 0, src_acct = 4, dst_acct = 6, status = "approved", amount = 100};
 
         //* ACT
         var postresult = controller.PostTransaction(tempT);
