@@ -66,14 +66,15 @@ namespace Tests
             var controller = new AccountsController(_bankcontext);
 
             //* ACT
-            var result = controller.GetAccount(id);
-
+            var result = controller.GetAccount(id).Result.Value;
+           
             //* ASSERT
             /*
             ! Looks like when GetAccount returns a NotFound result, it doesn't actually return an Action
             ! Instead it just returns a null object, but that works too
             */
-            Assert.Null(result.Result.Value);
+            Assert.Null(result);
+            
         }
 
         //* Test the PutAccount(id, account) endpoint with valid params 

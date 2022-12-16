@@ -38,14 +38,8 @@ public class BankingDBFixture : IDisposable
     //* This will run after every test
     public void Dispose()
     {
-        var removeUsersList = new UsersController(Context).GetUsers().Result.Value;
-        var removeAccsList = new AccountsController(Context).GetAccount().Result.Value;
-        var removeTransactsList = new TransactionsController(Context).GetTransactions().Result.Value;
+        Context.Dispose();
 
-        Context.RemoveRange(removeUsersList);
-        Context.RemoveRange(removeAccsList);
-        Context.RemoveRange(removeTransactsList);
-
-        Context.SaveChanges();
+        //Context.SaveChanges();
     }
 }
