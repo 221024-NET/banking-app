@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-theme-btn',
   template: ` <button
+    (click)="toggleTheme()"
     id="theme-btn"
     type="button"
     title="Toggle Color Mode"
@@ -34,7 +36,15 @@ import { Component, OnInit } from '@angular/core';
   ],
 })
 export class ThemeBtnComponent implements OnInit {
-  constructor() {}
+  constructor(private darkModeService: ThemeService) {}
+
+  toggleDarkMode(): void {
+    if (this.darkModeService.isDarkModeEnabled()) {
+      this.darkModeService.disableDarkMode();
+    } else {
+      this.darkModeService.enableDarkMode();
+    }
+  }
 
   ngOnInit() {}
 }
