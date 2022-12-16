@@ -1,42 +1,31 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { AngularWebStorageModule } from 'angular-web-storage';
-import { LocalStorage, StorageService } from 'angular-web-storage';
+import { Injectable, InjectionToken } from '@angular/core';
+import { StorageMap } from '@ngx-pwa/local-storage';
 
 export const currentTheme = new InjectionToken<string>('currentTheme');
 
 @Injectable()
 export class ThemeService {
-  constructor(@Inject(LocalStorage) private local: StorageService) {}
+  constructor(private storage: StorageMap) {}
 
-  themeBtn = document.querySelector('#theme-btn') as HTMLButtonElement;
-  themeIcon = document.querySelector('#theme-icon') as HTMLImageElement;
-  icons = document.querySelectorAll(
-    '.icon img'
-  ) as NodeListOf<HTMLImageElement>;
   currentTheme = '';
 
+  // TODO: Refactor storage with methods
   loadPref = () => {
-    let theme = localStorage.getItem('themePref');
-    if (theme !== null) {
-      this.currentTheme = theme;
-      this.setTheme(this.currentTheme);
-    } else {
-      this.currentTheme = 'light';
-      this.setTheme(this.currentTheme);
-    }
+    let theme = this.storage
+      .get('themePref', { type: 'string' })
+      .subscribe((theme): void => {
+        if (theme !== undefined) {
+          this.currentTheme = String(theme);
+        } else {
+          this.currentTheme = 'light';
+        }
+        this.setTheme(this.currentTheme);
+      });
   };
 
   setTheme = (theme: string) => {
-    let pressed = theme === 'dark' ? 'true' : 'false';
-    this.themeBtn.setAttribute('aria-pressed', pressed);
     document.documentElement.setAttribute('data-theme', theme);
-    // ? this.themeBtn.src = 'images/theme-sun.svg';
-    localStorage.setItem('themePref', theme);
-    this.icons.forEach((icon) => {
-      theme == 'dark'
-        ? (icon.src = 'images/arrow-white.svg')
-        : (icon.src = 'images/arrow.svg');
-    });
+    this.storage.set('themePref', theme).subscribe();
   };
 
   toggleTheme = () => {
@@ -45,21 +34,6 @@ export class ThemeService {
       : this.setTheme('dark');
   };
 
-  // themeBtn.addEventListener('click', toggleTheme);
+  ngOnInit() {}
   // document.addEventListener('DOMContentLoaded', loadPref);
-
-  // Returns true if dark mode is enabled, false otherwise
-  // isDarkModeEnabled(): boolean {
-  //   return this.local.get('darkMode') === 'enabled';
-  // }
-
-  // // Enables dark mode
-  // enableDarkMode(): void {
-  //   this.local.set('darkMode', 'enabled');
-  // }
-
-  // // Disables dark mode
-  // disableDarkMode(): void {
-  //   this.local.set('darkMode', 'disabled');
-  // }
 }

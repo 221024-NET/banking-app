@@ -1,10 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { AngularWebStorageModule } from 'angular-web-storage';
 import { BrowserModule } from '@angular/platform-browser';
+import { StorageModule } from '@ngx-pwa/local-storage';
 import { AppRoutesModule } from './app-routes.module';
 import { AppComponent } from './app.component';
-// Dark mode service
+// Theme
 import { ThemeService } from './services/theme.service';
 // Components
 import { LandingModule } from './landing.module';
@@ -16,7 +16,7 @@ import { MainComponent } from './main/main.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AngularWebStorageModule,
+    StorageModule,
     AppRoutesModule,
     LandingModule,
     UserModule,
