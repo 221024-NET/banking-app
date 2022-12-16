@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './services/theme.service';
+// click = 'toggleTheme()';
 
 @Component({
   selector: 'app-theme-btn',
   template: ` <button
-    (click)="toggleTheme()"
     id="theme-btn"
     type="button"
     title="Toggle Color Mode"
