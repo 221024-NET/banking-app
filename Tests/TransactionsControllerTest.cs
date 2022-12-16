@@ -132,8 +132,89 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
         Assert.Empty(getresult);
     }
 
-    //TODO: Test GetTransactionsTo(id) endpoint
+    //* Test GetTransactionsTo(id) endpoint
+    [Theory]
+    [InlineData(2)]
+    [InlineData(3)]
+    [InlineData(4)]
+    public void GetTransactionsToWithValidDsts(int acctid) {
+        //* ARRANGE
+        var controller = new TransactionsController(_bankcontext);
 
+        //* ACT
+        var getresult = controller.GetTransactionsTo(acctid).Result;
+        _output.WriteLine($"Retrieved array of transactions sent to Acct #{acctid}");
+        //! just check in the test console that this all matches up
+        foreach (Transactions t in getresult) {
+            _output.WriteLine($"Ref: {t.ref_id} Src: {t.src_acct} Dst: {t.dst_acct} Status: {t.status} Amount: ${t.amount}");
+        }
 
-    //TODO: Test GetTransactionsFrom(id) endpoint
+        //* ASSERT
+        Assert.NotEmpty(getresult);
+        Assert.IsType<Transactions[]>(getresult);
+    }
+
+    //* Test GetTransactionsTo(id) endpoint to get empty arrays
+    [Theory]
+    [InlineData(1)]
+    [InlineData(5)]
+    public void GetTransactionsToReturnsEmptyArray(int acctid){
+        //* ARRANCE
+        var controller = new TransactionsController(_bankcontext);
+
+        //* ACT
+        var getresult = controller.GetTransactionsTo(acctid).Result;
+        _output.WriteLine($"Retrieved array of transactions sent to Acct #{acctid}");
+        //! just check in the test console that this all matches up
+        foreach (Transactions t in getresult) {
+            _output.WriteLine($"Ref: {t.ref_id} Src: {t.src_acct} Dst: {t.dst_acct} Status: {t.status} Amount: ${t.amount}");
+        }
+
+        //* ASSERT
+        Assert.IsType<Transactions[]>(getresult);
+        Assert.Empty(getresult);
+    }
+
+    //* Test GetTransactionsFrom(id) endpoint
+    [Theory]
+    [InlineData(2)]
+    [InlineData(3)]
+    [InlineData(5)]
+    public void GetTransactionsFromWithValidSrcs(int acctid) {
+        //* ARRANGE
+        var controller = new TransactionsController(_bankcontext);
+
+        //* ACT
+        var getresult = controller.GetTransactionsFrom(acctid).Result;
+        _output.WriteLine($"Retrieved array of transactions sent from Acct #{acctid}");
+        //! just check in the test console that this all matches up
+        foreach (Transactions t in getresult) {
+            _output.WriteLine($"Ref: {t.ref_id} Src: {t.src_acct} Dst: {t.dst_acct} Status: {t.status} Amount: ${t.amount}");
+        }
+
+        //* ASSERT
+        Assert.NotEmpty(getresult);
+        Assert.IsType<Transactions[]>(getresult);
+    }
+
+    //* Test GetTransactionsTo(id) endpoint to get empty arrays
+    [Theory]
+    [InlineData(1)]
+    [InlineData(4)]
+    public void GetTransactionsFromReturnsEmptyArray(int acctid){
+        //* ARRANCE
+        var controller = new TransactionsController(_bankcontext);
+
+        //* ACT
+        var getresult = controller.GetTransactionsFrom(acctid).Result;
+        _output.WriteLine($"Retrieved array of transactions sent from Acct #{acctid}");
+        //! just check in the test console that this all matches up
+        foreach (Transactions t in getresult) {
+            _output.WriteLine($"Ref: {t.ref_id} Src: {t.src_acct} Dst: {t.dst_acct} Status: {t.status} Amount: ${t.amount}");
+        }
+
+        //* ASSERT
+        Assert.IsType<Transactions[]>(getresult);
+        Assert.Empty(getresult);
+    }
 }
