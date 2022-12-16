@@ -2,44 +2,16 @@
 
 namespace Tests
 {
-    public class AccountsControllerTest : IDisposable
+    public class AccountsControllerTest : IClassFixture<BankingDBFixture>
     {
-        private DbContextOptions<BankingContext> dbcOptions = new DbContextOptionsBuilder<BankingContext>()
-            .UseInMemoryDatabase(databaseName: "BankingDB").Options;
-        private BankingContext _bankcontext;
+        private readonly BankingContext _bankcontext;
         private readonly ITestOutputHelper _output;
 
         //* Setup
-        public AccountsControllerTest(ITestOutputHelper output) {
+        public AccountsControllerTest(ITestOutputHelper output, BankingDBFixture fixture) {
             //I just have this outputhelper here for seeing console output and checking stuff
             _output = output;
-            Initialize();
-        }
-
-        //* Setup the mock context
-        public void Initialize()
-        {
-            var context = new BankingContext(dbcOptions);
-            
-            context.Add(new Account { Acct_Id = 2, User_Id = 4, Type = "checking", Balance = 1000 });   
-            context.Add(new Account { Acct_Id = 3, User_Id = 4, Type = "savings", Balance = 200 });
-            context.Add(new Account { Acct_Id = 4, User_Id = 6, Type = "checking", Balance = 100 });
-            context.Add(new Account { Acct_Id = 5, User_Id = 6, Type = "savings", Balance = 0 });
-            
-            //save the changes and initialize the table
-            context.SaveChanges();
-            _bankcontext = context;
-        }
-
-        //* Tear down
-        public void Dispose()
-        {
-            //dispose the context so the next tests can Initialize properly
-            //ok, if I get the list I can use that to remove the stuff in the context 
-            //clearly the tests are entering Dispose, so this should work if I save the changes after
-            var removelist = new AccountsController(_bankcontext).GetAccount().Result.Value;
-            _bankcontext.RemoveRange(removelist);
-            _bankcontext.SaveChanges();
+            _bankcontext = fixture.Context;
         }
 
         //* Test the GetAccount() endpoint with no params
@@ -50,8 +22,11 @@ namespace Tests
             var controller = new AccountsController(_bankcontext);
 
             //* ACT
-            var result_async = controller.GetAccount();
-            var result = result_async.Result.Value;
+            var result = controller.GetAccount().Result.Value;
+            foreach(Account a in result)
+            {
+                _output.WriteLine($"Acct: {a.Acct_Id} User: {a.User_Id} Type: {a.Type} Bal: ${a.Balance}");
+            }
 
             //* ASSERT
             //result should be a list of Accounts
@@ -70,44 +45,89 @@ namespace Tests
         [InlineData(5)] 
         public void GetAccountByIDReturnsAccount(int id)
         {
-            //ARRANGE
-            
+            //* ARRANGE
             var controller = new AccountsController(_bankcontext);
 
-            //ACT
-            var result_async = controller.GetAccount(id);
-            var result = result_async.Result.Value;
+            //* ACT
+            Account result = controller.GetAccount(id).Result.Value;
+            _output.WriteLine($"Acct: {result.Acct_Id} User: {result.User_Id} Type: {result.Type} Bal: ${result.Balance}");
 
-            //ASSERT
+            //* ASSERT
             Assert.IsType<Account>(result);
             Assert.NotNull(result);
         }
 
         //* Test the GetAccount() endpoint with bad params
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(6)]
-        [InlineData(7)]
-        public void GetAccountByIDReturnsNothing(int id)
+        [Fact]
+        public void GetAccountByIDReturnsNothing()
         {
-            //ARRANGE
+            //* ARRANGE
+            int id = 1;
             var controller = new AccountsController(_bankcontext);
 
-            //ACT
-            var result_async = controller.GetAccount(id);
-            var result = result_async.Result.Value;
+            //* ACT
+            var result = controller.GetAccount(id);
 
-            //ASSERT
-            Assert.IsNotType<Account>(result);
-            Assert.Null(result);
+            //* ASSERT
+            //Looks like GetAccount returns a null Account instead of a NotFoundResult, we can check for that instead
+            Assert.Null(result.Result.Value);
         }
 
-        //TODO: Test PutAccount(id, account) endpoint with valid id & account
+        //* Test the PutAccount(id, account) endpoint with valid params 
+        [Fact]
+        public void PutAccountUpdatesAccount(){
+            //* ARRANGE
+            decimal toadd = 500;
+            int id=2;
+            var controller = new AccountsController(_bankcontext);
+            //get an account to use
+            var a = controller.GetAccount(id).Result.Value;
+            _output.WriteLine($"Acct: {a.Acct_Id} Usr: {a.User_Id} Type: {a.Type} Bal: ${a.Balance}");
+            //update that account
+            decimal? oldbal = a.Balance;
+            //add to the balance
+            a.Balance += toadd;
 
-        //TODO: Test PutAccount(id, account) endpoint with invalid id
+            //* ACT
+            var result = controller.PutAccount(id, a);
+            _output.WriteLine($"Status: {result.Result}");
 
-        //TODO: Test PutAccount(id, account) endpoint with valid id & invalid account
+            //* ASSERT
+            //Put doesn't exactly work the way I figured, so the best we can do is check for a NoContent status
+            Assert.IsType<Microsoft.AspNetCore.Mvc.NoContentResult>(result.Result);
+        }
+
+        [Fact]
+        public void PutAccountBadID(){
+            //* ARRANGE
+            int acctid = 1;
+            //making some random account
+            Account temp = new Account {Acct_Id=0, User_Id=0, Type="checking", Balance=0};
+            _output.WriteLine($"Acct: {temp.Acct_Id} User: {temp.User_Id} Type: {temp.Type} Bal: ${temp.Balance}");
+            _output.WriteLine($"id==temp.id? {acctid==temp.Acct_Id}");
+            var controller = new AccountsController(_bankcontext);
+
+            //* ACT
+            var result = controller.PutAccount(acctid, temp);
+            _output.WriteLine($"Status: {result.Result}");
+
+            //* ASSERT
+            Assert.IsType<Microsoft.AspNetCore.Mvc.BadRequestResult>(result.Result);
+        }
+
+        [Fact]
+        public void PutAccountInvalidAccount(){
+            //* ARRANGE
+            int acctid = 1;
+            Account temp = new Account{Acct_Id=1, User_Id=0, Type="checking", Balance=0};
+            var controller = new AccountsController(_bankcontext);
+
+            //* ACT
+            var result = controller.PutAccount(acctid,temp);
+
+            //* ASSERT
+            Assert.IsType<Microsoft.AspNetCore.Mvc.NotFoundResult>(result.Result);
+        }
 
         //TODO: Test PostAccount(account) endpoint
 

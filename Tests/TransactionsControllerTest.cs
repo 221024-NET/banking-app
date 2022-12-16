@@ -1,21 +1,14 @@
 
 namespace Tests;
 
-public class TransactionsControllerTest : IDisposable
-{
-    private DbContextOptions<BankingContext> dbcOptions = new DbContextOptionsBuilder<BankingContext>()
-            .UseInMemoryDatabase(databaseName: "BankingDB").Options;
-    private BankingContext _bankcontext;
+public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
+    private readonly BankingContext _bankcontext;
     private readonly ITestOutputHelper _output;
 
     //* Setup
-
-    //* Initialize context
-
-    //* Teardown
-    public void Dispose()
-    {
-        throw new NotImplementedException();
+    public TransactionsControllerTest(ITestOutputHelper output, BankingDBFixture fixture) {
+        _output = output;
+        _bankcontext = fixture.Context;
     }
 
     //* Tests here oh boy, long list of TODO's before tomorrow, here goes
