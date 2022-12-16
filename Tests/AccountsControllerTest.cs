@@ -1,10 +1,4 @@
-using app_backend.Controllers;
-using app_backend.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Net.Mime;
-using Xunit.Abstractions;
-using Xunit.Sdk;
+
 
 namespace Tests
 {
@@ -15,13 +9,14 @@ namespace Tests
         private BankingContext _bankcontext;
         private readonly ITestOutputHelper _output;
 
-        //Setup
+        //* Setup
         public AccountsControllerTest(ITestOutputHelper output) {
             //I just have this outputhelper here for seeing console output and checking stuff
             _output = output;
             Initialize();
         }
 
+        //* Setup the mock context
         public void Initialize()
         {
             var context = new BankingContext(dbcOptions);
@@ -36,7 +31,7 @@ namespace Tests
             _bankcontext = context;
         }
 
-        //Tear down
+        //* Tear down
         public void Dispose()
         {
             //dispose the context so the next tests can Initialize properly
@@ -47,18 +42,18 @@ namespace Tests
             _bankcontext.SaveChanges();
         }
 
-        //4 accounts in the mock database. I want to make sure it returns a List
+        //* Test the GetAccount() endpoint with no params
         [Fact]
         public void GetAllAccountsReturnsNonEmptyList()
         {
-            //ARRANGE
+            //* ARRANGE
             var controller = new AccountsController(_bankcontext);
 
-            //ACT
+            //* ACT
             var result_async = controller.GetAccount();
             var result = result_async.Result.Value;
 
-            //ASSERT
+            //* ASSERT
             //result should be a list of Accounts
             Assert.IsType<List<Account>>(result);
             //result should not be null
@@ -67,11 +62,12 @@ namespace Tests
             Assert.All<Account>(result, a => Assert.True(a.Balance>=0));
         }
 
+        //* Test the GetAccount() endpoint with an id
         [Theory]
         [InlineData(2)]
         [InlineData(3)]
         [InlineData(4)]
-        [InlineData(5)]
+        [InlineData(5)] 
         public void GetAccountByIDReturnsAccount(int id)
         {
             //ARRANGE
@@ -87,7 +83,7 @@ namespace Tests
             Assert.NotNull(result);
         }
 
-        //now to make sure if the Account ID isn't in the DB, it returns NotFound()
+        //* Test the GetAccount() endpoint with bad params
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
@@ -106,5 +102,27 @@ namespace Tests
             Assert.IsNotType<Account>(result);
             Assert.Null(result);
         }
+
+        //TODO: Test PutAccount(id, account) endpoint with valid id & account
+
+        //TODO: Test PutAccount(id, account) endpoint with invalid id
+
+        //TODO: Test PutAccount(id, account) endpoint with valid id & invalid account
+
+        //TODO: Test PostAccount(account) endpoint
+
+        //TODO: Test GetMyIncome(id) endpoint with valid account id
+
+        //TODO: Test GetMyIncome(id) endpoint with invalid account id
+
+        //TODO: Test GetMyExpenses(id) endpoint with valid account id
+
+        //TODO: Test GetMyExpenses(id) endpoint with invalid account id
+
+        //TODO: Test GetMyBalance(id) endpoint
+
+        //TODO: Test DeleteAccount(id) endpoint with valid account id
+
+        //TODO: Test DeleteAccount(id) endpoint with invalid account id
     }
 }
