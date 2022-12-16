@@ -1,0 +1,118 @@
+/* Grid layouts */
+.grid {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    display: grid;
+    grid:
+        "header" 0.3fr "main" 2fr "footer" 0.2fr / 1fr;
+}
+
+.header {
+    background: var(--header-bkg);
+    border-bottom: 1px solid var(--border-grey);
+    grid-area: header;
+    padding: 0px 5px;
+}
+
+
+.main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+    height: 100%;
+    margin: 0 auto;
+    background-image: var(--svg-bkg);
+    background-color: var(--green-bkg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.footer {
+    grid-area: footer;
+    background: var(--header-bkg);
+}
+
+/* Flex layouts */
+.flex-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.flex-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Component Styles */
+.logo {
+    max-width: 175px;
+    max-height: 100px;
+}
+
+.hero-info {
+    margin: 20px 0;
+}
+
+#faq-btn {
+    font-family: 'Sora';
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+#faq-btn:hover {
+    background-color: #28cd23;
+    transform: scale(1.1);
+}
+
+.info-btn-wrap {
+    padding: 10px;
+    justify-content: flex-end;
+    align-self: center;
+}
+
+.hero-btn {
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Oxygen';
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    padding: 10px 25px;
+    border-radius: 0.5em;
+    border: 1px solid #f4f4f4;
+    cursor: pointer;
+    background-color: var(--secondary);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1), -2px -2px 8px var(--primary);
+}
+
+.hero-btn:hover {
+    background-color: var(--btn-hover);
+    border: 1px solid #f4f4f4;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1), 0 -0 12px #fff;
+}
+
+.hero-btn:active {
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.1), 0 -0 20px #fff;
+}
+
+/* Input Fields */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    text-align: center;
+    padding: 15px 20px 15px 20px;
+}
+
+.forgot-link {
+    text-decoration: underline;
+    font-size: 18px;
+    color: var(--text-color);
+}

@@ -16,6 +16,7 @@
             "outputPath": "dist/app-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "optimization": false,
             "polyfills": [
               "zone.js"
             ],
@@ -25,18 +26,20 @@
               "src/assets"
             ],
             "styles": [
-              "src/custom-theme.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "8mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
