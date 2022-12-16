@@ -1,6 +1,13 @@
 <nav class="flex-nav">
   <div class="header-left">
-    <app-logo-btn></app-logo-btn>
+    <a href="home" routerLink="home">
+      <img
+        src="assets/droidlogo.png"
+        class="logo"
+        alt="DROID FINANCE"
+        title="Back To Home"
+      />
+    </a>
   </div>
   <div class="header-right">
     <button (click)="goLogin()" class="hero-btn" id="login-btn" title="Login">

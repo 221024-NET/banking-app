@@ -6,12 +6,10 @@ import { AppComponent } from './app.component';
 // Components
 import { LandingModule } from './landing.module';
 import { UserModule } from './user.module';
-import { HomeComponent } from './home/home.component';
-import { LandNavComponent } from './land-nav/land-nav.component';
-import { LandFooterComponent } from './land-footer/land-footer.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MainComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

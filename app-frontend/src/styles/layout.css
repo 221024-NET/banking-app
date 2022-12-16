@@ -33,6 +33,7 @@
   background: var(--header-bkg);
 }
 
+/* Flex containers */
 .flex-nav {
   display: flex;
   justify-content: space-between;
@@ -57,5 +58,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: .7em;
+  font-size: 1em;
+}
+
+.l-form-container {
+  display: flex;
+  height: 75%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  text-align: center;
+  padding: 15px 20px 15px 20px;
+}
+
+.l-submit {
+  margin: 0 auto;
+  width: 40%;
 }

@@ -7,17 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  // constructor(private router: Router) {}
-
-  // goLogin() {
-  //   this.router.navigate(['/login']);
-  // }
-
-  // goSignUp() {
-  //   this.router.navigate(['/signup']);
-  // }
-
-  // ngOnInit() {}
   constructor() {}
 
   ngOnInit() {}
