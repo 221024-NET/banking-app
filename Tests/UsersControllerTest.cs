@@ -10,9 +10,24 @@ public class UsersControllerTest : IClassFixture<BankingDBFixture>{
         _bankcontext = fixture.Context;
     }
 
-    //* Testing now
+    //* Test GetUsers() endpoint
+    [Fact]
+    public void GetUsersReturnsList(){
+        //* ARRANGE
+        var controller = new UsersController(_bankcontext);
 
-    //TODO: Test GetUsers() endpoint
+        //* ACT
+        var result = controller.GetUsers().Result.Value;
+        //! Just checking the output in the test console
+        foreach(User u in result){
+            _output.WriteLine($"ID: {u.user_ID} Email: {u.email} Name: {u.first_name} {u.last_name} Address: {u.address} Password: {u.password}");
+        }
+
+        //* ASSERT
+        Assert.IsType<List<User>>(result);
+        Assert.NotNull(result);
+        Assert.NotEmpty(result);
+    }
 
     //TODO: Test GetUser(currentuser) endpoint with good input
 
