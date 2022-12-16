@@ -21,7 +21,8 @@ public class BankingDBFixture : IDisposable
         Context.Add(new Account { Acct_Id = 2, User_Id = 4, Type = "checking", Balance = 1000 });   
         Context.Add(new Account { Acct_Id = 3, User_Id = 4, Type = "savings", Balance = 200 });
         Context.Add(new Account { Acct_Id = 4, User_Id = 6, Type = "checking", Balance = 100 });
-        Context.Add(new Account { Acct_Id = 5, User_Id = 6, Type = "savings", Balance = 0 });
+        Context.Add(new Account { Acct_Id = 5, User_Id = 6, Type = "savings", Balance = 3000 });
+        Context.Add(new Account { Acct_Id = 6, User_Id = 7, Type = "checking", Balance = 0 });
 
         //Transactions
         Context.Add(new Transactions{ref_id = 1, src_acct = 5, dst_acct = 4, status = "string", amount = 500});

@@ -69,7 +69,10 @@ namespace Tests
             var result = controller.GetAccount(id);
 
             //* ASSERT
-            //Looks like GetAccount returns a null Account instead of a NotFoundResult, we can check for that instead
+            /*
+            ! Looks like when GetAccount returns a NotFound result, it doesn't actually return an Action
+            ! Instead it just returns a null object, but that works too
+            */
             Assert.Null(result.Result.Value);
         }
 
@@ -97,6 +100,7 @@ namespace Tests
             Assert.IsType<Microsoft.AspNetCore.Mvc.NoContentResult>(result.Result);
         }
 
+        //* Test PutAccount(id, account) with an invalid id that doesn't match the account
         [Fact]
         public void PutAccountBadID(){
             //* ARRANGE
@@ -115,6 +119,7 @@ namespace Tests
             Assert.IsType<Microsoft.AspNetCore.Mvc.BadRequestResult>(result.Result);
         }
 
+        //* Test PutAccount(id, account) with an invalid account
         [Fact]
         public void PutAccountInvalidAccount(){
             //* ARRANGE
@@ -129,20 +134,136 @@ namespace Tests
             Assert.IsType<Microsoft.AspNetCore.Mvc.NotFoundResult>(result.Result);
         }
 
-        //TODO: Test PostAccount(account) endpoint
+        //* Test PostAccount(account) endpoint
+        [Fact]
+        public void PostAccountCreatesAccount(){
+            //* ARRANGE
+            int id = 20;
+            var temp = new Account{Acct_Id=id, User_Id=7, Type="checking", Balance=0};
+            var controller = new AccountsController(_bankcontext);
 
-        //TODO: Test GetMyIncome(id) endpoint with valid account id
+            //* ACT
+            var result = controller.PostAccount(temp);
+            _output.WriteLine($"Result: {result.Result.Result}");
 
-        //TODO: Test GetMyIncome(id) endpoint with invalid account id
+            //* ASSERT
+            //if the account was created, we should get back a CreatedAtActionResult
+            //! since Post returns an ActionResult, we need the Result of the Result
+            Assert.IsType<Microsoft.AspNetCore.Mvc.CreatedAtActionResult>(result.Result.Result);
+        }
 
-        //TODO: Test GetMyExpenses(id) endpoint with valid account id
+        //* Test GetMyIncome(id) endpoint
+        [Theory]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        public void GetMyIncomeReturnsIncome(int id){
+            //* ARRANGE
+            var controller = new AccountsController(_bankcontext);
 
-        //TODO: Test GetMyExpenses(id) endpoint with invalid account id
+            //* ACT
+            var result = controller.GetMyIncome(id).Value;
+            _output.WriteLine($"Income for {id} is ${result}");
 
-        //TODO: Test GetMyBalance(id) endpoint
+            //* ASSERT
+            Assert.IsType<Double>(result);
+        }
 
-        //TODO: Test DeleteAccount(id) endpoint with valid account id
+        //* Test GetMyExpenses(id) endpoint
+        [Theory]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        public void GetMyExpensesReturnsExpenses(int id){
+            //* ARRANGE
+            var controller = new AccountsController(_bankcontext);
 
-        //TODO: Test DeleteAccount(id) endpoint with invalid account id
+            //* ACT
+            var result = controller.GetMyExpenses(id).Value;
+            _output.WriteLine($"Expense for {id} is ${result}");
+
+            //* ASSERT
+            Assert.IsType<Double>(result);
+        }
+
+        //* Test GetMyBalance(id) endpoint
+        [Theory]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        public void GetMyBalanceReturnsBalance(int id){
+            //* ARRANGE
+            var controller = new AccountsController(_bankcontext);
+
+            //* ACT
+            var result = controller.GetMyBalance(id).Value;
+            _output.WriteLine($"Balance for {id} is ${result}");
+
+            //* ASSERT
+            Assert.IsType<Double>(result);
+            //! Just gotta change GetMyBalance so it just returns the normal balance
+            //Assert.True(result>=0);
+        }        
+
+        //* Test Account(id) endpoint
+        [Fact]
+        public void DeleteAccountWithValidID(){
+            //* ARRANGE
+            var controller = new AccountsController(_bankcontext);
+            int id=6;
+
+            //* ACT
+            var delresult = controller.DeleteAccount(id);
+            //quick get attempt to see if it is gone
+            var getallresult = controller.GetAccount().Result.Value;
+            //just to print the final table to the test console
+            foreach(Account a in getallresult){
+                _output.WriteLine($"Acct: {a.Acct_Id} Usr: {a.User_Id} Type: {a.Type} Bal: ${a.Balance}");
+            }
+            var getresult = controller.GetAccount(id);
+
+            //* ASSERT
+            Assert.IsType<Microsoft.AspNetCore.Mvc.NoContentResult>(delresult.Result);
+            Assert.Null(getresult.Result.Value);
+        }
+
+        //* Test DeleteAccount(id) endpoint with invalid account id
+        [Fact]
+        public void DeleteAccountWithBadID(){
+            //* ARRANCE
+            var controller = new AccountsController(_bankcontext);
+            int id = 1;
+
+            //* ACT
+            var delresult = controller.DeleteAccount(id);
+            _output.WriteLine($"Result of bad ID: {delresult.Result}");
+
+            //* ASSERT
+            Assert.IsType<Microsoft.AspNetCore.Mvc.NotFoundResult>(delresult.Result);
+        }
+
+        //* Test DeleteAccount(id) endpoint when its balance is not zero
+        [Fact]
+        public void DeleteAccountWithNonzeroBalance(){
+            //* ARRANGE
+            var controller = new AccountsController(_bankcontext);
+            int id = 2;
+
+            //* ACT
+            var delresult = controller.DeleteAccount(id);
+            _output.WriteLine($"Result of Nonzero balance: {delresult.Result}");
+            //quick get to be completely sure
+            var getallres = controller.GetAccount().Result.Value;
+            foreach (Account a in getallres){
+                _output.WriteLine($"Acct: {a.Acct_Id} Usr: {a.User_Id} Type: {a.Type} Bal: ${a.Balance}");
+            }
+
+            //* ASSERT
+            //! Nonzero balance returns a BadRequestObject result on nonzero balance
+            Assert.IsType<Microsoft.AspNetCore.Mvc.BadRequestObjectResult>(delresult.Result);
+        }
     }
 }
