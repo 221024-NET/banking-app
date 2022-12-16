@@ -1,12 +1,13 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { AngularWebStorageModule } from 'angular-web-storage';
 import { LocalStorage, StorageService } from 'angular-web-storage';
 
-// @Injectable()
+export const currentTheme = new InjectionToken<string>('currentTheme');
+
+@Injectable()
 export class ThemeService {
-  constructor(
-    @Inject(LocalStorage) private local: StorageService,
-    currentTheme: string
-  ) {}
+  constructor(@Inject(LocalStorage) private local: StorageService) {}
+
   themeBtn = document.querySelector('#theme-btn') as HTMLButtonElement;
   themeIcon = document.querySelector('#theme-icon') as HTMLImageElement;
   icons = document.querySelectorAll(

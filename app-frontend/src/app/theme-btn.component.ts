@@ -38,13 +38,13 @@ import { ThemeService } from './services/theme.service';
 export class ThemeBtnComponent implements OnInit {
   constructor(private darkModeService: ThemeService) {}
 
-  toggleDarkMode(): void {
-    if (this.darkModeService.isDarkModeEnabled()) {
-      this.darkModeService.disableDarkMode();
-    } else {
-      this.darkModeService.enableDarkMode();
-    }
-  }
+  // toggleDarkMode(): void {
+  //   if (this.darkModeService.isDarkModeEnabled()) {
+  //     this.darkModeService.disableDarkMode();
+  //   } else {
+  //     this.darkModeService.enableDarkMode();
+  //   }
+  // }
 
   ngOnInit() {}
 }
