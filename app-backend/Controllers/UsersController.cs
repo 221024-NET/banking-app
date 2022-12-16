@@ -23,10 +23,14 @@ namespace app_backend.Controllers
         }
 
         // GET: api/Users
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        [HttpGet(Name = "GetUsers")]
+        //public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        //{
+        //    return await _context.Users.ToListAsync();
+        //}
+        public IEnumerable<User> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return _context.Users.ToArray();
         }
 
         // GET: api/Users/5
