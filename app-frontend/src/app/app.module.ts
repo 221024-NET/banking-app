@@ -1,3 +1,5 @@
+import { LoginComponent } from './components1/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,13 +11,15 @@ import { UserModule } from './user.module';
 import { MainComponent } from './main/main.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent],
+  declarations: [AppComponent, MainComponent, LoginComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutesModule,
     LandingModule,
     UserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
