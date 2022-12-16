@@ -16,10 +16,4 @@ export class LoginService {
   public PostLogin(user: Object) {
     return this.http.post(this.url + "Users/login", user);
   }
-
-  public GetAllUsers(): Observable<User[]> {
-    return this.http
-    .get<User[]>(this.url + "Users")
-    .pipe(map( (users: User[]) => users.map(user => new User(user) )));
-  }
 }
