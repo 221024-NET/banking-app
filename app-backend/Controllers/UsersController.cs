@@ -37,7 +37,7 @@ namespace app_backend.Controllers
             var response = _context.Users.Where(u => u.email == currentuser.email && u.password == currentuser.password).FirstOrDefault();
             if(response == null)
             {
-                return BadRequest();
+                return BadRequest("Invalid Email/Password");
             }
 
             return response;
