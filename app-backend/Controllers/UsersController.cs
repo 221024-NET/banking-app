@@ -24,13 +24,9 @@ namespace app_backend.Controllers
 
         // GET: api/Users
         [HttpGet(Name = "GetUsers")]
-        //public async Task<ActionResult<IEnumerable<User>>> GetUsers()
-        //{
-        //    return await _context.Users.ToListAsync();
-        //}
-        public IEnumerable<User> GetUsers()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return _context.Users.ToArray();
+           return await _context.Users.ToListAsync();
         }
 
         // GET: api/Users/5
@@ -85,6 +81,8 @@ namespace app_backend.Controllers
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+
+            
 
             return CreatedAtAction("GetUser", new { id = user.user_ID }, user);
         }

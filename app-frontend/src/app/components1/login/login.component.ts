@@ -40,7 +40,9 @@ export class LoginComponent {
 
       this.Currentuser.setData(this.User);
 
-      this.router.navigateByUrl("/");
+      if(this.User.user_ID != null){
+        this.router.navigateByUrl("/");
+      }
     }
   }
 }
