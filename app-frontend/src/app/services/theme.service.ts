@@ -1,6 +1,8 @@
 import { Injectable, InjectionToken } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
 
+// TODO: What happened here??
+
 export const currentTheme = new InjectionToken<string>('currentTheme');
 
 @Injectable()
@@ -9,7 +11,6 @@ export class ThemeService {
 
   currentTheme = '';
 
-  // TODO: Refactor storage with methods
   loadPref = () => {
     let theme = this.storage
       .get('themePref', { type: 'string' })
