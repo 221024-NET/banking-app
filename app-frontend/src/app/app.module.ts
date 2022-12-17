@@ -1,19 +1,21 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutesModule } from './app-routes.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { LandingPagesModule } from './landing-pages/landing-pages.module';
-import { UserPagesModule } from './user-pages/user-pages.module';
+// Components
+import { LandingModule } from './landing.module';
+import { UserModule } from './user.module';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MainComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    SharedModule,
-    LandingPagesModule,
-    UserPagesModule,
+    AppRoutesModule,
+    LandingModule,
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
