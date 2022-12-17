@@ -1,57 +1,80 @@
 <div class="container-fluid px-1">
-  <!-- <button type="button" class="btn hero-btnbtn-sm btn-outline-info">
-    Dashboard
-  </button> -->
-
+  <h3 class="text-center mt-3">Account Dashboard</h3>
   <div
-    class="row row-cols-md-2 justify-content-center align-content-center p-2"
+    class="row row-cols-md-2 justify-content-center align-content-center p-4"
   >
-    <div class="col-md-4 mx-auto border border-success border-3 rounded p-2">
+    <div
+      class="dash-card col-md-4 mx-auto p-2 border border-success border-3 rounded"
+    >
       <h3 class="text-center">Checking Account</h3>
       <p class="fs.4 text-center">(Current Balance)</p>
       <div class="col-6 mx-auto">
-        <button type="button" class="btn btn-success btn-block">
+        <button type="button" class="btn dash-btn btn-success btn-block">
           View Transactions
         </button>
       </div>
     </div>
 
-    <div class="col-md-4 mx-auto border border-success border-3 rounded p-2">
+    <div
+      class="dash-card col-md-4 mx-auto p-2 border border-success border-3 rounded"
+    >
       <h3 class="text-center">Savings Account</h3>
       <p class="text-center">(Current Balance)</p>
-      <button type="button" class="btn btn-success btn-block">
-        View Transactions
-      </button>
+      <div class="col-6 mx-auto">
+        <button type="button" class="btn dash-btn btn-success btn-block">
+          View Transactions
+        </button>
+      </div>
     </div>
-    <!-- End row -->
   </div>
 
   <div
     class="row row-cols-md-2 justify-content-center align-content-center mx-2 p-2"
   >
-    <div class="col-md-3 mx-auto border border-success border-3 rounded p-2">
+    <div
+      class="dash-card col-md-3 mx-auto border border-success border-3 rounded"
+    >
       <h4 class="text-center">Monthly Budget Tracker</h4>
       <div class="col-6 mx-auto">
-        <button type="button" class="btn btn-success btn-block">
-          Go to Tracker
+        <button
+          (click)="goBudget()"
+          type="button"
+          class="btn dash-btn btn-success btn-block"
+        >
+          View Tracker
         </button>
       </div>
     </div>
 
-    <div class="col-md-3 mx-auto border border-success border-3 rounded p-2">
-      <h4 class="text-center">Send & Receive</h4>
+    <div
+      class="dash-card col-md-3 mx-auto border border-success border-3 rounded"
+    >
+      <h4 class="text-center">
+        Send & <br />
+        Request
+      </h4>
       <div class="col-6 mx-auto">
-        <button type="button" class="btn btn-success btn-block">
-          Send Money
+        <button
+          (click)="goSend()"
+          type="button"
+          class="btn dash-btn btn-success btn-block"
+        >
+          Send To Friends
         </button>
       </div>
     </div>
 
-    <div class="col-md-3 mx-auto border border-success border-3 rounded p-2">
-      <h4 class="text-center">Transfer Money</h4>
+    <div
+      class="dash-card col-md-3 mx-auto border border-success border-3 rounded p-2"
+    >
+      <h4 class="text-center">Transfer Money To Accounts</h4>
       <div class="col-6 mx-auto">
-        <button type="button" class="btn btn-success btn-block">
-          Go to Tracker
+        <button
+          (click)="goTransfer()"
+          type="button"
+          class="btn dash-btn btn-success btn-block"
+        >
+          Transfer Funds
         </button>
       </div>
     </div>

@@ -9,11 +9,6 @@ import { Router } from '@angular/router';
 export class UserNavComponent {
   constructor(private router: Router) {}
 
-  // TODO: add to btn:
-  // goDashboard() {
-  //   this.router.navigate(['/dashboard']);
-  // }
-
   goProfile() {
     this.router.navigate(['/profile']);
   }

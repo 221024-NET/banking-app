@@ -1,0 +1,12 @@
+label {
+    visibility: visible;
+    font-size: 22px;
+}
+
+.send-form {
+    width: 75%;
+}
+
+.input-group-text {
+    background-color: var(--secondary);
+}

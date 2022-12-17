@@ -63,6 +63,13 @@ form input:placeholder {
   letter-spacing: 5px;
 }
 
+/* Form Submit Btns */
+.l-submit {
+  margin: 0 auto;
+  padding: 10px;
+  width: 50%;
+}
+
 /* Accessibility class */
 .screen-reader {
   border: 0;
@@ -105,3 +112,40 @@ form input:placeholder {
 }
 
 /* User View Styles */
+.form-control {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--secondary);
+  border-radius: 3px;
+  outline: none;
+  color: var(--text-color);
+  display: block;
+  height: auto;
+  padding-left: 10px;
+  caret-color: var(--caret);
+  font-size: 18px;
+}
+
+.form-control:disabled {
+  background-color: #e6e2e2;
+}
+
+.form-control:focus {
+  border: none;
+  border-bottom: 3px solid var(--secondary);
+  border-radius: 3px;
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control:placeholder {
+  font-family: "Oxygen";
+  font-weight: bold;
+  opacity: 0.7;
+  letter-spacing: 5px;
+}
+
+.form-control-plaintext:focus {
+  box-shadow: none;
+}

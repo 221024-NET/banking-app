@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <h2 class="text-center">Send & Request</h2>
+  <div class="row justify-content-around align-content-center mt-5">
+    <div class="col-5 border border-success border-3 rounded">
+      <form role="form" class="send-form">
+        <label for="send-to">Send To: </label>
+
+        <div class="input-group">
+          <span class="input-group-text" id="input-group-left-example">@</span>
+          <input
+            type="email"
+            class="form-control"
+            id="send-to"
+            placeholder="Email"
+          />
+        </div>
+
+        <label for="send-amount">Amount:</label>
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+          <input type="text" class="form-control" id="send-amount" />
+          <span class="input-group-text">.00</span>
+        </div>
+
+        <label for="send-message">Message <i>(opt):</i></label>
+        <div class="input-group">
+          <span class="input-group-text">" "</span>
+
+          <input type="text" class="form-control" id="send-message" />
+        </div>
+        <button type="submit" class="btn btn-block btn-success">Send</button>
+      </form>
+    </div>
+
+    <div class="col-5 border border-success border-3 rounded">
+      <form role="form" class="send-form">
+        <label for="request-from">Request From: </label>
+        <div class="input-group">
+          <span class="input-group-text">"@</span>
+          <input
+            type="email"
+            class="form-control"
+            id="request-from"
+            placeholder="Email"
+          />
+        </div>
+        <label for="request-amount">Amount:</label>
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+          <input type="text" class="form-control" id="request-amount" />
+          <span class="input-group-text">.00</span>
+        </div>
+        <label for="request-amount">Amount:</label>
+
+        <div class="input-group">
+          <span class="input-group-text">" "</span>
+          <input type="text" class="form-control" id="request-message" />
+        </div>
+        <button type="submit" class="btn btn-block btn-success">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
