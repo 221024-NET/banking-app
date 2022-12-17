@@ -16,6 +16,7 @@ public class BankingDBFixture : IDisposable
         Context.Add(new User{user_ID = 4, email = "test@test.com", first_name = "Test", last_name = "Test", address = "1234 Test Rd", password = "test1"});
         Context.Add(new User{user_ID = 6, email = "pisithsork@yahoo.com", first_name = "Pisith", last_name = "Sork", address = "1234 Street Rd.", password = "12345"});
         Context.Add(new User{user_ID = 7, email = "bob@gmail.com", first_name = "bob", last_name = "bob", address = "2456 bob ave", password = "bobbob"});
+        Context.Add(new User{user_ID = 8, email = "barry@yahoo.com", first_name="", last_name="", address="", password="flash"});
 
         //Accounts
         Context.Add(new Account { Acct_Id = 2, User_Id = 4, Type = "checking", Balance = 1000 });   
@@ -25,8 +26,8 @@ public class BankingDBFixture : IDisposable
         Context.Add(new Account { Acct_Id = 6, User_Id = 7, Type = "checking", Balance = 0 });
 
         //Transactions
-        Context.Add(new Transactions{ref_id = 1, src_acct = 5, dst_acct = 4, status = "string", amount = 500});
-        Context.Add(new Transactions{ref_id = 2, src_acct = 5, dst_acct = 4, status = "string", amount = 500});
+        Context.Add(new Transactions{ref_id = 1, src_acct = 5, dst_acct = 4, status = "pending", amount = 500});
+        Context.Add(new Transactions{ref_id = 2, src_acct = 5, dst_acct = 4, status = "pending", amount = 500});
         Context.Add(new Transactions{ref_id = 3, src_acct = 5, dst_acct = 2, status = "approved", amount = 1000});
         Context.Add(new Transactions{ref_id = 4, src_acct = 2, dst_acct = 3, status = "approved", amount = 200});
         Context.Add(new Transactions{ref_id = 5, src_acct = 3, dst_acct = 4, status = "approved", amount = 100});
