@@ -217,4 +217,11 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
         Assert.IsType<Transactions[]>(getresult);
         Assert.Empty(getresult);
     }
+
+    //TODO: Test PutTransaction(id, transaction) endpoint with valid id & transaction
+
+    //TODO: Test PutTransaction(id, transaction) endpoint with invalid id
+
+    //TODO: Test PutTransaction(id, transaction) endpoint with invalid transaction
+
 }
