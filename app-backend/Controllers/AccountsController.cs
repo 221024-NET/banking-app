@@ -91,21 +91,21 @@ namespace app_backend.Controllers
 
         //GET: api/Accounts/my-income/{id}
         [HttpGet("my-income/{id}")]
-        public ActionResult<double> GetMyIncome(int id)
+        public ActionResult<double> GetAcctIncome(int id)
         {
             return getIncome(id);
         }
 
         //GET: api/Accounts/my-espenses/{id}
         [HttpGet("my-expenses/{id}")]
-        public ActionResult<double> GetMyExpenses(int id)
+        public ActionResult<double> GetAcctExpenses(int id)
         {
             return getExpenses(id);
         }
 
         //GET: api/Accounts/my-balance/{id}
         [HttpGet("my-balance/{id}")]
-        public ActionResult<double> GetMyBalance(int id)
+        public ActionResult<double> GetAcctBalance(int id)
         {
             return getBalance(id);
         }
@@ -169,5 +169,7 @@ namespace app_backend.Controllers
         {
             return getIncome(id) - getExpenses(id);
         }
+
+
     }
 }

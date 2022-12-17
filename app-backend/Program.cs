@@ -8,6 +8,7 @@ var connValue = builder.Configuration.GetValue<string>("ConnectionStrings:bankin
 builder.Services.AddDbContext<BankingContext>(opts =>
     opts.UseSqlServer(connValue)
 );
+builder.Services.AddMvc().AddControllersAsServices();
 
 // Add services to the container.
 

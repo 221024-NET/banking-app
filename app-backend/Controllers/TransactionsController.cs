@@ -16,10 +16,16 @@ namespace app_backend.Controllers
     public class TransactionsController : ControllerBase
     {
         private readonly BankingContext _context;
+        private AccountsController? acctcontr;
+        private UsersController? usercontr;
 
-        public TransactionsController(BankingContext context)
+        
+
+        public TransactionsController(BankingContext context, AccountsController acctcontr, UsersController usercontr)
         {
             _context = context;
+            this.acctcontr = new AccountsController(_context);
+            this.usercontr = new UsersController(_context);
         }
 
         //GET: api/Transactions
@@ -43,9 +49,26 @@ namespace app_backend.Controllers
 
         //POST: api/Transactions
         [HttpPost]
-        public async Task<IActionResult> PostTransaction(Transactions transaction)
+        public async Task<IActionResult> PostTransaction(Transactions transaction, int acctid)
         {
             transaction.ref_id = 0;
+            transaction.status = "";
+            ActionResult<double> accBal = acctcontr.GetAcctBalance(acctid);
+            decimal currentbalance = (decimal)accBal.Value;
+
+            if (currentbalance <= transaction.amount)
+            {
+                return BadRequest("Insufficient Funds");
+            }
+
+            if (transaction.src_acct == null)
+            {
+                transaction.status = "deposit";
+}
+            else if (transaction.dst_acct == null)
+            {
+                transaction.status = "withdrawal";
+}
             _context.Transaction.Add(transaction);
             await _context.SaveChangesAsync();
             return NoContent();
@@ -73,6 +96,18 @@ namespace app_backend.Controllers
             var transactions = _context.Transaction.Where(t => t.src_acct == id || t.dst_acct == id).ToArray();
             return transactions;
         }
+
+        /*[HttpGet("account/all/{id}")]
+        public async Task<IEnumerable<Transactions>> SortTransactions(int id)
+        {
+            var listoftrans = GetTransactionsAll(id);
+            foreach (var trans in listoftrans)
+            {
+                if (trans.src_acct == id)
+            }
+            var transactions = _context.Transaction.Where(t => t.src_acct == id || t.dst_acct == id).ToArray();
+            return transactions;
+        }*/
 
         //GET: api/Transactions/account/to/{id}, id is an ACCOUNT ID
         [HttpGet("account/to/{id}")]
