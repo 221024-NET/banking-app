@@ -8,7 +8,7 @@ import { LoginComponent } from './components1/login/login.component';
 import { SignupComponent } from './components1/signup/signup.component';
 // ! Do not delete:
 import { DashboardComponent } from './components2/dashboard/dashboard.component';
-// import { ProfileComponent } from './components2/profile/profile.component';
+import { ProfileComponent } from './components2/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,7 +18,7 @@ export const routes: Routes = [
   { path: 'forgot-password', component: ForgotPwComponent },
   // User views
   { path: 'dashboard', component: DashboardComponent },
-  // { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({
