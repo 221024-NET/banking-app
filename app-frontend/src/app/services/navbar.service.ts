@@ -22,7 +22,7 @@ export class NavbarService {
 
 // TODO: Add this to currUser service when done
 // import { NavbarService } from './navbar.service';
-// Setter: this.navbarService.showNavbar = false;
+// Setter: this.navbarService.changeNavBar = false;
 // @Injectable({
 //   providedIn: 'root',
 // })
@@ -30,7 +30,7 @@ export class NavbarService {
 //   constructor(private navbarService: NavbarService) {}
 
 //   doSomething() {
-//     const showNavbar = this.navbarService.showNavbar;
-//     // do something with the showNavbar value
+//     const changeNavBar = this.navbarService.changeNavBar;
+//     // do something with the changeNavBar value
 //   }
 // }
