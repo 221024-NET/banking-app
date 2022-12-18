@@ -2,32 +2,59 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { User } from 'src/app/classes/userobject';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CurrentuserService } from 'src/app/services/currentuser.service';
+import { Router } from '@angular/router';
 
 // ! Include forms here
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  Users?: User[];
+  User!: any;
   formdata: any;
+  formUser = new User(0, "", "", "", "", "");
 
-  constructor(private service: LoginService) {}
+
+  constructor(private service: LoginService, private Currentuser: CurrentuserService, private router: Router) {
+
+  }
 
   ngOnInit(): void {
-
-  }
-
-  GetUsers() {
-    console.log("Calling GetUsers()");
-    // this.service.GetAllUsers().subscribe((data: User[]) => {this.Users = data});
-    this.service.GetAllUsers().subscribe((data: User[]) => {
-      console.log("Raw data: ");
-      console.log(data);
-      this.Users = data;
-      console.log("Users array: ");
-      console.log(this.Users);
+    this.formdata = new FormGroup({
+      email: new FormControl(""),
+      password: new FormControl("")
     });
   }
+  PostLogin(user: User){
+    
+
+    if(!this.formdata.valid){
+      this.formdata.markAllAsTouched();
+    }
+    else{
+      this.formUser.email = user.email;
+      this.formUser.password = user.password;
+      console.log(user.email);
+      console.log(user.password);
+
+      this.service.PostLogin(this.formUser).subscribe(
+        
+          (data) =>{ this.User = data;
+          console.log(this.User.email);
+          this.Currentuser.setData(this.User);
+          this.router.navigateByUrl("/");
+          },
+      (error) => {
+        alert("Invalid email/password");
+        console.log("Invalid email/password")
+      })
+      
+
+      
+    }
+  }
+  
 }

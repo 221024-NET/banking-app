@@ -1,8 +1,8 @@
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { User } from '../classes/userobject';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +17,7 @@ export class LoginService {
     return this.http.post(this.url + "Users/login", user);
   }
 
-  public GetAllUsers(): Observable<User[]> {
-    return this.http
-    .get<User[]>(this.url + "Users")
-    .pipe(map( (users: User[]) => users.map(user => new User(user) )));
+  handleError(error: HttpErrorResponse){
+    return throwError(error);
   }
 }
