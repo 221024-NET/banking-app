@@ -4,6 +4,8 @@ import { User } from 'src/app/classes/userobject';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CurrentuserService } from 'src/app/services/currentuser.service';
 import { Router } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
+import { LoginService } from 'src/app/services/login.service';
 // ! Include forms here
 @Component({
   selector: 'app-signup',
@@ -16,7 +18,7 @@ export class SignupComponent {
   formdata: any;
   formUser = new User(0, "", "", "", "", "");
 
-  constructor(private service: RegisterService, private newuser: CurrentuserService, private router: Router){
+  constructor(private registerservice: RegisterService, private loginservice: LoginService, private newuser: CurrentuserService, private router: Router){
 
   }
 
@@ -41,12 +43,17 @@ export class SignupComponent {
       this.formUser.address = user.address;
       this.formUser.email = user.email;
       this.formUser.password = user.password;
-      this.service.PostRegister(this.formUser).subscribe((data) => {this.User = data;})
-      
-      if(this.User.user_ID != null){
-        this.router.navigateByUrl("/login")
-      }
-    
+      this.registerservice.PostRegister(this.formUser).subscribe(
+        (data) => {
+          this.User = data;
+          this.loginservice.PostLogin(this.formUser).subscribe( (data) => {this.User = data});
+          this.newuser.setData(this.User);
+          this.router.navigateByUrl("/dashboard");},
+        (error) =>{
+          alert("Email exist already");
+        console.log("Email exist already")
+
+        })    
     }
   }
 
