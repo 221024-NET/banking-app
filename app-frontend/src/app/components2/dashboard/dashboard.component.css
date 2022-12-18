@@ -1,0 +1,17 @@
+.container-fluid {
+    min-height: 100%;
+}
+
+.row {
+    margin: 10px;
+}
+
+.dash-card {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.dash-btn:hover {
+    border: 1px solid #f4f4f4;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1), 0 0 12px #fff;
+}

@@ -1,33 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/login.service';
-import { User } from 'src/app/classes/userobject';
+import { LoginService } from './../../services/login.service';
+import { User } from './../../classes/userobject';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
-// ! Include forms here
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  Users?: User[];
-  formdata: any;
-
-  constructor(private service: LoginService) {}
-
-  ngOnInit(): void {
-
-  }
-
-  GetUsers() {
-    console.log("Calling GetUsers()");
-    // this.service.GetAllUsers().subscribe((data: User[]) => {this.Users = data});
-    this.service.GetAllUsers().subscribe((data: User[]) => {
-      console.log("Raw data: ");
-      console.log(data);
-      this.Users = data;
-      console.log("Users array: ");
-      console.log(this.Users);
-    });
-  }
+  // * when the user clicks the Submit button, the login process will be performed and, if the login is successful, the user will be redirected to the desired routerLink.
+  constructor() {}
+  // constructor(private loginService: LoginService, private router: Router) {}
+  // TODO: add
+  // submit() {
+  //   // perform login process here, including setting the isLoggedIn value in the LoginService
+  //   this.loginService.isLoggedIn$.subscribe((isLoggedIn) => {
+  //     if (isLoggedIn) {
+  //       this.router.navigate(['/home']);
+  //     }
+  //   });
+  // }
 }
