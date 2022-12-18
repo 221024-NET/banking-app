@@ -6,10 +6,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class NavbarService {
-  private _changeNavBar = new BehaviorSubject<boolean>(false);
+  private _changeNavBar = new BehaviorSubject<boolean>(true);
   changeNavBar$ = this._changeNavBar.asObservable();
-  private _showFooter = new BehaviorSubject<boolean>(true);
-  showFooter$ = this._showFooter.asObservable();
   showNavbar$: Observable<boolean>;
 
   constructor() {
@@ -26,6 +24,5 @@ export class NavbarService {
 
   set changeNavBar(value: boolean) {
     this._changeNavBar.next(value);
-    this._showFooter.next(!value);
   }
 }
