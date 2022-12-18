@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-user-nav',
@@ -7,13 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-nav.component.css'],
 })
 export class UserNavComponent {
-  constructor(private router: Router) {}
+  constructor(private navbarService: NavbarService, private router: Router) {}
 
   goProfile() {
     this.router.navigate(['/profile']);
   }
 
   logout() {
+    this.navbarService.showNavbar = !this.navbarService.showNavbar;
     this.router.navigate(['/home']);
   }
 }

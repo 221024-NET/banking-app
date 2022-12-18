@@ -11,6 +11,7 @@ import { ProfileComponent } from './components2/profile/profile.component';
 import { TransferComponent } from './components2/transfer/transfer.component';
 import { SendComponent } from './components2/send/send.component';
 import { BudgetComponent } from './components2/budget/budget.component';
+import { TransactionsComponent } from './components2/transactions/transactions.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ export const routes: Routes = [
   { path: 'transfer', component: TransferComponent },
   { path: 'send', component: SendComponent },
   { path: 'budget', component: BudgetComponent },
+  { path: 'transactions', component: TransactionsComponent },
 ];
 
 @NgModule({

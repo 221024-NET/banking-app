@@ -13,6 +13,10 @@ export class DashboardComponent {
     this.router.navigate(['/profile']);
   }
 
+  goTransactions() {
+    this.router.navigate(['transactions']);
+  }
+
   goTransfer() {
     this.router.navigate(['/transfer']);
   }

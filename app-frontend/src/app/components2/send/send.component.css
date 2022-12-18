@@ -1,6 +1,6 @@
 label {
+    font-size: 18px;
     visibility: visible;
-    font-size: 22px;
 }
 
 .send-form {
@@ -9,4 +9,9 @@ label {
 
 .input-group-text {
     background-color: var(--secondary);
+    color: white;
+}
+
+.dash-btn {
+    display: inline;
 }
