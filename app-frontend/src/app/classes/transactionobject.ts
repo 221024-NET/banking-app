@@ -7,12 +7,12 @@ export class Transaction implements ITransaction {
     status: string;
     amount: number;
 
-  constructor(ref_Id: number, src_acct: number, dst_acct: number, status: string, amount: number) {
-    this.ref_Id = ref_Id;
-    this.src_acct = src_acct;
-    this.dst_acct = dst_acct;
-    this.status = status;
-    this.amount = amount;
+  constructor(ITransaction: ITransaction) {
+    this.ref_Id = ITransaction.ref_Id;
+    this.src_acct = ITransaction.src_acct;
+    this.dst_acct = ITransaction.dst_acct;
+    this.status = ITransaction.status;
+    this.amount = ITransaction.amount;
   }
   
 }

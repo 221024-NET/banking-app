@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../services/login.service';
+import { LoginService } from '../../services/superservice.service';
 import { User } from '../../classes/userobject';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CurrentuserService } from '../../services/currentuser.service';
@@ -48,11 +48,10 @@ export class LoginComponent {
           this.Currentuser.setData(this.User);
           this.service.GetAccounts(this.User.user_ID).subscribe(
             (data2) => {
-              console.log(data2[0].acct_Id);
+              this.Currentuser.setAccts(data2);
+              this.router.navigateByUrl('/dashboard');
             }
           )
-          // this.router.navigateByUrl('/');
-          // console.log(this.Currentuser.getnumAcct);
         },
         (error) => {
           alert('Invalid email/password');

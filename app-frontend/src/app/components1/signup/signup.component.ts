@@ -5,7 +5,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { CurrentuserService } from 'src/app/services/currentuser.service';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginService } from 'src/app/services/superservice.service';
 
 @Component({
   selector: 'app-signup',

@@ -2,6 +2,7 @@ import { Injectable, NgModule } from '@angular/core';
 import { User } from '../classes/userobject';
 import { Router } from '@angular/router';
 import { Account } from '../classes/accountobject';
+import { Transaction } from '../classes/transactionobject';
 import { empty } from 'rxjs';
 
 @Injectable({
@@ -31,6 +32,9 @@ export class CurrentuserService {
 
   setAccts(accounts: Account[]){
     this.currentaccounts = accounts;
+  }
+  getAccts(): Account[]{
+    return this.currentaccounts;
   }
   getData(): User{
     return this.currentuser;
