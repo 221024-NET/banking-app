@@ -2,14 +2,16 @@
   <h2>Welcome Back</h2>
   <h6>Log into your user account:</h6>
   <!--FORM BOX-->
-  <form>
+  <form [formGroup]="formdata" (ngSubmit)="PostLogin(formdata.value)">
     <label class="screen-reader" for="login-email">Enter Email</label>
     <div class="input">
-      <input type="email" class="input-text" placeholder="Email" required />
+      <input formControlName="email" name="email" type="email" class="input-text" placeholder="Email" required />
     </div>
     <label class="screen-reader" for="login-password">Enter Password</label>
     <div class="input">
       <input
+        formControlName="password"
+        name="name"
         type="password"
         class="input-text"
         placeholder="Password"
@@ -17,13 +19,8 @@
       />
     </div>
     <label class="screen-reader" for="login-btn"></label>
-    <button class="hero-btn l-submit" type="button" (click)="GetUsers()">Login</button>
+    <button class="hero-btn l-submit" type="submit">Login</button>
   </form>
-  <div>
-    <li *ngFor="let user of Users">
-      {{ user.first_name}}
-    </li>
-  </div>
   <a routerLink="/forgotpw" href="/forgot-password" class="forgot-link"
     >Forgot password?</a
   >

@@ -23,10 +23,10 @@ namespace app_backend.Controllers
         }
 
         // GET: api/Users
-        [HttpGet]
+        [HttpGet(Name = "GetUsers")]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+           return await _context.Users.ToListAsync();
         }
 
         // GET: api/Users/5
@@ -37,7 +37,7 @@ namespace app_backend.Controllers
             var response = _context.Users.Where(u => u.email == currentuser.email && u.password == currentuser.password).FirstOrDefault();
             if(response == null)
             {
-                return BadRequest();
+                return BadRequest("Invalid Email/Password");
             }
 
             return response;
@@ -81,6 +81,8 @@ namespace app_backend.Controllers
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+
+            
 
             return CreatedAtAction("GetUser", new { id = user.user_ID }, user);
         }
