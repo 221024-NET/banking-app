@@ -6,6 +6,7 @@ import { CurrentuserService } from 'src/app/services/currentuser.service';
 import { Router } from '@angular/router';
 
 // ! Include forms here
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -36,13 +37,24 @@ export class LoginComponent {
     else{
       this.formUser.email = user.email;
       this.formUser.password = user.password;
-      this.service.PostLogin(this.formUser).subscribe((data) =>{ this.User = data;})
+      console.log(user.email);
+      console.log(user.password);
 
-      this.Currentuser.setData(this.User);
+      this.service.PostLogin(this.formUser).subscribe(
+        
+          (data) =>{ this.User = data;
+          console.log(this.User.email);
+          this.Currentuser.setData(this.User);
+          this.router.navigateByUrl("/");
+          },
+      (error) => {
+        alert("Invalid email/password");
+        console.log("Invalid email/password")
+      })
+      
 
-      if(this.User.user_ID != null){
-        this.router.navigateByUrl("/");
-      }
+      
     }
   }
+  
 }
