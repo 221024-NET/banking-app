@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SuperserviceService } from './superservice.service';
+import { LoginService } from './superservice.service';
 
 describe('SuperserviceService', () => {
-  let service: SuperserviceService;
+  let service: LoginService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SuperserviceService);
+    service = TestBed.inject(LoginService);
   });
 
   it('should be created', () => {
