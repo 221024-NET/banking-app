@@ -164,7 +164,7 @@ namespace Tests
             var controller = new AccountsController(_bankcontext);
 
             //* ACT
-            var result = controller.GetMyIncome(id).Value;
+            var result = controller.GetAcctIncome(id).Value;
             _output.WriteLine($"Income for {id} is ${result}");
 
             //* ASSERT
@@ -182,7 +182,7 @@ namespace Tests
             var controller = new AccountsController(_bankcontext);
 
             //* ACT
-            var result = controller.GetMyExpenses(id).Value;
+            var result = controller.GetAcctExpenses(id).Value;
             _output.WriteLine($"Expense for {id} is ${result}");
 
             //* ASSERT
@@ -200,7 +200,7 @@ namespace Tests
             var controller = new AccountsController(_bankcontext);
 
             //* ACT
-            var result = controller.GetMyBalance(id).Value;
+            var result = controller.GetAcctBalance(id).Value;
             _output.WriteLine($"Balance for {id} is ${result}");
 
             //* ASSERT
