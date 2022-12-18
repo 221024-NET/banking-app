@@ -15,7 +15,7 @@ export class UserNavComponent {
   }
 
   logout() {
-    this.navbarService.showNavbar = !this.navbarService.showNavbar;
+    this.navbarService.changeNavBar = !this.navbarService.changeNavBar;
     this.router.navigate(['/home']);
   }
 }

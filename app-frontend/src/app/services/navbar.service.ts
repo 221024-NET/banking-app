@@ -1,36 +1,31 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
-  // TODO: Add this to dark mode?
   providedIn: 'root',
 })
 export class NavbarService {
-  private _showNavbar = new BehaviorSubject<boolean>(true);
-  showNavbar$ = this._showNavbar.asObservable();
+  private _changeNavBar = new BehaviorSubject<boolean>(false);
+  changeNavBar$ = this._changeNavBar.asObservable();
+  private _showFooter = new BehaviorSubject<boolean>(true);
+  showFooter$ = this._showFooter.asObservable();
+  showNavbar$: Observable<boolean>;
 
-  constructor() {}
-
-  get showNavbar(): boolean {
-    return this._showNavbar.getValue();
+  constructor() {
+    this.showNavbar$ = this.changeNavBar$.pipe(
+      map((changeNavBar) => {
+        return !changeNavBar;
+      })
+    );
   }
 
-  set showNavbar(value: boolean) {
-    this._showNavbar.next(value);
+  get changeNavBar(): boolean {
+    return this._changeNavBar.getValue();
+  }
+
+  set changeNavBar(value: boolean) {
+    this._changeNavBar.next(value);
+    this._showFooter.next(!value);
   }
 }
-
-// TODO: Add this to currUser service when done
-// import { NavbarService } from './navbar.service';
-// Setter: this.navbarService.changeNavBar = false;
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class OtherService {
-//   constructor(private navbarService: NavbarService) {}
-
-//   doSomething() {
-//     const changeNavBar = this.navbarService.changeNavBar;
-//     // do something with the changeNavBar value
-//   }
-// }

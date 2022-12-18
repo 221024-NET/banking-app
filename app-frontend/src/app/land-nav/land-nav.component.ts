@@ -11,7 +11,7 @@ export class LandNavComponent implements OnInit {
   constructor(private navbarService: NavbarService, private router: Router) {}
 
   testLogin() {
-    this.navbarService.showNavbar = !this.navbarService.showNavbar;
+    this.navbarService.changeNavBar = !this.navbarService.changeNavBar;
     this.router.navigate(['/dashboard']);
   }
 
