@@ -1,8 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { StorageModule } from '@ngx-pwa/local-storage';
+// import { StorageModule } from '@ngx-pwa/local-storage';
 import { AppRoutesModule } from './app-routes.module';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 // Theme
 import { ThemeService } from './services/theme.service';
@@ -16,7 +17,7 @@ import { MainComponent } from './main/main.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    StorageModule,
+    RouterModule,
     AppRoutesModule,
     LandingModule,
     UserModule,
