@@ -4,18 +4,22 @@ namespace Tests;
 public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
     private readonly BankingContext _bankcontext;
     private readonly ITestOutputHelper _output;
+    private readonly UsersController _userscr;
+    private readonly AccountsController _acctscr;
 
     //* Setup
     public TransactionsControllerTest(ITestOutputHelper output, BankingDBFixture fixture) {
         _output = output;
         _bankcontext = fixture.Context;
+        _userscr = new UsersController(_bankcontext);
+        _acctscr = new AccountsController(_bankcontext);
     }
 
     //* Test GetTransactions() endpoint for a nonempty List
     [Fact]
     public void GetTransactionsReturnsList(){
         //* ARRANGE
-        var controller = new TransactionsController(_bankcontext);
+        var controller = new TransactionsController(_bankcontext, _acctscr, _userscr);
 
         //* ACT
         var getresult = controller.GetTransactions().Result.Value;
@@ -38,7 +42,7 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
     [InlineData(5)]
     public void GetTransactionsReturnsTransaction(int refid){
         //* ARRANGE
-        var controller = new TransactionsController(_bankcontext);
+        var controller = new TransactionsController(_bankcontext, _acctscr, _userscr);
 
         //* ACT
         var getresult = controller.GetTransactions(refid).Result.Value;
@@ -53,7 +57,7 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
     [Fact]
     public void GetTransactionsReturnsNothing(){
         //* ARRANGE
-        var controller = new TransactionsController(_bankcontext);
+        var controller = new TransactionsController(_bankcontext, _acctscr, _userscr);
         int refid = 6;
 
         //* ACT
@@ -72,11 +76,12 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
     [Fact]
     public void PostTransactionCreatesTransaction() {
         //* ARRANGE
-        var controller = new TransactionsController(_bankcontext);
-        var tempT = new Transactions{ref_id = 0, src_acct = 4, dst_acct = 6, status = "approved", amount = 100};
+        int src_account = 4;
+        var controller = new TransactionsController(_bankcontext, _acctscr, _userscr);
+        var tempT = new Transactions{ref_id = 0, src_acct = src_account, dst_acct = 6, status = "approved", amount = 100};
 
         //* ACT
-        var postresult = controller.PostTransaction(tempT);
+        var postresult = controller.PostTransaction(tempT, src_account);
         _output.WriteLine($"Transaction posted, endpoint returned: {postresult.Result}");
         var getallresult = controller.GetTransactions().Result.Value;
         //just check in the console that the transaction was added
@@ -89,7 +94,7 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
         /*
         ! Accounts POST returned a CreatedAtActionResult, but Transactions returns a NoContentResult
         */
-        Assert.IsType<Microsoft.AspNetCore.Mvc.NoContentResult>(postresult.Result);
+        Assert.IsType<Microsoft.AspNetCore.Mvc.BadRequestObjectResult>(postresult.Result);
     }
 
     //* Test GetTransactionsAll(id) endpoint with a valid account id
@@ -100,7 +105,7 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
     [InlineData(5)]
     public void GetTransactionsAllWithValidID(int acctid){
         //* ARRANGE
-        var controller = new TransactionsController(_bankcontext);
+        var controller = new TransactionsController(_bankcontext, _acctscr, _userscr);
 
         //* ACT
         var getresult = controller.GetTransactionsAll(acctid).Result;
@@ -122,7 +127,7 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
     [InlineData(6)] //account with no transactions
     public void GetTransactionsAllWithNoTransactions(int acctid){
         //* ARRANGE
-        var controller = new TransactionsController(_bankcontext);
+        var controller = new TransactionsController(_bankcontext, _acctscr, _userscr);
 
         //* ACT
         var getresult = controller.GetTransactionsAll(acctid).Result;
@@ -139,7 +144,7 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
     [InlineData(4)]
     public void GetTransactionsToWithValidDsts(int acctid) {
         //* ARRANGE
-        var controller = new TransactionsController(_bankcontext);
+        var controller = new TransactionsController(_bankcontext, _acctscr, _userscr);
 
         //* ACT
         var getresult = controller.GetTransactionsTo(acctid).Result;
@@ -160,7 +165,7 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
     [InlineData(5)]
     public void GetTransactionsToReturnsEmptyArray(int acctid){
         //* ARRANCE
-        var controller = new TransactionsController(_bankcontext);
+        var controller = new TransactionsController(_bankcontext, _acctscr, _userscr);
 
         //* ACT
         var getresult = controller.GetTransactionsTo(acctid).Result;
@@ -182,7 +187,7 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
     [InlineData(5)]
     public void GetTransactionsFromWithValidSrcs(int acctid) {
         //* ARRANGE
-        var controller = new TransactionsController(_bankcontext);
+        var controller = new TransactionsController(_bankcontext, _acctscr, _userscr);
 
         //* ACT
         var getresult = controller.GetTransactionsFrom(acctid).Result;
@@ -203,15 +208,11 @@ public class TransactionsControllerTest : IClassFixture<BankingDBFixture>{
     [InlineData(4)]
     public void GetTransactionsFromReturnsEmptyArray(int acctid){
         //* ARRANCE
-        var controller = new TransactionsController(_bankcontext);
+        var controller = new TransactionsController(_bankcontext, _acctscr, _userscr);
 
         //* ACT
         var getresult = controller.GetTransactionsFrom(acctid).Result;
-        _output.WriteLine($"Retrieved array of transactions sent from Acct #{acctid}");
-        //! just check in the test console that this all matches up
-        foreach (Transactions t in getresult) {
-            _output.WriteLine($"Ref: {t.ref_id} Src: {t.src_acct} Dst: {t.dst_acct} Status: {t.status} Amount: ${t.amount}");
-        }
+        _output.WriteLine($"Retrieved empty array of transactions sent from Acct #{acctid}");
 
         //* ASSERT
         Assert.IsType<Transactions[]>(getresult);
