@@ -6,7 +6,7 @@ import { CurrentuserService } from 'src/app/services/currentuser.service';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { LoginService } from 'src/app/services/login.service';
-// ! Include forms here
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',

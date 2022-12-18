@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CurrentuserService } from '../services/currentuser.service';
+import { Account } from '../classes/accountobject';
 
 @Component({
   selector: 'app-land-nav',
@@ -7,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./land-nav.component.css'],
 })
 export class LandNavComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private currentuser: CurrentuserService) {}
 
   goLogin() {
     this.router.navigate(['/login']);
@@ -17,5 +19,6 @@ export class LandNavComponent implements OnInit {
     this.router.navigate(['/signup']);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }
