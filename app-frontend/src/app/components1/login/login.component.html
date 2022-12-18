@@ -3,14 +3,15 @@
   <h6>Log into your user account:</h6>
   <!--FORM BOX-->
   <!-- TODO: (ngSubmit)="submit()" when login is done -->
-  <form>
+  <form [formGroup]="formdata" (ngSubmit)="PostLogin(formdata.value);">
     <label class="screen-reader" for="login-email">Enter Email</label>
     <div class="input">
-      <input type="email" class="input-text" placeholder="Email" required />
+      <input formControlName="email" type="email" class="input-text" placeholder="Email" required />
     </div>
     <label class="screen-reader" for="login-password">Enter Password</label>
     <div class="input">
       <input
+      formControlName="password"
         type="password"
         class="input-text"
         placeholder="Password"

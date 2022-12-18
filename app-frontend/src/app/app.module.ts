@@ -10,9 +10,12 @@ import { AppComponent } from './app.component';
 import { LandingModule } from './landing.module';
 import { UserModule } from './user.module';
 import { MainComponent } from './main/main.component';
+import { LoginComponent } from './components1/login/login.component';
+import { SignupComponent } from './components1/signup/signup.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent],
+  declarations: [AppComponent, MainComponent, LoginComponent, SignupComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -20,6 +23,9 @@ import { MainComponent } from './main/main.component';
     AppRoutesModule,
     LandingModule,
     UserModule,
+    FormsModule,
+    ReactiveFormsModule
+    
   ],
   providers: [ServicesModule],
   bootstrap: [AppComponent],

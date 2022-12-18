@@ -8,6 +8,7 @@ var connValue = builder.Configuration.GetValue<string>("ConnectionStrings:bankin
 builder.Services.AddDbContext<BankingContext>(opts =>
     opts.UseSqlServer(connValue)
 );
+builder.Services.AddMvc().AddControllersAsServices();
 
 // Add services to the container.
 
@@ -22,8 +23,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("https://localhost:7225",
-                                              "http://localhost:4200");
+                          policy.WithOrigins("https://localhost:7225/",
+                                              "http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
                       });
 });
 
@@ -42,5 +43,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();
