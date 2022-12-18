@@ -46,15 +46,16 @@ export class SignupComponent {
       this.registerservice.PostRegister(this.formUser).subscribe(
         (data) => {
           this.User = data;
-          this.loginservice.PostLogin(this.formUser).subscribe( (data) => {this.User = data});
           this.newuser.setData(this.User);
-          this.router.navigateByUrl("/dashboard");},
+          this.router.navigateByUrl("/dashboard");
+          },
         (error) =>{
           alert("Email exist already");
-        console.log("Email exist already")
-
+          console.log("Email exist already")
         })    
     }
+    //this.loginservice.PostLogin(this.formUser).subscribe( (data) => {this.User = data});
+    
   }
 
 }
