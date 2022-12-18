@@ -3,10 +3,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // import { StorageModule } from '@ngx-pwa/local-storage';
 import { AppRoutesModule } from './app-routes.module';
+import { ServicesModule } from './services/services.module';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-// Services
-import { ServicesModule } from './services/services.module';
 // Components
 import { LandingModule } from './landing.module';
 import { UserModule } from './user.module';
