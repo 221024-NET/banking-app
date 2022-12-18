@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavbarService } from '../services/navbar.service';
+import { CurrentuserService } from '../services/currentuser.service';
+import { Account } from '../classes/accountobject';
 
 @Component({
   selector: 'app-land-nav',
@@ -8,7 +10,7 @@ import { NavbarService } from '../services/navbar.service';
   styleUrls: ['./land-nav.component.css'],
 })
 export class LandNavComponent implements OnInit {
-  constructor(private navbarService: NavbarService, private router: Router) {}
+  constructor(private navbarService: NavbarService, private router: Router, private currentuser: CurrentuserService) {}
 
   testLogin() {
     this.navbarService.changeNavBar = !this.navbarService.changeNavBar;
@@ -23,5 +25,6 @@ export class LandNavComponent implements OnInit {
     this.router.navigate(['/signup']);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }

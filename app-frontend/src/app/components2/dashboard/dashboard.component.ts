@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CurrentuserService } from '../../services/currentuser.service';
+import { Account } from '../../classes/accountobject';
+import { User } from '../../classes/userobject';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/superservice.service';
+import { Transaction } from '../../classes/transactionobject';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,23 +12,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
-  constructor(private router: Router) {}
 
-  goProfile() {
-    this.router.navigate(['/profile']);
+  currentuser: User = new User(0, "", "", "", "", "");
+  currentaccounts: Account[] = [];
+  currenttrans: Transaction[] = [];
+  constructor(
+    private Currentuserservice: CurrentuserService,
+    private router: Router,
+    private LoginService: LoginService
+    // private Currentaccounts: AccountsService
+  ) {}
+
+  ngOnInit(): void{
+    this.currentuser = this.Currentuserservice.getData();
+    this.currentaccounts = this.Currentuserservice.getAccts();
+    this.LoginService.getTransactions(this.currentaccounts[0].acct_Id).subscribe(
+          (data) => {
+            this.currenttrans = data;
+            console.log(data);
+          });
+    
   }
 
-  goTransactions() {
-    this.router.navigate(['transactions']);
-  }
 
-  goTransfer() {
-    this.router.navigate(['/transfer']);
-  }
-
-  goSend() {
-    this.router.navigate(['/send']);
-  }
 
   goBudget() {
     this.router.navigate(['/budget']);
