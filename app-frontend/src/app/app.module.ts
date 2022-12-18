@@ -5,8 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutesModule } from './app-routes.module';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-// Theme
-import { ThemeService } from './services/theme.service';
+// Services
+import { ServicesModule } from './services/services.module';
 // Components
 import { LandingModule } from './landing.module';
 import { UserModule } from './user.module';
@@ -22,7 +22,7 @@ import { MainComponent } from './main/main.component';
     LandingModule,
     UserModule,
   ],
-  providers: [ThemeService],
+  providers: [ServicesModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
