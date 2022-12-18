@@ -1,4 +1,3 @@
-// TODO: Link buttons and page redirects
 const loginBtn = document.querySelector('#login-btn');
 const signupBtn = document.querySelector('#signup-btn');
 const faqBtn = document.querySelector('#faq-btn');

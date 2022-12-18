@@ -61,6 +61,7 @@
   font-size: 1em;
 }
 
+/* Landing page styles */
 .l-form-container {
   display: flex;
   height: 75%;
@@ -71,7 +72,4 @@
   padding: 15px 20px 15px 20px;
 }
 
-.l-submit {
-  margin: 0 auto;
-  width: 40%;
-}
+/* User page styles */
