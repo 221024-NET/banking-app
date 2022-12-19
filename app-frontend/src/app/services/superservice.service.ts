@@ -19,9 +19,14 @@ export class LoginService {
     return this.http.post(this.url + "Users/login", user);
   }
 
+
   public PutUser(user: Object){
     let userid = (user as User).user_ID;
     return this.http.put<any>(this.url + 'Users/' + userid.toString(), user);
+
+  public PostAccount(account: Object) {
+    return this.http.post(this.url + "Accounts", account);
+
   }
 
  public GetAccounts(id: number): Observable<Account[]> {
@@ -36,6 +41,18 @@ export class LoginService {
     .pipe(map( (transactions: Transaction[]) => transactions.map(transaction => new Transaction(transaction))));
   }
 
+  getIncome(acct_Id: number): Observable<number> {
+    return this.http.get<number>(this.url + "Accounts/my-income/" + acct_Id);
+  }
+      
+    
+  getExpense(acct_Id: number): Observable<number>{
+    return this.http.get<number>(this.url + "Accounts/my-expenses/" + acct_Id);
+    }
+
+  postTransaction(transaction: Object) {
+    return this.http.post(this.url + "Transactions", transaction);
+  }
 
   handleError(error: HttpErrorResponse){
     return throwError(error);
