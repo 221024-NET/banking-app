@@ -43,7 +43,6 @@ export class DashboardComponent implements OnInit {
   }
 
   createCheckings() {
-
     if (this.currentAccnts[0]) {
 
     } else {

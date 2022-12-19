@@ -6,12 +6,9 @@
     <div
       class="dash-card col-md-4 mx-auto p-2 border border-success border-3 rounded"
     >
-      <h3 class="text-center">{{ currentAccnts[0].type }} account</h3>
-
-      <p class="fs.4 text-center">
-        Route Number: {{ currentAccnts[0].acct_Id }}
-      </p>
-      <p class="fs.4 text-center">Balance: ${{ currentAccnts[0].balance }}</p>
+      <h3 class="text-center">{{currentAccnts[0].type}} account</h3>
+      <p class="fs.4 text-center">Route Number: {{currentAccnts[0].acct_Id}}</p>
+      <p class="fs.4 text-center">Balance: ${{currentAccnts[0].balance}}</p>
       <div class="col-6 mx-auto">
         <button
           (click)="createCheckings()"
@@ -26,11 +23,9 @@
     <div
       class="dash-card col-md-4 mx-auto p-2 border border-success border-3 rounded"
     >
-      <h3 class="text-center">{{ currentAccnts[1].type }} account</h3>
-      <p class="fs.4 text-center">
-        Route Number: {{ currentAccnts[1].acct_Id }}
-      </p>
-      <p class="text-center">Balance: ${{ currentAccnts[1].balance }}</p>
+      <h3 class="text-center">{{currentAccnts[1].type}} account</h3>
+      <p class="fs.4 text-center">Route Number: {{currentAccnts[1].acct_Id}}</p>
+      <p class="text-center">Balance: ${{currentAccnts[1].balance}}</p>
       <div class="col-6 mx-auto">
         <button
           (click)="createSavings()"

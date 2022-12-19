@@ -19,14 +19,13 @@ export class LoginService {
     return this.http.post(this.url + "Users/login", user);
   }
 
-
   public PutUser(user: Object){
     let userid = (user as User).user_ID;
     return this.http.put<any>(this.url + 'Users/' + userid.toString(), user);
-
+  }
+  
   public PostAccount(account: Object) {
     return this.http.post(this.url + "Accounts", account);
-
   }
 
  public GetAccounts(id: number): Observable<Account[]> {

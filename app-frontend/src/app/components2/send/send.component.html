@@ -3,10 +3,8 @@
   <div class="row justify-content-around align-content-center mt-5">
     <button class="button" (click)="goBack()">Back</button>
     <div class="col-5 border border-success border-3 rounded">
-
       <form [formGroup]="formdata" role="form" class="send-form" (ngSubmit)="PostToTransaction(formdata.value)">
         <label for="send-to">Account from: </label>
-
         <div class="input-group mb-2">
           <input
             formControlName="src_acct"
