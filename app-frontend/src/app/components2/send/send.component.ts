@@ -7,6 +7,14 @@ import { CurrentuserService } from 'app/services/currentuser.service';
 import { NavbarService } from 'app/services/navbar.service';
 import { LoginService } from '../../services/superservice.service';
 
+import { Router } from '@angular/router';
+import { Transaction } from 'app/classes/transactionobject';
+import { TransactionForm } from 'app/classes/transactionformobject';
+import { CurrentuserService } from 'app/services/currentuser.service';
+import { NavbarService } from 'app/services/navbar.service';
+import { LoginService } from '../../services/superservice.service';
+
+
 @Component({
   selector: 'app-send',
   templateUrl: './send.component.html',
@@ -38,7 +46,6 @@ export class SendComponent implements OnInit {
       transaction.ref_Id = 0;
       transaction.status = "approved";
       let Accounts = this.Currentuser.getAccts();
-
       if (transaction.src_acct == 0 || transaction.dst_acct == 0) {
         if (transaction.src_acct == 0) {
           transaction.src_acct = null;

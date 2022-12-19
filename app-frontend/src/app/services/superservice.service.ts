@@ -2,7 +2,7 @@ import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { User } from '../classes/userobject';
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Account } from '../classes/accountobject';
 import { Transaction } from '../classes/transactionobject';
 
@@ -19,6 +19,11 @@ export class LoginService {
     return this.http.post(this.url + "Users/login", user);
   }
 
+  public PutUser(user: Object){
+    let userid = (user as User).user_ID;
+    return this.http.put<any>(this.url + 'Users/' + userid.toString(), user);
+  }
+  
   public PostAccount(account: Object) {
     return this.http.post(this.url + "Accounts", account);
   }
@@ -34,6 +39,15 @@ export class LoginService {
     .get<Transaction[]>(this.url + "Transactions/account/all/" + acct_Id)
     .pipe(map( (transactions: Transaction[]) => transactions.map(transaction => new Transaction(transaction))));
   }
+
+  getIncome(acct_Id: number): Observable<number> {
+    return this.http.get<number>(this.url + "Accounts/my-income/" + acct_Id);
+  }
+      
+    
+  getExpense(acct_Id: number): Observable<number>{
+    return this.http.get<number>(this.url + "Accounts/my-expenses/" + acct_Id);
+    }
 
   postTransaction(transaction: Object) {
     return this.http.post(this.url + "Transactions", transaction);

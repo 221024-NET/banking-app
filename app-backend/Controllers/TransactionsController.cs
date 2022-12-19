@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -65,7 +65,6 @@ namespace app_backend.Controllers
             {
                 accBal = acctcontr.GetAcctBalance((int)transaction.src_acct);
             }
- 
             decimal currentbalance = (decimal)accBal.Value;
 
             if (currentbalance <= transaction.amount)
