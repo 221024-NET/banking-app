@@ -6,16 +6,15 @@
     <div
       class="dash-card col-md-4 mx-auto p-2 border border-success border-3 rounded"
     >
-      <h3 class="text-center">{{currentAccnts[0].type}} account</h3>
-      <p class="fs.4 text-center">Route Number: {{currentAccnts[0].acct_Id}}</p>
-      <p class="fs.4 text-center">Balance: ${{currentAccnts[0].balance}}</p>
+      <h3 class="text-center">Checking Account</h3>
+      <p class="fs.4 text-center">(Current Balance)</p>
       <div class="col-6 mx-auto">
         <button
-          (click)="createCheckings()"
+          (click)="goTransactions()"
           type="button"
           class="btn dash-btn btn-success btn-block"
         >
-          Create Checking Account
+          View Transactions
         </button>
       </div>
     </div>
@@ -23,16 +22,15 @@
     <div
       class="dash-card col-md-4 mx-auto p-2 border border-success border-3 rounded"
     >
-      <h3 class="text-center">{{currentAccnts[1].type}} account</h3>
-      <p class="fs.4 text-center">Route Number: {{currentAccnts[1].acct_Id}}</p>
-      <p class="text-center">Balance: ${{currentAccnts[1].balance}}</p>
+      <h3 class="text-center">Savings Account</h3>
+      <p class="text-center">(Current Balance)</p>
       <div class="col-6 mx-auto">
         <button
-          (click)="createSavings()"
+          (click)="goTransactions()"
           type="button"
           class="btn dash-btn btn-success btn-block"
         >
-          Create Savings Account
+          View Transactions
         </button>
       </div>
     </div>
@@ -59,14 +57,17 @@
     <div
       class="dash-card col-md-3 mx-auto border border-success border-3 rounded"
     >
-      <h4 class="text-center">Transfer Money</h4>
+      <h4 class="text-center">
+        Send & <br />
+        Request
+      </h4>
       <div class="col-6 mx-auto">
         <button
           (click)="goSend()"
           type="button"
           class="btn dash-btn btn-success btn-block"
         >
-          Transfer
+          Send To Friends
         </button>
       </div>
     </div>
