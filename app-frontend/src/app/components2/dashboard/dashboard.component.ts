@@ -39,4 +39,12 @@ export class DashboardComponent implements OnInit {
   goBudget() {
     this.router.navigate(['/budget']);
   }
+
+  createCheckings() {
+
+  }
+
+  createSavings() {
+
+  }
 }
