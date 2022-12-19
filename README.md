@@ -1,7 +1,6 @@
 # Droid Financial - Banking App 
 A web application for a simple banking interface with Angular, .NET Core, and Microsoft SQL Server
-
-##Table of Contents  
+ 
 - [Droid Financial - Banking App](#droid-financial---banking-app)
   - [Introduction ](#introduction-)
   - [Technologies ](#technologies-)
