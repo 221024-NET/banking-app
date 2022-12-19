@@ -12,11 +12,11 @@
       <p class="fs.4 text-center">Balance: ${{currentAccnts[0].balance}}</p>
       <div class="col-6 mx-auto">
         <button
-          (click)="createCheckings()"
+          (click)="goTransactions()"
           type="button"
           class="btn dash-btn btn-success btn-block"
         >
-          Create Checking Account
+          View Transactions
         </button>
       </div>
     </div>
@@ -29,11 +29,11 @@
       <p class="text-center">Balance: ${{currentAccnts[1].balance}}</p>
       <div class="col-6 mx-auto">
         <button
-          (click)="createSavings()"
+          (click)="goTransactions()"
           type="button"
           class="btn dash-btn btn-success btn-block"
         >
-          Create Savings Account
+          View Transactions
         </button>
       </div>
     </div>

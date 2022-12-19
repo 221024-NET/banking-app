@@ -4,7 +4,6 @@ import { Account } from './../../classes/accountobject';
 import { CurrentuserService } from '../../services/currentuser.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'app/classes/userobject';
 
 @Component({
   selector: 'app-dashboard',
