@@ -11,6 +11,7 @@ import { LandingModule } from './landing.module';
 import { UserModule } from './user.module';
 import { MainComponent } from './main/main.component';
 
+
 @NgModule({
   declarations: [AppComponent, MainComponent],
   imports: [
