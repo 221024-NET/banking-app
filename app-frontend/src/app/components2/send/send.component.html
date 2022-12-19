@@ -1,95 +1,38 @@
 <div class="container-fluid">
-  <h2 class="text-center">Send & Request</h2>
+  <h2 class="text-center">Create Transfer</h2>
   <div class="row justify-content-around align-content-center mt-5">
+    <button class="button" (click)="goBack()">Back</button>
     <div class="col-5 border border-success border-3 rounded">
-      <form role="form" class="send-form">
+      <form [formGroup]="formdata" role="form" class="send-form" (ngSubmit)="PostToTransaction(formdata.value)">
+        <label for="send-to">Account from: </label>
         <div class="input-group mb-2">
-          <button
-            class="btn btn-success dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            From
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Checking</a></li>
-            <li><a class="dropdown-item" href="#">Savings</a></li>
-          </ul>
           <input
-            readonly
-            type="text"
+            formControlName="src_acct"
+            type="number"
             class="form-control"
             id="from-acc"
-            placeholder="Account"
-            value="(Show Chosen)"
-            disabled
+            placeholder="Routing #"
           />
         </div>
-        <label for="send-to">Send To: </label>
+        <label for="send-to">Account to: </label>
 
         <div class="input-group">
-          <span class="input-group-text" id="input-group-left-example">@</span>
           <input
-            type="email"
+            formControlName="dst_acct"
+            type="number"
             class="form-control"
             id="send-to"
-            placeholder="Account ID"
+            placeholder="Routing #"
           />
         </div>
 
         <label for="send-amount">Amount:</label>
         <div class="input-group">
           <span class="input-group-text">$</span>
-          <input type="text" class="form-control" id="send-amount" />
+          <input formControlName="amount" type="number" class="form-control" id="send-amount" />
         </div>
 
         <button type="submit" class="btn btn-block btn-success">Send</button>
-      </form>
-    </div>
-
-    <div class="col-5 border border-success border-3 rounded">
-      <form role="form" class="send-form">
-        <div class="input-group mb-2">
-          <button
-            class="btn btn-success dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            To
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Checking</a></li>
-            <li><a class="dropdown-item" href="#">Savings</a></li>
-          </ul>
-          <input
-            readonly
-            type="text"
-            class="form-control"
-            id="from-acc"
-            placeholder="Account"
-            value="(Show Chosen)"
-            disabled
-          />
-        </div>
-        <label for="request-from">Request From: </label>
-        <div class="input-group">
-          <span class="input-group-text">@</span>
-          <input
-            type="email"
-            class="form-control"
-            id="request-from"
-            placeholder="Account ID"
-          />
-        </div>
-        <label for="request-amount">Amount:</label>
-        <div class="input-group">
-          <span class="input-group-text">$</span>
-          <input type="text" class="form-control" id="request-amount" />
-        </div>
-
-        <button type="submit" class="btn btn-block btn-success">Request</button>
       </form>
     </div>
   </div>

@@ -25,7 +25,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserModule,
     FormsModule,
     ReactiveFormsModule
-    
   ],
   providers: [ServicesModule],
   bootstrap: [AppComponent],

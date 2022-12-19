@@ -26,7 +26,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     TransferComponent,
     ProfileComponent,
     SendComponent,
-    BudgetComponent,
+    BudgetComponent
   ],
 })
 export class UserModule {}

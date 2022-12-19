@@ -12,13 +12,18 @@ import { Transaction } from '../classes/transactionobject';
 
 export class LoginService {
   url = "https://localhost:7218/api/";
-  num: number = 0;
 
   constructor(private http: HttpClient) { }
+
   public PostLogin(user: Object) {
     return this.http.post(this.url + "Users/login", user);
   }
-  public GetAccounts(id: number): Observable<Account[]> {
+
+  public PostAccount(account: Object) {
+    return this.http.post(this.url + "Accounts", account);
+  }
+
+ public GetAccounts(id: number): Observable<Account[]> {
     return this.http
     .get<Account[]>(this.url + "Users/my-accounts/" + id)
     .pipe(map( (accounts: Account[]) => accounts.map(account => new Account(account))));
@@ -30,8 +35,6 @@ export class LoginService {
     .pipe(map( (transactions: Transaction[]) => transactions.map(transaction => new Transaction(transaction))));
   }
 
-
-
   getIncome(acct_Id: number): Observable<number> {
     return this.http.get<number>(this.url + "Accounts/my-income/" + acct_Id);
   }
@@ -40,8 +43,13 @@ export class LoginService {
   getExpense(acct_Id: number): Observable<number>{
     return this.http.get<number>(this.url + "Accounts/my-expenses/" + acct_Id);
     }
-    
+
+  postTransaction(transaction: Object) {
+    return this.http.post(this.url + "Transactions", transaction);
+  }
+
   handleError(error: HttpErrorResponse){
     return throwError(error);
   }
-  }
+
+}
