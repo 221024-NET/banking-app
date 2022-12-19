@@ -45,12 +45,13 @@ export class ProfileComponent{
 
     // ! Update the current user and post?
     this.Cuser.setData(this.user);
-    //TODO: Actually call the HTTP Put for the user. Updating the current user works
+    
     //    So I just need to put now
     this.loginserv.PutUser(this.user).subscribe(
       result => {console.log(`Result ${result}`)},
       err => (console.log(`Error: ${err}`))
     );
+    alert("Account updated!");
   }
 
   deleteAcc() {

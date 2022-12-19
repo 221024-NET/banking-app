@@ -19,7 +19,6 @@ export class LoginService {
     return this.http.post(this.url + "Users/login", user);
   }
 
-  //TODO: Actually iplement this because right now I'm just getting NotFound statuses
   public PutUser(user: Object){
     let userid = (user as User).user_ID;
     return this.http.put<any>(this.url + 'Users/' + userid.toString(), user);
