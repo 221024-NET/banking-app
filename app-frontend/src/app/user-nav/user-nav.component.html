@@ -1,0 +1,33 @@
+<nav class="flex-nav">
+  <div class="header-left">
+    <a href="dashboard" routerLink="dashboard">
+      <img
+        src="assets/droidlogo.png"
+        class="logo"
+        alt="DROID FINANCE"
+        title="Back To Home"
+      />
+    </a>
+  </div>
+  <div class="header-right">
+    <button
+      (click)="goProfile()"
+      class="hero-btn"
+      id="profile-btn"
+      title="User Profile"
+    >
+      Profile
+    </button>
+    <button (click)="logout()" class="hero-btn" id="logout-btn" title="Log Out">
+      Log Out
+    </button>
+
+    <!-- theme switcher -->
+    <button
+      id="theme-btn"
+      type="button"
+      title="Toggle Color Mode"
+      aria-pressed="false"
+    ></button>
+  </div>
+</nav>

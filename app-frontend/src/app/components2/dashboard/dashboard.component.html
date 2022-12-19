@@ -1,0 +1,91 @@
+<div class="container-fluid px-1">
+  <h3 class="text-center mt-3">Account Dashboard</h3>
+  <div
+    class="row row-cols-md-2 justify-content-center align-content-center p-4"
+  >
+    <div
+      class="dash-card col-md-4 mx-auto p-2 border border-success border-3 rounded"
+    >
+      <h3 class="text-center">{{currentAccnts[0].type}} account</h3>
+      <p class="fs.4 text-center">Route Number: {{currentAccnts[0].acct_Id}}</p>
+      <p class="fs.4 text-center">Balance: ${{currentAccnts[0].balance}}</p>
+      <div class="col-6 mx-auto">
+        <button
+          (click)="createCheckings()"
+          type="button"
+          class="btn dash-btn btn-success btn-block"
+        >
+          Create Checking Account
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="dash-card col-md-4 mx-auto p-2 border border-success border-3 rounded"
+    >
+      <h3 class="text-center">{{currentAccnts[1].type}} account</h3>
+      <p class="fs.4 text-center">Route Number: {{currentAccnts[1].acct_Id}}</p>
+      <p class="text-center">Balance: ${{currentAccnts[1].balance}}</p>
+      <div class="col-6 mx-auto">
+        <button
+          (click)="createSavings()"
+          type="button"
+          class="btn dash-btn btn-success btn-block"
+        >
+          Create Savings Account
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="row row-cols-md-2 justify-content-center align-content-center mx-2 p-2"
+  >
+    <div
+      class="dash-card col-md-3 mx-auto border border-success border-3 rounded"
+    >
+      <h4 class="text-center">Budget Tracker</h4>
+      <div class="col-6 mx-auto">
+        <button
+          (click)="goBudget()"
+          type="button"
+          class="btn dash-btn btn-success btn-block"
+        >
+          View Tracker
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="dash-card col-md-3 mx-auto border border-success border-3 rounded"
+    >
+      <h4 class="text-center">
+        Transfer Money
+      </h4>
+      <div class="col-6 mx-auto">
+        <button
+          (click)="goSend()"
+          type="button"
+          class="btn dash-btn btn-success btn-block"
+        >
+          Transfer
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="dash-card col-md-3 mx-auto border border-success border-3 rounded p-2"
+    >
+      <h4 class="text-center">Transfer Money To Accounts</h4>
+      <div class="col-6 mx-auto">
+        <button
+          (click)="goTransfer()"
+          type="button"
+          class="btn dash-btn btn-success btn-block"
+        >
+          Transfer Funds
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

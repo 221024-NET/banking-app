@@ -1,0 +1,82 @@
+<div class="container-fluid">
+  <div class="row justify-content-center align-content-center p-4">
+    <h2 class="text-center">View User Info</h2>
+
+    <div class="col border border-success border-3 rounded mx-5">
+      <form role="form">
+        <div class="form-group">
+          <!-- ! Read only -->
+          <label for="formControlInput" class="form-label">First Name</label>
+          <input
+            readonly
+            type="text"
+            class="form-control"
+            id="user-fname"
+            value="(Show First Name)"
+            disabled
+          />
+        </div>
+
+        <!-- ! Read only -->
+        <div class="form-group">
+          <label for="user-lname"> Last Name </label>
+          <input
+            readonly
+            type="text"
+            class="form-control"
+            id="user-lname"
+            value="(Show Last Name)"
+            disabled
+          />
+        </div>
+        <!-- ! Read only -->
+        <div class="form-group">
+          <label for="user-email">User Address</label>
+          <input
+            readonly
+            type="text"
+            class="form-control"
+            id="user-email"
+            value="(Show Address)"
+            disabled
+          />
+        </div>
+        <!-- ! Read only -->
+        <div class="form-group">
+          <label for="user-email">Email Address</label>
+          <input
+            readonly
+            type="text"
+            class="form-control"
+            id="user-email"
+            value="(Show Email)"
+            disabled
+          />
+        </div>
+
+        <!-- TODO: Show success message -->
+        <!-- TODO: enter curr pw, enter new pw (update) -->
+        <div class="form-group">
+          <label for="user-curr-pw">Update Password</label>
+          <input type="password" class="form-control" id="user-curr-pw" />
+        </div>
+        <div class="form-group">
+          <label for="user-new-pw">Confirm New Password</label>
+          <input type="password" class="form-control" id="user-new-pw" />
+        </div>
+
+        <button type="submit" class="btn btn-block btn-success">Update</button>
+        <button
+          (click)="deleteAcc()"
+          type="button"
+          class="btn btn-sm m-auto btn-danger mt-5"
+        >
+          Delete Account
+        </button>
+        <div *ngIf="showError" class="text-bg-warning text-center">
+          Error: Account has available funds and can't be deleted.
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

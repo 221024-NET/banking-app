@@ -1,0 +1,12 @@
+﻿<div class="app-grid">
+  <header class="header">
+    <app-land-nav *ngIf="navbarService.changeNavBar$ | async"></app-land-nav>
+    <app-user-nav *ngIf="!(navbarService.changeNavBar$ | async)"></app-user-nav>
+  </header>
+
+  <main class="main"><router-outlet></router-outlet></main>
+
+  <footer class="footer" *ngIf="showFooter">
+    <app-land-footer></app-land-footer>
+  </footer>
+</div>

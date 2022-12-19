@@ -1,0 +1,17 @@
+label {
+    font-size: 18px;
+    visibility: visible;
+}
+
+.send-form {
+    width: 75%;
+}
+
+.input-group-text {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.dash-btn {
+    display: inline;
+}
