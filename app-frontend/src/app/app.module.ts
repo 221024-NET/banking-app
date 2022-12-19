@@ -14,7 +14,6 @@ import { LoginComponent } from './components1/login/login.component';
 import { SignupComponent } from './components1/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [AppComponent, MainComponent, LoginComponent, SignupComponent],
   imports: [
@@ -26,7 +25,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserModule,
     FormsModule,
     ReactiveFormsModule
-
   ],
   providers: [ServicesModule],
   bootstrap: [AppComponent],
