@@ -8,7 +8,14 @@
       class="dash-card col-md-5 mx-auto border border-success border-3 rounded mt-5 p-2"
     >
       <h3 class="text-center">Income</h3>
-      <p class="fs.4 text-center text-success lead">(+$00)</p>
+      <div class="fs.4 text-center text-success lead">
+        <!-- <ul *ngIf="currentaccounts != undefined">Checking: ${{ acctIncomesC }}</ul>
+        <ul *ngIf="currentaccounts != undefined">Saving: ${{ acctIncomesS }}</ul> -->
+        <ul>
+          <li *ngFor="let income of acctIncomes"> {{ income }}</li>
+        </ul>
+        
+      </div>
     </div>
 
     <div
@@ -16,6 +23,8 @@
     >
       <h3 class="text-center">Expenses</h3>
       <p class="fs.4 text-center text-danger lead">(-$00)</p>
+
     </div>
+    
   </div>
 </div>
