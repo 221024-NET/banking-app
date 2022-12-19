@@ -33,14 +33,12 @@ export class LoginService {
 
 
   getIncome(acct_Id: number): Observable<number> {
-    // return this.http.get<number>(this.url + "Accounts/my-income/" + acct_Id)
-    //   .pipe(map( (data: number) => data.map(income => number)));
     return this.http.get<number>(this.url + "Accounts/my-income/" + acct_Id);
   }
       
     
-    getExpense(accounts: Account){
-      return this.http.get<number>(this.url + "Accounts/my-expense/" + accounts.acct_Id);
+    getExpense(acct_Id: number): Observable<number>{
+      return this.http.get<number>(this.url + "Accounts/my-expense/" + acct_Id);
         
       }
     

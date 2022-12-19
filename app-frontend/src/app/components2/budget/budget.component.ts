@@ -15,20 +15,21 @@ export class BudgetComponent implements OnInit {
 
   private currentuser = this.userService.getData();
   currentaccounts: Account[] = this.userService.getAccts();
-  currentaccountIds: number[] = [this.currentaccounts[0].acct_Id, this.currentaccounts[1].acct_Id];
-    
-  // currentaccounts.forEach(currAcc => {
-  //   currentaccountIds.push(currAcc.acct_Id)
-  // });
+  currentaccountIds: number[] = [];
+  
+  
+
+
   acctExpense: any;
   acctIncomes: number[] = [];
 
-  // response = this.superService.getIncome(this.currentaccounts[0].acct_Id).subscribe(result => {
-  //   this.acctIncomes = result;
-  //   console.log(this.acctIncomes);
-  // });
-  response = this.currentaccountIds.forEach(currId => {
+  responseincome = this.currentaccountIds.forEach(currId => {
     this.superService.getIncome(currId).subscribe(result => {
+      this.acctIncomes.push(result);
+    })
+  });
+  responseexpense = this.currentaccountIds.forEach(currId => {
+    this.superService.getExpense(currId).subscribe(result => {
       this.acctIncomes.push(result);
     })
   });
@@ -42,10 +43,11 @@ export class BudgetComponent implements OnInit {
   ngOnInit() {
     this.currentaccounts = this.userService.getAccts();
     this.currentuser = this.userService.getData();
+    this.currentaccounts.forEach(acct => {
+    this.currentaccountIds.push(acct.acct_Id);
+    });
     this.acctIncomes;
     
-    // this.acctExpense = this.currentaccounts.forEach(acct => {this.superService.getExpense(acct)});
-    // alert( this.currentaccounts.forEach(acct => {this.superService.getIncome(acct)}));
   }
   
   }
