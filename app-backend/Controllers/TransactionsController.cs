@@ -53,7 +53,19 @@ namespace app_backend.Controllers
         {
             transaction.ref_id = 0;
             transaction.status = "";
-            ActionResult<double> accBal = acctcontr.GetAcctBalance((int) transaction.src_acct);
+            ActionResult<double> accBal = 0;
+            if (transaction.src_acct == 0 || transaction.src_acct == null)
+            {
+                accBal = 9999;
+            } else if (transaction.dst_acct == 0 || transaction.dst_acct == null) 
+            {
+                accBal = 9999;
+            }
+            else
+            {
+                accBal = acctcontr.GetAcctBalance((int)transaction.src_acct);
+            }
+ 
             decimal currentbalance = (decimal)accBal.Value;
 
             if (currentbalance <= transaction.amount)
