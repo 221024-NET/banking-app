@@ -2,7 +2,7 @@ import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { User } from '../classes/userobject';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Account } from '../classes/accountobject';
 import { Transaction } from '../classes/transactionobject';
 
@@ -18,6 +18,13 @@ export class LoginService {
   public PostLogin(user: Object) {
     return this.http.post(this.url + "Users/login", user);
   }
+
+  //TODO: Actually iplement this because right now I'm just getting NotFound statuses
+  public PutUser(user: Object){
+    let userid = (user as User).user_ID;
+    return this.http.put<any>(this.url + 'Users/' + userid.toString(), user);
+  }
+
  public GetAccounts(id: number): Observable<Account[]> {
     return this.http
     .get<Account[]>(this.url + "Users/my-accounts/" + id)
