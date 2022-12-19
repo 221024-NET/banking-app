@@ -6,11 +6,9 @@ import { ProfileComponent } from './components2/profile/profile.component';
 import { TransferComponent } from './components2/transfer/transfer.component';
 import { SendComponent } from './components2/send/send.component';
 import { BudgetComponent } from './components2/budget/budget.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, FormsModule,
-    ReactiveFormsModule],
+  imports: [CommonModule],
   declarations: [
     DashboardComponent,
     ProfileComponent,
@@ -27,7 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TransferComponent,
     ProfileComponent,
     SendComponent,
-    BudgetComponent
+    BudgetComponent,
   ],
 })
 export class UserModule {}

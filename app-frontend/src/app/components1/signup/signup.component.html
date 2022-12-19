@@ -2,31 +2,14 @@
   <h2 class="form-greeting">Create A New Account</h2>
   <h6>Stress-free banking awaits</h6>
   <!--FORM BOX-->
-  <form class="form-box" [formGroup]="formdata" (ngSubmit)="PostRegister(formdata.value)">
-    <label class="screen-reader" for="signup-firstname">Enter your first name</label>
-    <div class="input">
-      <input formControlName="first_name" type="text" class="input-text" placeholder="First Name" required />
-    </div>
-
-    <label class="screen-reader" for="signup-lastname">Enter your last name</label>
-    <div class="input">
-      <input formControlName="last_name" type="text" class="input-text" placeholder="Last Name" required />
-    </div>
-
-    <label class="screen-reader" for="signup-address">Enter your Home Address</label>
-    <div class="input">
-      <input formControlName="address" type="text" class="input-text" placeholder="Home Address" required />
-    </div>
-
+  <form class="form-box">
     <label class="screen-reader" for="signup-email">Enter Email</label>
     <div class="input">
-      <input formControlName="email" type="email" class="input-text" placeholder="Email" required />
+      <input type="email" class="input-text" placeholder="Email" required />
     </div>
-
     <label class="screen-reader" for="signup-password">Enter Password</label>
     <div class="input">
       <input
-      formControlName="password"
         type="password"
         class="input-text"
         placeholder="Password"
