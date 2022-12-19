@@ -23,16 +23,7 @@ export class BudgetComponent implements OnInit {
   acctExpense: any;
   acctIncomes: number[] = [];
 
-  responseincome = this.currentaccountIds.forEach(currId => {
-    this.superService.getIncome(currId).subscribe(result => {
-      this.acctIncomes.push(result);
-    })
-  });
-  responseexpense = this.currentaccountIds.forEach(currId => {
-    this.superService.getExpense(currId).subscribe(result => {
-      this.acctIncomes.push(result);
-    })
-  });
+  
   
 
   constructor(private userService: CurrentuserService, private router: Router, private superService: LoginService) { }
@@ -47,6 +38,17 @@ export class BudgetComponent implements OnInit {
     this.currentaccountIds.push(acct.acct_Id);
     });
     this.acctIncomes;
+    console.log(this.acctIncomes);
+    this.currentaccountIds.forEach(currId => {
+    this.superService.getIncome(currId).subscribe(result => {
+      this.acctIncomes.push(result);
+    })
+  });
+  this.currentaccountIds.forEach(currId => {
+    this.superService.getExpense(currId).subscribe(result => {
+      this.acctIncomes.push(result);
+    })
+  });
     
   }
   
