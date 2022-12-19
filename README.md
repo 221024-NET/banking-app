@@ -25,3 +25,4 @@ The following technologies were used
 * Tracking income and expenses across two accounts
 * Transferring money between two accounts
 * Initiating transactions between two users' accounts
+* Dark Mode toggle
