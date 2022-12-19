@@ -19,6 +19,10 @@ export class LoginService {
     return this.http.post(this.url + "Users/login", user);
   }
 
+  public PostAccount(account: Object) {
+    return this.http.post(this.url + "Accounts", account);
+  }
+
  public GetAccounts(id: number): Observable<Account[]> {
     return this.http
     .get<Account[]>(this.url + "Users/my-accounts/" + id)
