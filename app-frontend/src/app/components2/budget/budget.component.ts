@@ -16,37 +16,31 @@ export class BudgetComponent implements OnInit {
   private currentuser = this.userService.getData();
   currentaccounts: Account[] = this.userService.getAccts();
   currentaccountIds: number[] = [];
-  
-  
+  accounts: string[] = ["Checking", "Saving"];
 
-
-  acctExpense: any;
   acctIncomes: number[] = [];
-
-  
-  
-
+  acctExpense: number[] = [];
   constructor(private userService: CurrentuserService, private router: Router, private superService: LoginService) { }
-
-  test(){
-  }
 
   ngOnInit() {
     this.currentaccounts = this.userService.getAccts();
     this.currentuser = this.userService.getData();
+    this.acctIncomes;
+    this.acctExpense;
+
     this.currentaccounts.forEach(acct => {
     this.currentaccountIds.push(acct.acct_Id);
     });
-    this.acctIncomes;
-    console.log(this.acctIncomes);
+
     this.currentaccountIds.forEach(currId => {
     this.superService.getIncome(currId).subscribe(result => {
       this.acctIncomes.push(result);
     })
   });
+
   this.currentaccountIds.forEach(currId => {
     this.superService.getExpense(currId).subscribe(result => {
-      this.acctIncomes.push(result);
+      this.acctExpense.push(result);
     })
   });
     

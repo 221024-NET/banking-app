@@ -15,4 +15,12 @@ export class Transaction implements ITransaction {
     this.amount = ITransaction.amount;
   }
 
+  Add(trans: Transaction){
+    this.ref_Id = trans.ref_Id;
+    this.src_acct = trans.src_acct;
+    this.dst_acct = trans.dst_acct;
+    this.status = trans.status;
+    this.amount = trans.amount;
+  }
+
 }

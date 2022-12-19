@@ -37,10 +37,9 @@ export class LoginService {
   }
       
     
-    getExpense(acct_Id: number): Observable<number>{
-      return this.http.get<number>(this.url + "Accounts/my-expense/" + acct_Id);
-        
-      }
+  getExpense(acct_Id: number): Observable<number>{
+    return this.http.get<number>(this.url + "Accounts/my-expenses/" + acct_Id);
+    }
     
   handleError(error: HttpErrorResponse){
     return throwError(error);
