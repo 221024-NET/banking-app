@@ -49,11 +49,11 @@ namespace app_backend.Controllers
 
         //POST: api/Transactions
         [HttpPost]
-        public async Task<IActionResult> PostTransaction(Transactions transaction, int acctid)
+        public async Task<IActionResult> PostTransaction(Transactions transaction)
         {
             transaction.ref_id = 0;
             transaction.status = "";
-            ActionResult<double> accBal = acctcontr.GetAcctBalance(acctid);
+            ActionResult<double> accBal = acctcontr.GetAcctBalance((int) transaction.src_acct);
             decimal currentbalance = (decimal)accBal.Value;
 
             if (currentbalance <= transaction.amount)

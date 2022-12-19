@@ -37,6 +37,24 @@ export class SendComponent implements OnInit {
     } else {
       transaction.ref_Id = 0;
       transaction.status = "approved";
+      let Accounts = this.Currentuser.getAccts();
+      if (transaction.src_acct != Accounts[0].acct_Id && transaction.src_acct != Accounts[1].acct_Id) {
+        alert("You must put one of your accounts routing numbers in the Account From form.");
+        this.router.navigateByUrl('/send');
+        return;
+      }
+      let User = this.Currentuser.getData();
+      this.service.postTransaction(transaction).subscribe(
+        (data) => {
+          this.service.GetAccounts(User.user_ID).subscribe(
+            (data2) => {
+              this.Currentuser.setAccts(data2);
+              this.navbarService.changeNavBar = !this.navbarService.changeNavBar;
+              this.router.navigateByUrl('/dashboard');
+            }
+          )
+      })
+
     }
   }
 

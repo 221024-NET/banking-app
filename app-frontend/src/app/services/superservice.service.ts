@@ -2,7 +2,7 @@ import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { User } from '../classes/userobject';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Account } from '../classes/accountobject';
 import { Transaction } from '../classes/transactionobject';
 
@@ -18,6 +18,7 @@ export class LoginService {
   public PostLogin(user: Object) {
     return this.http.post(this.url + "Users/login", user);
   }
+
  public GetAccounts(id: number): Observable<Account[]> {
     return this.http
     .get<Account[]>(this.url + "Users/my-accounts/" + id)
@@ -30,6 +31,9 @@ export class LoginService {
     .pipe(map( (transactions: Transaction[]) => transactions.map(transaction => new Transaction(transaction))));
   }
 
+  postTransaction(transaction: Object) {
+    return this.http.post(this.url + "Transactions", transaction);
+  }
 
   handleError(error: HttpErrorResponse){
     return throwError(error);
